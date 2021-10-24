@@ -1,0 +1,64 @@
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS relations CASCADE;
+DROP TABLE IF EXISTS trips CASCADE;
+DROP TABLE IF EXISTS user_gear CASCADE;
+DROP TABLE IF EXISTS day_hiking_checklist CASCADE;
+DROP TABLE IF EXISTS backpacking_checklist CASCADE;
+DROP TABLE IF EXISTS car_camping_checklist CASCADE;
+
+
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  avatar TEXT NOT NULL
+);
+
+CREATE TABLE relations (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id1 INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  user_id2 INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE trips (
+  id SERIAL PRIMARY KEY NOT NULL,
+  creator_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  activity_category VARCHAR(255) NOT NULL,
+  start_date VARCHAR(255) NOT NULL,
+  end_date VARCHAR(255) NOT NULL,
+  longitude DOUBLE PRECISION NOT NULL,
+  latitude DOUBLE PRECISION NOT NULL,
+  img VARCHAR(255) NOT NULL 
+);
+
+
+CREATE TABLE user_gear (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  name VARCHAR(255),
+  category VARCHAR(255),
+  type VARCHAR(255),
+  colour VARCHAR(255),
+  activity VARCHAR(255)
+);
+
+CREATE TABLE day_hiking_checklist (
+  id SERIAL PRIMARY KEY NOT NULL,
+  type VARCHAR(255) NOT NULL,
+  category VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE backpacking_checklist (
+  id SERIAL PRIMARY KEY NOT NULL,
+  type VARCHAR(255) NOT NULL,
+  category VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE car_camping_checklist (
+  id SERIAL PRIMARY KEY NOT NULL,
+  type VARCHAR(255) NOT NULL,
+  category VARCHAR(255) NOT NULL
+);
