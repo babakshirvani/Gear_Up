@@ -1,3 +1,8 @@
+const  Client = require('pg').Client;
+const { development } = require('./knexfile');
+const db = new Client(development['connection']);
+db.connect();
+
 const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
@@ -7,6 +12,10 @@ const PORT = 8080;
 App.use(BodyParser.urlencoded({ extended: false }));
 App.use(BodyParser.json());
 App.use(Express.static('public'));
+
+const routespath = require("./routes/routes");
+App.use("/", routespath(db));
+
 
 // Sample GET route
 App.get('/api/data', (req, res) => res.json({
