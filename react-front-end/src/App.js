@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
-
+import './components/Map.css'
 import Map from './components/Map';
 
 class App extends Component {
