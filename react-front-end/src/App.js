@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import About from './Pages/About';
-import Home from './Pages/Home';
-import Help from './Pages/Help';
+import About from './pages/About';
+import Home from './pages/Home';
+import Help from './pages/Help';
 import Navbar from './components/Navbar/Navbar';
 
 import {
