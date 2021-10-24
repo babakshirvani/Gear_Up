@@ -6,6 +6,7 @@ import Help from './pages/Help';
 import Navbar from './components/Navbar/Navbar';
 import Map from './components/Map'
 import './components/Map.css'
+import SidebarApp from './components/Sidebar/SidebarApp';
 
 import {
   BrowserRouter as Router,
@@ -37,24 +38,30 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <Navbar />
-        <main>
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/about" exact>
-              <About />
-            </Route>
-            <Route path="/help" exact>
-              <Help />
-            </Route>
-            <Redirect to="/" />
-          </Switch>
-        </main>
-        <Map></Map>
-      </Router>
+      <>
+      
+        <Router>
+          <Navbar />
+          <SidebarApp/>
+          <main>
+            <Switch>
+              <Route path="/" exact>
+                <Home />
+              </Route>
+              <Route path="/about" exact>
+                <About />
+              </Route>
+              <Route path="/help" exact>
+                <Help />
+              </Route>
+              <Redirect to="/" />
+            </Switch>
+          </main>
+          {/* <Map></Map> */}
+          
+        </Router>
+        
+      </>
 
     );
   }
