@@ -1,18 +1,14 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
-import $ from 'jquery';
 
 const Navbar = () => {
 
-
-return (
+  return (
     <nav className="navbar navbar-expand-lg navbar-mainbg">
-
       <NavLink className="navbar-brand navbar-logo" to="/" exact>
         Gear Up
       </NavLink>
-
 
       <button
         className="navbar-toggler"
@@ -51,10 +47,11 @@ return (
                 className="far fa-clone">
               </i>Help
             </NavLink>
-          </li>
+           </li>
         </ul>
       </div>
     </nav>
-  )
-}
+  );
+};
+
 export default Navbar;
