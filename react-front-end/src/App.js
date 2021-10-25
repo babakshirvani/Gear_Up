@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import About from './pages/About';
-import Home from './pages/Home';
-import Help from './pages/Help';
-import Navbar from './components/Navbar/Navbar';
+import NavbarApp from './components/Navbar/NavbarApp';
 import Map from './components/Map'
 import './components/Map.css'
 
@@ -38,21 +35,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Navbar />
-        <main>
-          <Switch>
-            <Route path="/" exact>
-              <Home />
-            </Route>
-            <Route path="/about" exact>
-              <About />
-            </Route>
-            <Route path="/help" exact>
-              <Help />
-            </Route>
-            <Redirect to="/" />
-          </Switch>
-        </main>
+        <NavbarApp />
         <Map></Map>
       </Router>
 
