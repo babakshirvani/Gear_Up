@@ -4,7 +4,6 @@ import Home from "../../pages/Home";
 import About from "../../pages/About";
 import Help from "../../pages/Help";
 import styled from "styled-components";
-import { AnimatePresence } from "framer-motion";
 import "./SidebarApp.css"
 import {
   BrowserRouter as Router,
@@ -23,13 +22,11 @@ function SidebarApp() {
       <Router>
         <Sidebar />
         {/* <Pages>
-          <AnimatePresence exitBeforeEnter>
             <Switch >
               <Route exact path="/" component={Home} />
               <Route path="/help" component={Help} />
               <Route path="/about" component={About} />
             </Switch>
-          </AnimatePresence>
         </Pages> */}
       </Router>
     </>
