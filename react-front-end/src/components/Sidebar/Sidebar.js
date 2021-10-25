@@ -2,11 +2,9 @@ import React, { useState } from "react";
 
 //All the svg files
 import Home from "../assets/home-solid.svg";
-import Team from "../assets/social.svg";
-import Calendar from "../assets/sceduled.svg";
-import Projects from "../assets/starred.svg";
-import Documents from "../assets/draft.svg";
-import PowerOff from "../assets/power-off-solid.svg";
+import Dashboard from "../assets/Forum.svg";
+import Calendar from "../assets/scheduled.svg";
+import NewTrip from "../assets/draft.svg";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
@@ -20,37 +18,6 @@ const Container = styled.div`
     }
   }
 `;
-
-// const Button = styled.button`
-//   background-color: var(--black);
-//   border: none;
-//   width: 2.5rem;
-//   height: 2.5rem;
-//   border-radius: 50%;
-//   margin: 0.5rem 0 0 0.5rem;
-//   cursor: pointer;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   position: relative;
-//   &::before,
-//   &::after {
-//     content: "";
-//     background-color: var(--white);
-//     height: 2px;
-//     width: 1rem;
-//     position: absolute;
-//     transition: all 0.3s ease;
-//   }
-//   &::before {
-//     top: ${(props) => (props.clicked ? "1.5" : "1rem")};
-//     transform: ${(props) => (props.clicked ? "rotate(135deg)" : "rotate(0)")};
-//   }
-//   &::after {
-//     top: ${(props) => (props.clicked ? "1.2" : "1.5rem")};
-//     transform: ${(props) => (props.clicked ? "rotate(-135deg)" : "rotate(0)")};
-//   }
-// `;
 
 const SidebarContainer = styled.div`
   background-color: rgba(117, 190, 218, 0.3);;
@@ -67,9 +34,8 @@ const SidebarContainer = styled.div`
   padding-bottom: 2000px;
 	margin-bottom: -2000px;
   `;
-  
-  
-  const SlickBar = styled.ul`
+
+const SlickBar = styled.ul`
   color: var(--white);
   list-style: none;
   display: flex;
@@ -147,55 +113,24 @@ cursor: pointer;
 display: flex;
 padding-left: 1rem;
 padding-top: 1.5rem;
-  
-  
-  
 `;
-
-// const Logout = styled.button`
-//   border: none;
-//   width: 2rem;
-//   height: 2rem;
-//   background-color: transparent;
-//   img {
-//     width: 100%;
-//     height: auto;
-//     filter: invert(15%) sepia(70%) saturate(6573%) hue-rotate(2deg)
-//       brightness(100%) contrast(126%);
-//     transition: all 0.3s ease;
-//     &:hover {
-//       border: none;
-//       padding: 0;
-//       opacity: 0.5;
-//     }
-//   }
-// `;
 
 const Sidebar = () => {
   const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
-
-  
 
   return (
     <Container>
       <SidebarContainer>
-      
-       
         <SlickBar>
-        <Profile >
-          <img
-            src="https://picsum.photos/200"
-            alt="Profile"
-          />
-          <Name>
+          <Profile >
+            <img
+              src="https://picsum.photos/200"
+              alt="Profile"
+            />
+            <Name>
               <h6>Jhon&nbsp;Doe</h6>
-          </Name>
-          {/* <Logout>
-              <img src={PowerOff} alt="logout" />
-          </Logout> */}
-        </Profile>
-          
+            </Name>
+          </Profile>
           <Item
             exact
             activeClassName="active"
@@ -208,7 +143,7 @@ const Sidebar = () => {
             activeClassName="active"
             to="/dashboard"
           >
-            <img src={Team} alt="about" />
+            <img src={Dashboard} alt="about" />
             <Text clicked={click}>Dashboard</Text>
           </Item>
           <Item
@@ -222,11 +157,10 @@ const Sidebar = () => {
             activeClassName="active"
             to="/new"
           >
-            <img src={Documents} alt="Documents" />
+            <img src={NewTrip} alt="Documents" />
             <Text clicked={click}>NewTrip</Text>
           </Item>
         </SlickBar>
-        
       </SidebarContainer>
     </Container>
   );

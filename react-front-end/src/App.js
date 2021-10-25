@@ -57,8 +57,6 @@ class App extends Component {
               <Redirect to="/" />
             </Switch>
           </main>
-          {/* <Map></Map> */}
-          
         </Router>
         
       </>
