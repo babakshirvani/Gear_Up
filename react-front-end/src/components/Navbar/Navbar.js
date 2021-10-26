@@ -1,18 +1,65 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
-import $ from 'jquery';
+import styled from "styled-components";
+import Home from "../assets/home-solid.svg";
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  padding-right: 4rem;
+  .active {
+    border-bottom: 4px solid var(--white);
+    img {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
+        brightness(103%) contrast(103%);
+    }
+  }
+`;
+
+const Item = styled(NavLink)`
+  text-decoration: none;
+  color: var(--white);
+  width: 100%;
+  padding: 1rem 0;
+  cursor: pointer;
+  display: flex;
+  padding-left: 1rem;
+  &:hover {
+    border-bottom: 4px solid var(--white);
+    img {
+      filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg)
+        brightness(103%) contrast(103%);
+    }
+  }
+  img {
+    width: 1.2rem;
+    height: auto;
+    filter: invert(92%) sepia(4%) saturate(1033%) hue-rotate(169deg)
+      brightness(78%) contrast(85%);
+  }
+`;
+
+const Text = styled.span`
+  width: ${(props) => (props.clicked ? "100%" : "0")};
+  
+  margin-left: 1.5rem;
+  transition: all 0.3s ease;
+`;
+
 
 const Navbar = () => {
+  const [click, setClick] = useState(false);
 
+  return (
 
-return (
     <nav className="navbar navbar-expand-lg navbar-mainbg">
-
       <NavLink className="navbar-brand navbar-logo" to="/" exact>
         Gear Up
       </NavLink>
-
 
       <button
         className="navbar-toggler"
@@ -29,32 +76,48 @@ return (
             <div className="right"></div>
           </div>
 
-          <li className="nav-item active">
-            <NavLink className="nav-link" to="/" exact>
-              <i
-                className="fas fa-caravan">
-              </i>Home
-            </NavLink>
-          </li>
+            <Container>
+              <li className="nav-item ">
+                <Item
+                  exact
+                  activeClassName="active"
+                  to="/"
+                >
+                  <img src={Home} alt="Home" />
+                  <Text clicked={click}>Home</Text>
+                </Item>
+              </li>
 
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/about" exact>
-              <i
+              <li className="nav-item ">
+                <Item
+                  exact
+                  activeClassName="active"
+                  to="/about"
+                >
+                  <i
                 className="far fa-address-book">
-              </i>About Us
-            </NavLink>
-          </li>
+              </i>
+                  <Text clicked={click}>About Us</Text>
+                </Item>
+              </li>
 
-          <li className="nav-item">
-            <NavLink className="nav-link" to="/help" exact>
-              <i
+              <li className="nav-item ">
+                <Item
+                  exact
+                  activeClassName="active"
+                  to="/help"
+                >
+                  <i
                 className="far fa-clone">
-              </i>Help
-            </NavLink>
-          </li>
+              </i>
+                  <Text clicked={click}>help</Text>
+                </Item>
+              </li>
+          </Container>
         </ul>
       </div>
-    </nav>
-  )
-}
+    </nav >
+  );
+};
+
 export default Navbar;
