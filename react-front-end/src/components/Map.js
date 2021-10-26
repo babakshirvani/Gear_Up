@@ -19,13 +19,13 @@ export default function Map() {
 
   function onMapClick(e) {
     console.log(e);
-    setLng(e.lngLat.lng);
-    setLat(e.lngLat.lat);
+    setLng(e.lngLat.lng.toFixed(6));
+    setLat(e.lngLat.lat.toFixed(6));
 
     tempMarker.current
       .setLngLat([e.lngLat.lng, e.lngLat.lat])
       .addTo(map.current);
-
+    geocoder.current.clear();
   };
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function Map() {
 
   useEffect(() => {
     map.current.on('click', e => onMapClick(e));
-  }, [map]);
+  }, [map, geocoder]);
 
   useEffect(() => {
     if (geocoder.current) return;
@@ -64,14 +64,15 @@ export default function Map() {
        
     map.current.addControl(geocoder.current);
     geocoder.current.on('result', e => {
-      setLng(e.result.center[0].toFixed(4));
-      setLat(e.result.center[1].toFixed(4));
+      setLng(e.result.center[0]);
+      setLat(e.result.center[1]);
       setZoom(map.current.getZoom().toFixed(2));
+      tempMarker.current.remove();
       console.log(e.result.center);
       console.log(geocoder.current.mapMarker);
-      // geocoder.current.clear();
-    })   
-  }, [map, geocoder])
+    })
+
+  }, [map, geocoder, tempMarker])
 
   return (
       <div ref={mapContainer} className="map-container">
