@@ -14,7 +14,7 @@ App.use(BodyParser.json());
 App.use(Express.static('public'));
 
 const routespath = require("./routes/routes");
-App.use("/", routespath(db));
+App.use("/api", routespath(db));
 
 
 // Sample GET route

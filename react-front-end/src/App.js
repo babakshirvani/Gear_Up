@@ -6,6 +6,8 @@ import Help from './pages/Help';
 import Navbar from './components/Navbar/Navbar';
 import Map from './components/Map'
 import './components/Map.css'
+import Gear from './components/Gear/Gear';
+
 
 import {
   BrowserRouter as Router,
@@ -40,6 +42,7 @@ class App extends Component {
       <Router>
         <Navbar />
         <main>
+        <Gear/>
           <Switch>
             <Route path="/" exact>
               <Home />
@@ -52,8 +55,11 @@ class App extends Component {
             </Route>
             <Redirect to="/" />
           </Switch>
+        
         </main>
-        <Map></Map>
+        
+        {/* <Map></Map> */}
+        
       </Router>
 
     );
