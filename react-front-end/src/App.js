@@ -4,7 +4,6 @@ import About from './pages/About';
 import Home from './pages/Home';
 import Help from './pages/Help';
 import Navbar from './components/Navbar/Navbar';
-import Map from './components/Map'
 import './components/Map.css'
 
 import {
@@ -53,7 +52,6 @@ class App extends Component {
             <Redirect to="/" />
           </Switch>
         </main>
-        <Map></Map>
       </Router>
 
     );

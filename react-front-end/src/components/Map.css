@@ -1,3 +1,23 @@
 html, body, #root, .App {
   height: 100vh;
 }
+
+/* #geocoder {
+  position: relative;
+  width: 30%;
+  left: 50%
+} */
+
+/* .mapboxgl-control-container {
+  width: 100%;
+}
+
+.mapboxgl-ctrl-geocoder {
+  width: 10%;
+  max-width: 1080px;
+} */
+
+/* #geocoder-container > div {
+  min-width: 50%;
+  margin-left: 25%;
+  } */
