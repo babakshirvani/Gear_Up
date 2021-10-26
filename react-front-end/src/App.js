@@ -3,6 +3,7 @@ import axios from 'axios';
 import NavbarApp from './components/Navbar/NavbarApp';
 import Map from './components/Map'
 import './components/Map.css'
+import SidebarApp from './components/Sidebar/SidebarApp';
 
 import {
   BrowserRouter as Router,
@@ -34,11 +35,13 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <NavbarApp />
-        <Map></Map>
-      </Router>
-
+       <>
+        <Router>
+          <NavbarApp />
+          <SidebarApp/>
+          {/* <Map></Map> */}
+        </Router>
+      </>
     );
   }
 }
