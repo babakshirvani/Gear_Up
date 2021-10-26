@@ -1,9 +1,9 @@
+
 import React, { useState } from 'react'
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
-import Home from "../assets/home-solid.svg";
-
+import HomeIcon from "../assets/home-solid.svg";
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -19,7 +19,6 @@ const Container = styled.div`
     }
   }
 `;
-
 const Item = styled(NavLink)`
   text-decoration: none;
   color: var(--white);
@@ -42,7 +41,6 @@ const Item = styled(NavLink)`
       brightness(78%) contrast(85%);
   }
 `;
-
 const Text = styled.span`
   width: ${(props) => (props.clicked ? "100%" : "0")};
   
@@ -50,69 +48,50 @@ const Text = styled.span`
   transition: all 0.3s ease;
 `;
 
-
 const Navbar = () => {
   const [click, setClick] = useState(false);
-
   return (
-
     <nav className="navbar navbar-expand-lg navbar-mainbg">
       <NavLink className="navbar-brand navbar-logo" to="/" exact>
         Gear Up
       </NavLink>
-
       <button
         className="navbar-toggler"
         type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <i className="fas fa-bars text-white"></i>
       </button>
-
       <div
         className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav ml-auto">
-
           <div className="hori-selector">
             <div className="left"></div>
             <div className="right"></div>
           </div>
-
-            <Container>
+          <Container>
               <li className="nav-item ">
-                <Item
-                  exact
-                  activeClassName="active"
-                  to="/"
-                >
-                  <img src={Home} alt="Home" />
+                <Item exact activeClassName="active" to="/" >
+                  <img src={HomeIcon} alt="HomeIcon" />
                   <Text clicked={click}>Home</Text>
                 </Item>
               </li>
-
               <li className="nav-item ">
-                <Item
-                  exact
-                  activeClassName="active"
-                  to="/about"
-                >
-                  <i
-                className="far fa-address-book">
-              </i>
+                <Item exact activeClassName="active" to="/dashboard" >
+                  <i class="fas fa-sign-in-alt"></i>
+                  <Text clicked={click}>Login</Text>
+                </Item>
+              </li>
+              <li className="nav-item ">
+                <Item exact activeClassName="active" to="/about" >
+                  <i className="far fa-address-book"></i>
                   <Text clicked={click}>About Us</Text>
                 </Item>
               </li>
-
-              <li className="nav-item ">
-                <Item
-                  exact
-                  activeClassName="active"
-                  to="/help"
-                >
-                  <i
-                className="far fa-clone">
-              </i>
-                  <Text clicked={click}>help</Text>
-                </Item>
-              </li>
+            <li className="nav-item ">
+              <Item exact activeClassName="active" to="/help" >
+                <i className="far fa-clone"></i>
+                <Text clicked={click}>help</Text>
+              </Item>
+            </li>
           </Container>
         </ul>
       </div>
