@@ -8,7 +8,8 @@ export default function Confirm(props) {
   }
   
   return (
-    <div>
+    
+    <div className="container">
       Thank you!!
       <Button>CONFIRM</Button>
       <Button onClick={prev}>GoBack</Button>

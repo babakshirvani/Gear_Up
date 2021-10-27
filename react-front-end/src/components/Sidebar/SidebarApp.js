@@ -5,11 +5,14 @@ import About from "../../pages/About";
 import Help from "../../pages/Help";
 import styled from "styled-components";
 import "./SidebarApp.css"
+
+
 import {
   BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
+import Gear from "../Gear/Gear";
 
 const Pages = styled.div`
   width: 100vw;
@@ -28,6 +31,14 @@ function SidebarApp() {
               <Route path="/about" component={About} />
             </Switch>
         </Pages> */}
+        <main>
+          <Switch>
+          <Route path="/new" exact>
+                <Gear />
+              </Route>
+          </Switch>
+        </main>
+        
       </Router>
     </>
   );

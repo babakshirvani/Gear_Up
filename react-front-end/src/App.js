@@ -40,10 +40,12 @@ class App extends Component {
        <>
         <Router>
           <NavbarApp />
+          
           <SidebarApp/>
           {/* <Map></Map> */}
-          <Gear/>
+          {/* <Gear/> */}
         </Router>
+      
       </>
     );
   }

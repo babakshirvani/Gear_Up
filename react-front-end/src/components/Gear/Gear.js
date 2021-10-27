@@ -24,14 +24,16 @@ export default function Gear() {
   }
 
   const handleChecklist = (GearChecklist,GearChecklistonLoad) => {
-  //  console.log(GearChecklist);
-  
+   console.log("1 ",Object.values(GearChecklist)[0]);
+  console.log("2 ", GearChecklistonLoad)
     for(let checklist of GearChecklistonLoad) {
+      //console.log("3 ",checklist.children)
       const list = checklist.children.filter((ele) => ele.id !== Object.values(GearChecklist)[0])
+     //console.log("4 ",list);
       checklist.children = [...list]
     }
     setState({...state,gearChecklist: GearChecklist, gearChecklistonLoad: GearChecklistonLoad})
-    //console.log("newlist ",gearChecklistonLoad);
+    console.log("newlist ",gearChecklistonLoad);
   }
   const { step, activity, gearChecklist,gearChecklistonLoad } = state;
   const values = {activity, gearChecklist, gearChecklistonLoad}

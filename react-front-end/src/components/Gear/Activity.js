@@ -18,6 +18,7 @@ const next = (e) => {
     {id: 3, name: 'Day Hiking'}
   ];
   return (
+    <div className="container">
     <Provider theme={defaultTheme}>
 
     <ListBox
@@ -31,5 +32,6 @@ const next = (e) => {
           </ListBox>
           <Button onClick={next}>NEXT</Button>
     </Provider>
+    </div>
   );
 }

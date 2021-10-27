@@ -12,6 +12,7 @@ import {
 } from "@adobe/react-spectrum";
 import {useEffect} from 'react';
 import axios from 'axios';
+import "./GearChecklist.css"
 
 
 export default function GearChecklist(props) {
@@ -38,7 +39,7 @@ useEffect(() => {
     //setState((prev) => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers:all[2].data }));
     
     setChecklistonload(all[0].data);
-    console.log("2 ",checklistonload)
+    //console.log("2 ",checklistonload)
   
   //  props.values.gearChecklistonLoad = [...all[0].data]
     //props.handleChecklist(all[0].data)
@@ -56,7 +57,7 @@ useEffect(() => {
   
     //console.log(props.values.gearChecklistonLoad)
     //setChecklistonload([]);
-    setChecklistonload(props.values.gearChecklistonLoad);
+    //setChecklistonload(props.values.gearChecklistonLoad);
     //console.log("1 ",checklistonload)
   }
 });
@@ -64,23 +65,18 @@ useEffect(() => {
 
 //console.log("1 ",checklistonload)
 //console.log(props)
-  // const {values} = props;
-  // let options = [
-  //   {id: 1, name: 'Backpacking'},
-  //   {id: 2, name: 'Car Camping'},
-  //   {id: 3, name: 'Day Hiking'}
-  // ];
+ const {values} = props;
+
   return (
-    
+    <div className="container">  
   <Provider theme={defaultTheme}>
     {/* {props.values.gearChecklist}
     {JSON.stringify(props.values.gearChecklistonLoad)}<br/>
   {JSON.stringify(checklistonload)} */}
-  <Flex direction="column">
+  
     <ListBox
         aria-label="Pick an animal"
         items={checklistonload}
-      
         selectedKeys={props.values.gearChecklist}
         selectionMode="multiple"
         onSelectionChange={(selected) => props.handleChecklist(selected,checklistonload)}
@@ -92,19 +88,12 @@ useEffect(() => {
         )}
        
     </ListBox>
-    </Flex>
+  
 
-  {/* <ListBox
-          width="size-2400"
-          aria-label="Select activity"
-          items={props.values.gearChecklist}
-          selectionMode="single"
-          onSelectionChange={(selected) => props.handleChange(selected)}>
-            {(item) => <Item key={item.type}>{item.type}</Item>}
-        </ListBox> */}
     <Button onClick={next}>NEXT</Button>
     <Button onClick={prev}>PREV</Button>
   </Provider>
+  </div>
   
   );
 }

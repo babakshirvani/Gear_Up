@@ -33,6 +33,7 @@ function NavbarApp() {
               <Redirect to="/" />
             </Switch>
           </main> */}
+          
       </Router>
     </>
   );
