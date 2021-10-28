@@ -1,10 +1,13 @@
 DROP TABLE IF EXISTS users CASCADE;
-DROP TABLE IF EXISTS relations CASCADE;
 DROP TABLE IF EXISTS trips CASCADE;
+DROP TABLE IF EXISTS friendship CASCADE;
+DROP TABLE IF EXISTS trip_user CASCADE;
 DROP TABLE IF EXISTS user_gear CASCADE;
-DROP TABLE IF EXISTS day_hiking_checklist CASCADE;
-DROP TABLE IF EXISTS backpacking_checklist CASCADE;
-DROP TABLE IF EXISTS car_camping_checklist CASCADE;
+DROP TABLE IF EXISTS gear_checklist CASCADE;
+DROP TABLE IF EXISTS user_checklist CASCADE;
+-- DROP TABLE IF EXISTS day_hiking_checklist CASCADE;
+-- DROP TABLE IF EXISTS backpacking_checklist CASCADE;
+-- DROP TABLE IF EXISTS car_camping_checklist CASCADE;
 
 
 CREATE TABLE users (
@@ -15,11 +18,6 @@ CREATE TABLE users (
   avatar TEXT NOT NULL
 );
 
-CREATE TABLE relations (
-  id SERIAL PRIMARY KEY NOT NULL,
-  user_id1 INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  user_id2 INTEGER REFERENCES users(id) ON DELETE CASCADE
-);
 
 CREATE TABLE trips (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -34,6 +32,20 @@ CREATE TABLE trips (
   img VARCHAR(255) NOT NULL 
 );
 
+CREATE TABLE friendship (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id1 INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  user_id2 INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE trip_user (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  trip_id INTEGER REFERENCES trips(id) ON DELETE CASCADE
+);
+
+
 
 CREATE TABLE user_gear (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -45,20 +57,34 @@ CREATE TABLE user_gear (
   activity VARCHAR(255)
 );
 
-CREATE TABLE day_hiking_checklist (
+CREATE TABLE gear_checklist (
   id SERIAL PRIMARY KEY NOT NULL,
   type VARCHAR(255) NOT NULL,
-  category VARCHAR(255) NOT NULL
+  category VARCHAR(255) NOT NULL,
+  activity VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE backpacking_checklist (
+CREATE TABLE user_checklist (
   id SERIAL PRIMARY KEY NOT NULL,
-  type VARCHAR(255) NOT NULL,
-  category VARCHAR(255) NOT NULL
+  trip_id INTEGER REFERENCES trips(id) ON DELETE CASCADE,
+  type_id INTEGER REFERENCES gear_checklist(id) ON DELETE CASCADE,
+  checked boolean NOT NULL
 );
 
-CREATE TABLE car_camping_checklist (
-  id SERIAL PRIMARY KEY NOT NULL,
-  type VARCHAR(255) NOT NULL,
-  category VARCHAR(255) NOT NULL
-);
+-- CREATE TABLE day_hiking_checklist (
+--   id SERIAL PRIMARY KEY NOT NULL,
+--   type VARCHAR(255) NOT NULL,
+--   category VARCHAR(255) NOT NULL
+-- );
+
+-- CREATE TABLE backpacking_checklist (
+--   id SERIAL PRIMARY KEY NOT NULL,
+--   type VARCHAR(255) NOT NULL,
+--   category VARCHAR(255) NOT NULL
+-- );
+
+-- CREATE TABLE car_camping_checklist (
+--   id SERIAL PRIMARY KEY NOT NULL,
+--   type VARCHAR(255) NOT NULL,
+--   category VARCHAR(255) NOT NULL
+-- );

@@ -2,10 +2,13 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import styled from "styled-components";
 import "./SidebarApp.css"
+
+
 import {
   Route,
   Switch
 } from 'react-router-dom';
+//import Gear from "../Gear/Gear";
 import Home from "../../pages/Home";
 import Dashboard from "../../pages/Dashboard";
 import NewTrip from "../../pages/NewTrip";
