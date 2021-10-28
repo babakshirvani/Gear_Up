@@ -2,6 +2,10 @@ html, body, #root, .App {
   height: 100vh;
 }
 
+.mapboxgl-ctrl-top-right {
+  right: 15rem;
+}
+
 /* #geocoder {
   position: relative;
   width: 30%;

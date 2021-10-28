@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NavbarApp from './components/Navbar/NavbarApp';
-import Map from './components/Map'
-import './components/Map.css'
+import Map from './components/Map/Map'
+import './components/Map/Map.css'
 import SidebarApp from './components/Sidebar/SidebarApp';
 
 import {
@@ -39,7 +39,7 @@ class App extends Component {
         <Router>
           <NavbarApp />
           <SidebarApp/>
-          {/* <Map></Map> */}
+          <Map></Map>
         </Router>
       </>
     );
