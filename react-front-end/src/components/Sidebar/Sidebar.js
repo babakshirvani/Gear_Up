@@ -6,6 +6,8 @@ import HomeIcon from "../assets/home-solid.svg";
 import DashboardIcon from "../assets/Forum.svg";
 import CalendarIcon from "../assets/scheduled.svg";
 import NewTripIcon from "../assets/draft.svg";
+import { useContext } from 'react';
+import { authContext } from '../../providers/AuthProvider';
 
 const Container = styled.div`
   position: fixed;
@@ -109,6 +111,8 @@ padding-top: 1.5rem;
 `;
 const Sidebar = () => {
   const [click, setClick] = useState(false);
+  const { user, logout } = useContext(authContext);
+
   return (
     <Container>
       <SidebarContainer>
@@ -116,7 +120,9 @@ const Sidebar = () => {
           <Profile >
             <img src="https://picsum.photos/200" alt="Profile" />
             <Name>
-              <h6>Jhon&nbsp;Doe</h6>
+              <h6>{user.name}</h6>
+              <h6>{user.email}</h6>
+
             </Name>
           </Profile>
           <Item activeClassName="active" exact to="/" >
@@ -137,6 +143,7 @@ const Sidebar = () => {
             <img src={NewTripIcon} alt="NewTripIcon" />
             <Text clicked={click}>NewTrip</Text>
           </Item>
+          
           
         </SlickBar>
       </SidebarContainer>

@@ -1,6 +1,13 @@
-import { useState, useContext } from 'react';
-import { authContext } from 'providers/AuthProvider';
-import Counter from 'Counter';
+import React, { useState, useContext } from 'react';
+import { authContext } from '../providers/AuthProvider';
+//import { Redirect, Route } from "react-router-dom";
+
+// import SidebarApp from '../components/Sidebar/SidebarApp';
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Switch
+// } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -13,6 +20,7 @@ export default function Login() {
   };
 
   return (
+    <div className="container">
     <div className="login">
       <form onSubmit={onSubmit}>
         <p>
@@ -30,7 +38,8 @@ export default function Login() {
         </p>
       </form>
 
-      <Counter />
+      
+    </div>
     </div>
   );
 };
