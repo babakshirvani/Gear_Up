@@ -7,6 +7,8 @@ import About from "../../pages/About";
 import Help from "../../pages/Help";
 import Login from "../../pages/Login";
 import SidebarApp from '../Sidebar/SidebarApp';
+//import NavbarApp from '../Navbar/NavbarApp';
+
 
 
 import Dashboard from "../../pages/Dashboard";
@@ -32,7 +34,7 @@ function NavbarApp() {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" >{!auth && <Login />}{auth && <Redirect to="/dashboard"/>}</Route>
-
+          <Route path="/logout" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/help" component={Help} />
           <Redirect to="/" />

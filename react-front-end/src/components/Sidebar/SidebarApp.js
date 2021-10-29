@@ -28,6 +28,8 @@ function SidebarApp() {
               <Route path="/dashboard" component={Dashboard} />
               <Route path="/calendar" component={Calendar} />
               <Route path="/new" component={NewTrip} />
+              <Route path="/logout" component={Home} />
+
             </Switch>
         </Pages>
     </>

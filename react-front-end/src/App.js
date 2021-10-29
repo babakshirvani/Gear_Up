@@ -33,11 +33,13 @@ class App extends Component {
   render() {
     return (
       <>
+      
         <Router>
           <Switch>
           <Route exact path='/' component={NavbarApp} />
           <Route path='/about' component={NavbarApp} />
           <Route path='/login' component={NavbarApp} />
+          <Route path='/logout' component={NavbarApp} />
           <Route path='/help' component={NavbarApp} />
           <Route path='/dashboard' component={SidebarApp} />
           <Route path='/calendar' component={SidebarApp} />
@@ -46,6 +48,7 @@ class App extends Component {
           {/* <Map></Map> */}
           </Switch>
         </Router>
+
       
       </>
     );

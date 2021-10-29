@@ -3,9 +3,15 @@ const express = require("express");
 const router = express.Router();
 
 const routes = (db) => {
-  //GET landingpage
-  // router.get("/", (req, res) => {
-  // });
+  
+
+  router.get("/login/:username",(req, res) => {
+    db.query(`select * from users where user_name='${req.params.username}'`)
+    .then((response) => {
+      res.send(response.rows);
+    })
+    .catch((err) => console.log(err));
+  })
 
   //GET dashboard
   router.get("/dashboard", (req, res) => {

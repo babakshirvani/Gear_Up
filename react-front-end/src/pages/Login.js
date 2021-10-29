@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { authContext } from '../providers/AuthProvider';
+import { Button, TextField } from '@material-ui/core';
+
+
 //import { Redirect, Route } from "react-router-dom";
 
 // import SidebarApp from '../components/Sidebar/SidebarApp';
@@ -12,7 +15,7 @@ import { authContext } from '../providers/AuthProvider';
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login } = useContext(authContext);
+  const { login, error } = useContext(authContext);
 
   const onSubmit = function(event) {
     event.preventDefault();
@@ -20,7 +23,9 @@ export default function Login() {
   };
 
   return (
-    <div className="container">
+    <>
+    <h4 style={{ color: 'white' }}>Log In</h4>
+    {/* <div className="container">
     <div className="login">
       <form onSubmit={onSubmit}>
         <p>
@@ -34,12 +39,13 @@ export default function Login() {
             onChange={event => setPassword(event.target.value)} />
         </p>
         <p className="submit">
-          <button type="submit" name="commit">Login</button>
+          <button type="submit" name="commit">Log In</button>
         </p>
       </form>
-
+    {error}
       
     </div>
-    </div>
+    </div> */}
+    </>
   );
 };

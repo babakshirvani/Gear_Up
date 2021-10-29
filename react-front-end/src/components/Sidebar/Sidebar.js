@@ -111,7 +111,8 @@ padding-top: 1.5rem;
 `;
 const Sidebar = () => {
   const [click, setClick] = useState(false);
-  const { user, logout } = useContext(authContext);
+  const { auth, user, logout } = useContext(authContext);
+  console.log("user ", user);
 
   return (
     <Container>
@@ -120,8 +121,12 @@ const Sidebar = () => {
           <Profile >
             <img src="https://picsum.photos/200" alt="Profile" />
             <Name>
-              <h6>{user.name}</h6>
-              <h6>{user.email}</h6>
+              {user.name}
+              {/* {user.map((u) => {
+                <h6>{u.id}</h6>
+              })} */}
+              {/* <h6>{user}</h6> */}
+            
 
             </Name>
           </Profile>
@@ -142,6 +147,10 @@ const Sidebar = () => {
           <Item activeClassName="active" to="/new" >
             <img src={NewTripIcon} alt="NewTripIcon" />
             <Text clicked={click}>NewTrip</Text>
+          </Item>
+          <Item onClick={logout} activeClassName="active" to="/logout" >
+            <img src={NewTripIcon} alt="NewTripIcon" />
+            <Text clicked={click}>Logout</Text>
           </Item>
           
           

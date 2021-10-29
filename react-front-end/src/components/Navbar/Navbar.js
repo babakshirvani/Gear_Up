@@ -1,7 +1,9 @@
 
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
+import { authContext } from '../../providers/AuthProvider';
+
 import styled from "styled-components";
 import HomeIcon from "../assets/home-solid.svg";
 const Container = styled.div`
@@ -50,6 +52,8 @@ const Text = styled.span`
 
 const Navbar = () => {
   const [click, setClick] = useState(false);
+  const { auth, logout } = useContext(authContext);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-mainbg">
       <NavLink className="navbar-brand navbar-logo" to="/" exact>
@@ -74,12 +78,24 @@ const Navbar = () => {
                   <Text clicked={click}>Home</Text>
                 </Item>
               </li>
-              <li className="nav-item ">
+              {!auth && 
+                <li className="nav-item ">
                 <Item exact activeClassName="active" to="/login" >
                   <i class="fas fa-sign-in-alt"></i>
-                  <Text clicked={click}>Login</Text>
+                  <Text clicked={click}> Login</Text>
                 </Item>
               </li>
+              }
+            
+              {auth && 
+                <li className="nav-item " onClick={logout}>
+                <Item exact activeClassName="active" to="/logout" >
+                  <i class="fas fa-sign-in-alt"></i>
+                  <Text clicked={click}>Logout</Text>
+                </Item>
+              </li>  
+              }
+              
               <li className="nav-item ">
                 <Item exact activeClassName="active" to="/about" >
                   <i className="far fa-address-book"></i>
