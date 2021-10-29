@@ -6,6 +6,9 @@ html, body, #root, .App {
   right: 15rem;
 }
 
+.mapboxgl-marker {
+  z-index: 10;
+}
 /* #geocoder {
   position: relative;
   width: 30%;

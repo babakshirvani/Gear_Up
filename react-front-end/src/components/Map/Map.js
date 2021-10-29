@@ -3,6 +3,7 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import './Map.css';
+import $ from 'jquery';
 import Toggle from './Toggle';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWNlZmxhbmtlciIsImEiOiJja3RudjFrZDEwNmxxMnVwbWs5aW85eGVyIn0.j-do5McYg-VrWM4qQmAIKg';
@@ -46,16 +47,27 @@ export default function Map(props) {
   }
   const [mapList, setMapList] = useState(null);
 
+  // const stopMarkerPropagation = function() {
+  //   $('.mapboxgl-marker').on('click', e => e.stopPropagation());
+  // }
+  // const stopMapPropagation = function() {
+  //   $('.map-container').on('click', e => e.stopPropagation());
+  // }
+  
   const loadMarkers = function(list) {
     removeMarkers();
     for (const marker of list.current) {
       markerGroup.current.push(new mapboxgl.Marker()
+      .on('render', (e) => {console.log('test')})
         .setLngLat(marker.coordinates)
         .setPopup(new mapboxgl.Popup().setHTML(`<h1>${marker.name}</h1>`))
         .addTo(map.current)
-        .togglePopup()
       );
+    for (const marker of markerGroup.current) {
+      $('.mapboxgl-marker').on('click', e => console.log(e));
     }
+    }
+    // stopMarkerPropagation();
   }
 
   const removeMarkers = function() {
@@ -101,7 +113,8 @@ export default function Map(props) {
 
   // useEffect(() => {
   //   map.current.on('load', () => {
-  //     loadMarkers(mapList);
+  //     // loadMarkers(mapList);
+  //     stopMapPropagation();
   //   })
   // }, [map])
   
@@ -121,13 +134,17 @@ export default function Map(props) {
   //   });
   // });
 
-  useEffect(() => {
-    map.current.on('dblclick', e => {
-      setMapList(null);
-      onMapClick(e);
-    });
-  }, [map, geocoder]);
+  // useEffect(() => {
+  //   map.current.on('click', e => {
+  //     setMapList(null);
+  //     onMapClick(e);
+  //   });
+  //   map.current.on('click', 'layer_1', e => {
+  //     e.originalEvent.preventDefault();
+  //   });
+  // }, [map, geocoder]);
 
+  // Creating the map object
   useEffect(() => {
     if (geocoder.current) return;
     geocoder.current = new MapboxGeocoder({
@@ -150,13 +167,11 @@ export default function Map(props) {
 
   return (
     <>
-
       <div ref={mapContainer} className="map-container">
       <Toggle setMapList={setMapList} mapLists={mapLists}></Toggle>
         <div className="sidebar">
           Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
         </div>
-
       </div>
     </>
   );
