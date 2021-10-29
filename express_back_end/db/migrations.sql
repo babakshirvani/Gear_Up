@@ -25,11 +25,10 @@ CREATE TABLE trips (
   title VARCHAR(255) NOT NULL,
   description TEXT,
   activity_category VARCHAR(255) NOT NULL,
-  start_date VARCHAR(255) NOT NULL,
-  end_date VARCHAR(255) NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
   longitude DOUBLE PRECISION NOT NULL,
-  latitude DOUBLE PRECISION NOT NULL,
-  img VARCHAR(255) NOT NULL 
+  latitude DOUBLE PRECISION NOT NULL
 );
 
 CREATE TABLE friendship (
@@ -68,7 +67,7 @@ CREATE TABLE user_checklist (
   id SERIAL PRIMARY KEY NOT NULL,
   trip_id INTEGER REFERENCES trips(id) ON DELETE CASCADE,
   type_id INTEGER REFERENCES gear_checklist(id) ON DELETE CASCADE,
-  checked boolean NOT NULL
+  checked boolean NOT NULL DEFAULT FALSE 
 );
 
 -- CREATE TABLE day_hiking_checklist (
