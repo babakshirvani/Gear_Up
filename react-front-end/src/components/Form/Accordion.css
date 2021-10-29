@@ -1,0 +1,46 @@
+
+.accordion {
+  max-width: 600px;
+  margin: 2rem auto;
+ 
+}
+
+.accordion-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: #ffffff00;
+  font-weight: 600;
+  border-bottom: 1px solid;
+}
+
+.accordion-title:hover {
+  background-color: #e5e4e24b;
+  border-bottom: solid 2px;
+}
+
+.accordion-title,
+.accordion-content {
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.accordion-content {
+  background-color: #c5c5c500;
+}
+
+.complete {
+    text-decoration: line-through;
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    font-size: 18px;
+  }
+
+  .accordion {
+    width: 90%;
+  }
+}
+

@@ -4,7 +4,7 @@ import NewTripForm from './NewTripForm';
 export const multiStepsContext = React.createContext();
 const StepContext = () => {
   const [currentStep, setStep] = useState(1);
-  const [userData, setUserData] = useState([{"start_date": "Start Date", "end_date": "End Date", date: [null, {}], activity: "backpacking"}]);
+  const [userData, setUserData] = useState([{"start_date": "Start Date", "end_date": "End Date", date: [null, {}], activity: []}]);
   const [finalData, setFinalData] = useState([]);
   function submitData() {
 
