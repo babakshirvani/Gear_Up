@@ -1,14 +1,9 @@
-import React from 'react'
+import React from 'react';
+import Map from '../components/Map/Map';
 
 const About = () => {
   return (
-    <div className="container">
-    
-      <h1 className="text-center" style={{paddingTop: "30%"}}>
-        About Us
-      </h1>
-      
-    </div>
+    <Map></Map>
   )
 }
 export default About;

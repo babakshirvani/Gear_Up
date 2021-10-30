@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NavbarApp from './components/Navbar/NavbarApp';
-import Map from './components/Map'
-import './components/Map.css'
+import Map from './components/Map/Map'
+import './components/Map/Map.css'
 import Gear from './components/Gear/Gear';
 
 import SidebarApp from './components/Sidebar/SidebarApp';
@@ -42,10 +42,9 @@ class App extends Component {
           <Route path='/calendar' component={SidebarApp} />
           <Route path='/new' component={SidebarApp} />
           
-          {/* <Map></Map> */}
           </Switch>
         </Router>
-      
+
       </>
     );
   }

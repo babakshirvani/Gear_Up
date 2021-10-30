@@ -76,7 +76,7 @@ const Navbar = () => {
               </li>
               <li className="nav-item ">
                 <Item exact activeClassName="active" to="/dashboard" >
-                  <i class="fas fa-sign-in-alt"></i>
+                  <i className="fas fa-sign-in-alt"></i>
                   <Text clicked={click}>Login</Text>
                 </Item>
               </li>
