@@ -1,9 +1,33 @@
 html, body, #root, .App {
+  overflow: hidden;
   height: 100vh;
 }
 
 .mapboxgl-ctrl-top-right {
   right: 15rem;
+}
+
+.map-container {
+  height: 100%;
+}
+
+.sidebar {
+  font-size: 2em;
+  background-color: rgba(35, 55, 75, 0.9);
+  color: #fff;
+  padding: 12px 12px;
+  font-family: monospace;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content
+  /* right: 33%; */
+  /* margin: 12px; */
+  /* border-radius: 4px; */
 }
 
 /* .mapboxgl-marker {
