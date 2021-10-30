@@ -31,20 +31,36 @@ const routes = (db) => {
   // POST new trip:
   router.post('/newTrip', (req, res) => {
     // const creator_id = req.session.user_id;
-    const creator_id = req.body.creator_id;
+    // const creator_id = req.body.creator_id;
+    const creator_id = 1;
     const title = req.body.title;
-    const description = req.body.desc;
+    const description = req.body.description;
     const start_date = req.body.start_date;
     const end_date = req.body.end_date;
     const activity = req.body.activity;
-    const longitude = req.body.lon;
-    const latitude = req.body.lat;
+    const longitude = req.body.longitude;
+    const latitude = req.body.latitude;
 
     db.query(`
     INSERT INTO trips (creator_id, title, description,
-      start_date, end_date,activity_category, longitude, latitude)
+      start_date, end_date, activity, longitude, latitude)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
       [creator_id, title, description, start_date, end_date, activity, longitude, latitude]
+    ).then((data) => {
+      return res.json(data.rows[0]);
+    });
+  });
+
+  // POST Create a user gear list:
+  router.post('/newGearList', (req, res) => {
+
+    const trip_id = req.body.trip_id;
+    const type_id = req.body.type_id;
+    const checked = req.body.checked;
+    db.query(`
+    INSERT INTO user_checklist (trip_id,type_id, checked)
+      VALUES ($1,$2, $3) RETURNING *`,
+      [trip_id, type_id, checked]
     ).then((data) => {
       return res.json(data.rows[0]);
     });
@@ -59,8 +75,8 @@ const routes = (db) => {
     const start_date = req.body.start_date;
     const end_date = req.body.end_date;
     const activity = req.body.activity;
-    const longitude = req.body.lon;
-    const latitude = req.body.lat;
+    const longitude = req.body.longitude;
+    const latitude = req.body.latitude;
 
     db.query(
       `
@@ -101,7 +117,7 @@ const routes = (db) => {
       gear_checklist;
     `
     ).then(({ rows: dbResponse }) => {
-      console.log("newRes:::", dbResponse);
+      // console.log("newRes:::", dbResponse);
       res.json(dbResponse)
 
     });
@@ -119,7 +135,7 @@ const routes = (db) => {
       WHERE activity = $1
     `, [activityName]
     ).then((dbResponse) => {
-      console.log("newRes:::", dbResponse.rows);
+      // console.log("newRes:::", dbResponse.rows);
       res.json(dbResponse.rows)
 
     });
@@ -142,6 +158,26 @@ const routes = (db) => {
 
     });
   });
+
+
+  // router.get('/gear/typeDetail/:type_id', (req, res) => {
+  //   const { id } = req.params;
+  //   db.query(
+  //     `
+  //     SELECT
+  //       *
+  //     FROM
+  //     gear_checklist
+  //     WHERE activity = $1
+  //   `, [activityName]
+  //   ).then((dbResponse) => {
+  //     console.log("newRes:::", dbResponse.rows);
+  //     res.json(dbResponse.rows)
+
+  //   });
+  // });
+
+
 
 
   //POST save user gear     
