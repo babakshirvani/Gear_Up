@@ -66,15 +66,22 @@ const TripInfoForm = () => {
           multiline
           rows={4}
         />
-      </div>
-      <div>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setStep(2)}
-        >
-          Next
-        </Button>
+        <div style={{ padding: "2rem" }}>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => setStep(1)}
+          >
+            Back
+          </Button> <span> </span>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setStep(3)}
+          >
+            Next
+          </Button>
+        </div >
       </div>
     </>
 

@@ -4,6 +4,7 @@ import ActivityForm from './ActivityForm';
 import GearList from './GearList';
 import { Stepper, StepLabel, Step } from '@material-ui/core';
 import { multiStepsContext } from './StepContext';
+import Map from '../Map/Map';
 
 const NewTripForm = () => {
 
@@ -11,20 +12,20 @@ const NewTripForm = () => {
   function showStep(step) {
     switch (step) {
       case 1:
-        return <TripInfoForm />
+        return <Map />
       case 2:
-        return <ActivityForm />
-      case 3:
-        return <GearList />
-      // case 4:
-      //   return <GearList />
-      default:
         return <TripInfoForm />
+      case 3:
+        return <ActivityForm />
+      case 4:
+        return <GearList />
+      default:
+        return <Map />
     }
   }
 
   return (
-    <div style={{ paddingLeft: '12rem', paddingTop: '6rem' }}>
+    <div style={{ paddingLeft: '12rem', paddingTop: '2rem' }}>
       <Stepper style={{ width: '100%', background: 'none' }} activeStep={currentStep - 1} orientation="horizontal">
         <Step>
           <StepLabel></StepLabel>
@@ -35,9 +36,9 @@ const NewTripForm = () => {
         <Step>
           <StepLabel></StepLabel>
         </Step>
-        {/* <Step>
+        <Step>
           <StepLabel></StepLabel>
-        </Step> */}
+        </Step>
       </Stepper>
       {showStep(currentStep)}
 

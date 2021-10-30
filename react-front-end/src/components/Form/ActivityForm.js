@@ -12,9 +12,6 @@ export default function ActivityForm() {
     setUserData({ ...userData, "activity": event.target.value });
   };
 
-  const saveTrip = () => {
-    setStep(3)
-  }
 
   return (
     <>
@@ -44,14 +41,14 @@ export default function ActivityForm() {
           <Button
             variant="contained"
             color="secondary"
-            onClick={() => setStep(1)}
+            onClick={() => setStep(2)}
           >
             Back
           </Button> <span> </span>
           <Button
             variant="contained"
             color="primary"
-            onClick={saveTrip}
+            onClick={() => setStep(4)}
           >
             Generate
           </Button>

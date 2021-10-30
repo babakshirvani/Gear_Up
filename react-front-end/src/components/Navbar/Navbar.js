@@ -1,9 +1,10 @@
-
 import React from 'react'
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
 import HomeIcon from "../assets/home-solid.svg";
+
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -43,7 +44,6 @@ const Item = styled(NavLink)`
 `;
 const Text = styled.span`
   width: ${(props) => (props.clicked ? "100%" : "0")};
-  
   margin-left: 1.5rem;
   transition: all 0.3s ease;
 `;
