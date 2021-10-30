@@ -68,24 +68,24 @@ const Navbar = () => {
             <div className="right"></div>
           </div>
           <Container>
-              <li className="nav-item ">
-                <Item exact activeClassName="active" to="/" >
-                  <img src={HomeIcon} alt="HomeIcon" />
-                  <Text clicked={click}>Home</Text>
-                </Item>
-              </li>
-              <li className="nav-item ">
-                <Item exact activeClassName="active" to="/dashboard" >
-                  <i class="fas fa-sign-in-alt"></i>
-                  <Text clicked={click}>Login</Text>
-                </Item>
-              </li>
-              <li className="nav-item ">
-                <Item exact activeClassName="active" to="/about" >
-                  <i className="far fa-address-book"></i>
-                  <Text clicked={click}>About Us</Text>
-                </Item>
-              </li>
+            <li className="nav-item ">
+              <Item exact activeClassName="active" to="/" >
+                <img src={HomeIcon} alt="HomeIcon" />
+                <Text clicked={click}>Home</Text>
+              </Item>
+            </li>
+            <li className="nav-item ">
+              <Item exact activeClassName="active" to="/dashboard" >
+                <i className="fas fa-sign-in-alt"></i>
+                <Text clicked={click}>Login</Text>
+              </Item>
+            </li>
+            <li className="nav-item ">
+              <Item exact activeClassName="active" to="/about" >
+                <i className="far fa-address-book"></i>
+                <Text clicked={click}>About Us</Text>
+              </Item>
+            </li>
             <li className="nav-item ">
               <Item exact activeClassName="active" to="/help" >
                 <i className="far fa-clone"></i>
