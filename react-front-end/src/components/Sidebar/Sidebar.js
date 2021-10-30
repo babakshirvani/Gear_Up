@@ -8,6 +8,8 @@ import CalendarIcon from "../assets/scheduled.svg";
 import NewTripIcon from "../assets/draft.svg";
 import { useContext } from 'react';
 import { authContext } from '../../providers/AuthProvider';
+import Friendship from "../Friendship/Friendship";
+
 
 const Container = styled.div`
   position: fixed;
@@ -112,22 +114,17 @@ padding-top: 1.5rem;
 const Sidebar = () => {
   const [click, setClick] = useState(false);
   const { auth, user, logout } = useContext(authContext);
-  console.log("user ", user);
+//  console.log("user ", user);
 
   return (
     <Container>
       <SidebarContainer>
+      
         <SlickBar>
           <Profile >
-            <img src="https://picsum.photos/200" alt="Profile" />
+            <img src={localStorage.getItem('avatar')} alt="Profile" />
             <Name>
-              {user.name}
-              {/* {user.map((u) => {
-                <h6>{u.id}</h6>
-              })} */}
-              {/* <h6>{user}</h6> */}
-            
-
+            {localStorage.getItem('username')}
             </Name>
           </Profile>
           <Item activeClassName="active" exact to="/" >
@@ -156,6 +153,7 @@ const Sidebar = () => {
           
         </SlickBar>
       </SidebarContainer>
+     <Friendship/>
     </Container>
   );
 };

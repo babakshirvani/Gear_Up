@@ -3,6 +3,7 @@ import React, { useState, useContext } from 'react'
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import { authContext } from '../../providers/AuthProvider';
+import DashboardIcon from "../assets/Forum.svg";
 
 import styled from "styled-components";
 import HomeIcon from "../assets/home-solid.svg";
@@ -88,6 +89,8 @@ const Navbar = () => {
               }
             
               {auth && 
+              
+
                 <li className="nav-item " onClick={logout}>
                 <Item exact activeClassName="active" to="/logout" >
                   <i class="fas fa-sign-in-alt"></i>
@@ -95,6 +98,15 @@ const Navbar = () => {
                 </Item>
               </li>  
               }
+
+            {auth && 
+              <li className="nav-item ">
+              <Item exact activeClassName="active" to="/dashboard" >
+              <img src={DashboardIcon} alt="DashboardIcon" />
+                <Text clicked={click}>Dashboard</Text>
+              </Item>
+            </li>  
+            }
               
               <li className="nav-item ">
                 <Item exact activeClassName="active" to="/about" >

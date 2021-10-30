@@ -1,12 +1,12 @@
 import React from 'react'
+import HomePage from '../components/HomePage'
 
 const Home = () => {
   return (
-    <div className="container">
+    <div className="">
+      <HomePage/>
     
-    <h1 className="text-center" style={{paddingTop: "30%"}}>
-      Home
-    </h1>
+    
     
   </div>
   )

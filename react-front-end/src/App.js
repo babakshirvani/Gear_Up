@@ -10,7 +10,8 @@ import SidebarApp from './components/Sidebar/SidebarApp';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 class App extends Component {
   constructor(props) {
@@ -41,7 +42,7 @@ class App extends Component {
           <Route path='/login' component={NavbarApp} />
           <Route path='/logout' component={NavbarApp} />
           <Route path='/help' component={NavbarApp} />
-          <Route path='/dashboard' component={SidebarApp} />
+          <Route path='/dashboard' > <SidebarApp/></Route>
           <Route path='/calendar' component={SidebarApp} />
           <Route path='/new' component={SidebarApp} />
           

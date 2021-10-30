@@ -13,34 +13,45 @@ export const authContext = createContext();
 
 export default function AuthProvider(props) {
   const [auth, setAuth] = useState(false);
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState({});
   const [error, setError] = useState('');
 
   // Perform login process for the user & save authID, etc
-   const login = async function (username, password) {
+   const login = function (username, password) {
+
+
+  return new Promise((resolve, reject) => {  
+      axios.get(`/api/login/${username}`)
+      
+    .then((all) => {
+      setAuth(true);
+      console.log(all.data[0].user_name);
+    
+    localStorage.setItem('username', all.data[0].user_name);
+    localStorage.setItem('user_id', all.data[0].id);
+    localStorage.setItem('avatar', all.data[0].avatar);
+
+    resolve(all)
+    //     const id = "1234-1234-1234";  // Some random userId
+     setUser({ username:all.data[0].user_name});
+    })
+    .catch((err) => {
+     reject(err)
+    })
+  });
 
     
-
-    //return new Promise((resolve, reject) => {
-    // return axios.get(`/api/login/${username}`)
     
-    // .then(all =>{
-    
-    //   setAuth(true);
-    // setUser({"name": "alex"});
-    // alert(user);
-
-    // //resolve(all)  
-    // })
-    setAuth(true);
-    const id = "1234-1234-1234";  // Some random userId
-    setUser({ username, id, name: "Alec" });
-    
+    // setAuth(true);
+    // const id = "1234-1234-1234";  // Some random userId
+    // setUser({ username, id, name: "Test User" });
   };
 
   const logout = function () {
-    setUser(null);
+    //setUser(null);
+    
     setAuth(false);
+    localStorage.clear();
   };
 
   // authContext will expose these items

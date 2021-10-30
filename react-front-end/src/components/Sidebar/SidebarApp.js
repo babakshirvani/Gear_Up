@@ -6,7 +6,8 @@ import "./SidebarApp.css"
 
 import {
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 //import Gear from "../Gear/Gear";
 import Home from "../../pages/Home";
@@ -25,13 +26,14 @@ function SidebarApp() {
         <Pages>
             <Switch >
               <Route exact path="/" component={Home} />
-              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/dashboard" ><Dashboard/></Route>
               <Route path="/calendar" component={Calendar} />
               <Route path="/new" component={NewTrip} />
               <Route path="/logout" component={Home} />
 
             </Switch>
         </Pages>
+        
     </>
   );
 }
