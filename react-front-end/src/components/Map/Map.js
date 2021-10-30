@@ -59,7 +59,7 @@ export default function Map(props) {
       );
     }
     for (const marker of markerGroup.current) {
-      marker._element.addEventListener('click', e => {
+      marker.getElement().addEventListener('click', e => {
         e.stopPropagation();
         if (tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
         console.log(marker);
@@ -97,7 +97,7 @@ export default function Map(props) {
       .setPopup(new mapboxgl.Popup().setHTML(`<h1>New Trip</h1>`))
       .addTo(map.current)
       .togglePopup();
-    tempMarker.current._element.addEventListener('click', event => {
+    tempMarker.current.getElement().addEventListener('click', event => {
     event.stopPropagation();
     removePopups();
     console.log(tempMarker);
@@ -175,7 +175,7 @@ export default function Map(props) {
         .setPopup(new mapboxgl.Popup().setHTML(`<h1>New Trip</h1>`))
         .addTo(map.current)
         .togglePopup();
-      tempMarker.current._element.addEventListener('click', event => {
+      tempMarker.current.getElement().addEventListener('click', event => {
         event.stopPropagation();
         removePopups();
         console.log(tempMarker);
