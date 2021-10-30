@@ -130,12 +130,6 @@ export default function Map(props) {
     if (!map.current) return; // wait for map to initialize
     map.current.on('move', () => {
       setZoom(map.current.getZoom().toFixed(4));
-      geocoder.current.setFlyTo({
-        zoom: map.current.getZoom().toFixed(4),
-        minZonm: map.current.getZoom().toFixed(4),
-        curve: 1,
-        easing: t => t
-      });
     });
   }, [map, zoom]);
 
@@ -149,13 +143,14 @@ export default function Map(props) {
   useEffect(() => {
     if (geocoder.current) return;
     geocoder.current = new MapboxGeocoder({
+      flyTo: false,
       accessToken: mapboxgl.accessToken,
       marker: {
       color: 'orange',
       },
       mapboxgl: mapboxgl
       });
-       
+
     map.current.addControl(geocoder.current);
     geocoder.current.on('result', e => {
       removePopups();
@@ -175,7 +170,14 @@ export default function Map(props) {
         if (!tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
         setLng(tempMarker.current.getLngLat().lng.toFixed(6));
         setLat(tempMarker.current.getLngLat().lat.toFixed(6));
-      });
+       });
+       map.current.flyTo({
+        minZoom: 22,
+        curve: 1,
+        zoom: map.current.getZoom().toFixed(4),
+        center: [e.result.center[0], e.result.center[1]],
+        around: [e.result.center[0], e.result.center[1]]
+      })
     })
   }, [map, geocoder, tempMarker, zoom, setZoom])
 
