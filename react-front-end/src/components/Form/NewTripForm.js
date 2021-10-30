@@ -16,6 +16,8 @@ const NewTripForm = () => {
         return <ActivityForm />
       case 3:
         return <GearList />
+      // case 4:
+      //   return <GearList />
     }
   }
 
@@ -31,6 +33,9 @@ const NewTripForm = () => {
         <Step>
           <StepLabel></StepLabel>
         </Step>
+        {/* <Step>
+          <StepLabel></StepLabel>
+        </Step> */}
       </Stepper>
       {showStep(currentStep)}
 

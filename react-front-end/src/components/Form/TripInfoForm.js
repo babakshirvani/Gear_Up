@@ -10,12 +10,10 @@ import DateRangePicker from '@mui/lab/DateRangePicker';
 const TripInfoForm = () => {
   const [value, setValue] = useState([null, null]);
   const { setStep, userData, setUserData } = useContext(multiStepsContext)
-  console.log(Array.isArray(value))
-  useEffect(() => {
-    // console.log("useeffect::", userData)
-    
-    console.log("date inside effect:", userData.date)
-  }, [userData.end_date])
+  // useEffect(() => {
+  //   // console.log("useeffect::", userData)
+
+  // }, [userData.end_date])
 
   return (
     <>
@@ -42,8 +40,6 @@ const TripInfoForm = () => {
             endText="End date"
             value={value}
             onChange={(e) => {
-              
-              // setValue(e)
               if (e[1]) {
                 setUserData({ ...userData, "start_date": e[0], "end_date": e[1], "date": e })
                 setValue(e)
