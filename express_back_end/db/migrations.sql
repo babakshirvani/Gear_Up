@@ -24,7 +24,7 @@ CREATE TABLE trips (
   creator_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR(255) NOT NULL,
   description TEXT,
-  activity_category VARCHAR(255) NOT NULL,
+  activity VARCHAR(255) NOT NULL,
   start_date DATE NOT NULL,
   end_date DATE NOT NULL,
   longitude DOUBLE PRECISION NOT NULL,
