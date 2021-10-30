@@ -14,8 +14,8 @@ export default function Map(props) {
   const geocoder = useRef(null);
   const tempMarker = useRef(null);
 
-  const [lng, setLng] = useState(-123.1207);
-  const [lat, setLat] = useState(49.2827);
+  const [lng, setLng] = useState(null);
+  const [lat, setLat] = useState(null);
   const [zoom, setZoom] = useState(9);
 
   const recommendations = [
@@ -109,7 +109,7 @@ export default function Map(props) {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/outdoors-v11',
-      center: [lng, lat],
+      center: [-123.1207, 49.2827],
       zoom: zoom
     });
   }, [map, lng, lat, zoom]);
@@ -186,7 +186,8 @@ export default function Map(props) {
       <div ref={mapContainer} className="map-container">
       <Toggle setMapList={setMapList} mapLists={mapLists}></Toggle>
         <div className="sidebar">
-          Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+          {!lng && 'Please select or choose a location'}
+          {lng && `Longitude: ${lng} | Latitude: ${lat} | Zoom: ${zoom}`}
         </div>
       </div>
     </>
