@@ -12,8 +12,9 @@ i {
   margin-right: 10px;
 }
 .navbar-logo {
-  padding: 15px;
-  color: rgb(201, 29, 29);
+  padding: 20px;
+  font-weight: 900;
+  color: rgb(249, 249, 249);
   pointer-events: none;
 }
 
@@ -44,5 +45,13 @@ i {
   #navbarSupportedContent ul li a {
     padding: 12px 30px;
   }
-  
+  .navbar .navbar-nav {
+    display: inline-block ;
+    float: none;
+  }
+  .navbar .navbar-collapse {
+      text-align: center;
+      align-content: center;
+      width: 100%;
+  }
 }

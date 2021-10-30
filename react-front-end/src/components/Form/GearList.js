@@ -4,12 +4,18 @@ import { Button } from '@material-ui/core';
 import { multiStepsContext } from './StepContext';
 import axios from 'axios';
 import Accordion from './Accordion';
+import { useHistory } from 'react-router-dom';
 
 
 export default function GearList() {
-  const { userData, submitData } = useContext(multiStepsContext)
+  const { userData } = useContext(multiStepsContext)
   const [gear, setGear] = useState([])
   const [gearIdList, setGearIdList] = useState([null])
+  let history = useHistory();
+
+  const redirect = () => {
+    history.push('/calendar')
+  }
 
   useEffect(() => {
     const activity = userData.activity;
@@ -98,7 +104,7 @@ export default function GearList() {
           < Button
             variant="contained"
             color="primary"
-            onClick={submitData}
+            onClick={redirect}
           >
             Save
           </Button>
