@@ -61,8 +61,7 @@ export default function Map(props) {
     for (const marker of markerGroup.current) {
       marker.getElement().addEventListener('click', e => {
         e.stopPropagation();
-        if (tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
-        console.log(marker);
+        if (tempMarker.current && tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
         removePopups(marker);
         marker.togglePopup();
         setLng(marker.getLngLat().lng);
@@ -77,7 +76,7 @@ export default function Map(props) {
     markerGroup.current.splice(0, markerGroup.current.length);
   };
 
-  const removePopups = function(currentMarker) {
+  const removePopups = function() {
     for (let marker of markerGroup.current) {
       if(marker.getPopup().isOpen()) {
         marker.togglePopup();
@@ -88,7 +87,6 @@ export default function Map(props) {
   const onMapClick = function(e) {
     // removeMarkers();
     removePopups();
-    console.log('Current Click Coords', e);
     setLng(e.lngLat.lng.toFixed(6));
     setLat(e.lngLat.lat.toFixed(6));
     if (tempMarker.current) tempMarker.current.remove();
@@ -98,13 +96,11 @@ export default function Map(props) {
       .addTo(map.current)
       .togglePopup();
     tempMarker.current.getElement().addEventListener('click', event => {
-    event.stopPropagation();
-    removePopups();
-    console.log(tempMarker);
-    if (!tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
-    setLng(tempMarker.current.getLngLat().lng.toFixed(6));
-    setLat(tempMarker.current.getLngLat().lat.toFixed(6));
-
+      event.stopPropagation();
+      removePopups();
+      if (!tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
+      setLng(tempMarker.current.getLngLat().lng.toFixed(6));
+      setLat(tempMarker.current.getLngLat().lat.toFixed(6));
     });
   };
 
@@ -152,7 +148,6 @@ export default function Map(props) {
 
   useEffect(() => {
     if (geocoder.current) return;
-    console.log("Zoom, ", zoom);
     geocoder.current = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
       marker: {
@@ -163,8 +158,7 @@ export default function Map(props) {
        
     map.current.addControl(geocoder.current);
     geocoder.current.on('result', e => {
-      console.log("getflytTo: ", geocoder.current.getFlyTo());
-      console.log("geocoder.flyto zoom", geocoder.current)
+      removePopups();
       geocoder.current.clear();
       setLng(e.result.center[0]);
       setLat(e.result.center[1]);
@@ -178,7 +172,6 @@ export default function Map(props) {
       tempMarker.current.getElement().addEventListener('click', event => {
         event.stopPropagation();
         removePopups();
-        console.log(tempMarker);
         if (!tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
         setLng(tempMarker.current.getLngLat().lng.toFixed(6));
         setLat(tempMarker.current.getLngLat().lat.toFixed(6));
