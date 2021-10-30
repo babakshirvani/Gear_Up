@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 //All the svg files
@@ -108,7 +108,7 @@ padding-left: 1rem;
 padding-top: 1.5rem;
 `;
 const Sidebar = () => {
-  const [click, setClick] = useState(false);
+
   return (
     <Container>
       <SidebarContainer>
@@ -121,23 +121,23 @@ const Sidebar = () => {
           </Profile>
           <Item activeClassName="active" exact to="/" >
             <img src={HomeIcon} alt="HomeIcon" />
-            <Text clicked={click}>
+            <Text >
               Home
             </Text>
           </Item>
           <Item activeClassName="active" to="/dashboard" >
             <img src={DashboardIcon} alt="DashboardIcon" />
-            <Text clicked={click}>Dashboard</Text>
+            <Text >Dashboard</Text>
           </Item>
           <Item activeClassName="active" to="/calendar" >
             <img src={CalendarIcon} alt="CalendarIcon" />
-            <Text clicked={click}>Calendar</Text>
+            <Text >Calendar</Text>
           </Item>
           <Item activeClassName="active" to="/new" >
             <img src={NewTripIcon} alt="NewTripIcon" />
-            <Text clicked={click}>NewTrip</Text>
+            <Text >NewTrip</Text>
           </Item>
-          
+
         </SlickBar>
       </SidebarContainer>
     </Container>

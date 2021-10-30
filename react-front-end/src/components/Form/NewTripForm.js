@@ -1,4 +1,4 @@
-import React, { Component, useContext } from 'react';
+import React, { useContext } from 'react';
 import TripInfoForm from './TripInfoForm';
 import ActivityForm from './ActivityForm';
 import GearList from './GearList';
@@ -7,7 +7,7 @@ import { multiStepsContext } from './StepContext';
 
 const NewTripForm = () => {
 
-  const { currentStep, finalData } = useContext(multiStepsContext)
+  const { currentStep } = useContext(multiStepsContext)
   function showStep(step) {
     switch (step) {
       case 1:
@@ -18,6 +18,8 @@ const NewTripForm = () => {
         return <GearList />
       // case 4:
       //   return <GearList />
+      default:
+        return <TripInfoForm />
     }
   }
 

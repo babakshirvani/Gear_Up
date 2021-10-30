@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React from 'react'
 import './Navbar.css';
 import { NavLink } from 'react-router-dom';
 import styled from "styled-components";
@@ -49,7 +49,6 @@ const Text = styled.span`
 `;
 
 const Navbar = () => {
-  const [click, setClick] = useState(false);
   return (
     <nav className="navbar navbar-expand-lg navbar-mainbg">
       <NavLink className="navbar-brand navbar-logo" to="/" exact>
@@ -71,25 +70,25 @@ const Navbar = () => {
             <li className="nav-item ">
               <Item exact activeClassName="active" to="/" >
                 <img src={HomeIcon} alt="HomeIcon" />
-                <Text clicked={click}>Home</Text>
+                <Text>Home</Text>
               </Item>
             </li>
             <li className="nav-item ">
               <Item exact activeClassName="active" to="/dashboard" >
                 <i className="fas fa-sign-in-alt"></i>
-                <Text clicked={click}>Login</Text>
+                <Text >Login</Text>
               </Item>
             </li>
             <li className="nav-item ">
               <Item exact activeClassName="active" to="/about" >
                 <i className="far fa-address-book"></i>
-                <Text clicked={click}>About Us</Text>
+                <Text >About Us</Text>
               </Item>
             </li>
             <li className="nav-item ">
               <Item exact activeClassName="active" to="/help" >
                 <i className="far fa-clone"></i>
-                <Text clicked={click}>help</Text>
+                <Text >help</Text>
               </Item>
             </li>
           </Container>

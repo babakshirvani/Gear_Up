@@ -7,7 +7,7 @@ import Accordion from './Accordion';
 
 
 export default function GearList() {
-  const { userData, setUserData, submitData } = useContext(multiStepsContext)
+  const { userData, submitData } = useContext(multiStepsContext)
   const [gear, setGear] = useState([])
   const [gearIdList, setGearIdList] = useState([null])
 
@@ -66,10 +66,7 @@ export default function GearList() {
         })
       })
     console.log("this is all gear ids::::?????2222:", gearIdList)
-
-    // .then((generatedList) => {
-    //   setUserData({...userData, userChecklist: {"trip_id": }})
-    // })
+    // eslint-disable-next-line
   }, [userData.activity]);
 
 

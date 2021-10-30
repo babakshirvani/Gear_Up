@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, TextField } from '@material-ui/core';
 import { multiStepsContext } from './StepContext';
 import Box from '@mui/material/Box';
@@ -10,10 +10,6 @@ import DateRangePicker from '@mui/lab/DateRangePicker';
 const TripInfoForm = () => {
   const [value, setValue] = useState([null, null]);
   const { setStep, userData, setUserData } = useContext(multiStepsContext)
-  // useEffect(() => {
-  //   // console.log("useeffect::", userData)
-
-  // }, [userData.end_date])
 
   return (
     <>
@@ -69,7 +65,6 @@ const TripInfoForm = () => {
           color="secondary"
           multiline
           rows={4}
-        // id="standard-multiline-static"
         />
       </div>
       <div>
@@ -87,4 +82,3 @@ const TripInfoForm = () => {
 }
 
 export default TripInfoForm;
-// multiline

@@ -2,9 +2,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NavbarApp from './components/Navbar/NavbarApp';
-import Map from './components/Map'
 import './components/Map.css'
-import Gear from './components/Gear/Gear';
 
 import SidebarApp from './components/Sidebar/SidebarApp';
 import {
@@ -35,17 +33,15 @@ class App extends Component {
       <>
         <Router>
           <Switch>
-          <Route exact path='/' component={NavbarApp} />
-          <Route path='/about' component={NavbarApp} />
-          <Route path='/help' component={NavbarApp} />
-          <Route path='/dashboard' component={SidebarApp} />
-          <Route path='/calendar' component={SidebarApp} />
-          <Route path='/new' component={SidebarApp} />
-          
-          {/* <Map></Map> */}
+            <Route exact path='/' component={NavbarApp} />
+            <Route path='/about' component={NavbarApp} />
+            <Route path='/help' component={NavbarApp} />
+            <Route path='/dashboard' component={SidebarApp} />
+            <Route path='/calendar' component={SidebarApp} />
+            <Route path='/new' component={SidebarApp} />
           </Switch>
         </Router>
-      
+
       </>
     );
   }

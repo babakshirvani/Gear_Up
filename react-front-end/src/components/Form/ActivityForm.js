@@ -1,7 +1,6 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useContext } from 'react'
 import { Button, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio } from '@material-ui/core';
 import { multiStepsContext } from './StepContext';
-// import axios from 'axios';
 
 
 
