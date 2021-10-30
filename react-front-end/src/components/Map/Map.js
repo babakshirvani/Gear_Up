@@ -62,7 +62,7 @@ export default function Map(props) {
       marker.getElement().addEventListener('click', e => {
         e.stopPropagation();
         if (tempMarker.current && tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
-        removePopups(marker);
+        removePopups();
         marker.togglePopup();
         setLng(marker.getLngLat().lng);
         setLat(marker.getLngLat().lat);
@@ -71,6 +71,10 @@ export default function Map(props) {
   }
   const removeMarkers = function() {
     for (let marker of markerGroup.current) {
+      if(marker.getPopup().isOpen() && !tempMarker.current.getPopup().isOpen()) {
+        setLng(null);
+        setLat(null);
+      };
       marker.remove();
     }
     markerGroup.current.splice(0, markerGroup.current.length);
