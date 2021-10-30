@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-
-//All the svg files
-import Home from "../assets/home-solid.svg";
-import Dashboard from "../assets/Forum.svg";
-import Calendar from "../assets/scheduled.svg";
-import NewTrip from "../assets/draft.svg";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+//All the svg files
+import HomeIcon from "../assets/home-solid.svg";
+import DashboardIcon from "../assets/Forum.svg";
+import CalendarIcon from "../assets/scheduled.svg";
+import NewTripIcon from "../assets/draft.svg";
 
 const Container = styled.div`
   position: fixed;
@@ -18,7 +17,6 @@ const Container = styled.div`
     }
   }
 `;
-
 const SidebarContainer = styled.div`
   background-color: rgba(117, 190, 218, 0.3);;
   width: 100%;
@@ -32,9 +30,8 @@ const SidebarContainer = styled.div`
   
   height: 100%;
   padding-bottom: 2000px;
-	margin-bottom: -2000px;
+  margin-bottom: -2000px;
   `;
-
 const SlickBar = styled.ul`
   color: var(--white);
   list-style: none;
@@ -48,7 +45,6 @@ const SlickBar = styled.ul`
   width: 10rem;
   border-radius: 0 0 0 0;
 `;
-
 const Item = styled(NavLink)`
   text-decoration: none;
   color: var(--white);
@@ -71,14 +67,12 @@ const Item = styled(NavLink)`
       brightness(78%) contrast(85%);
   }
 `;
-
 const Text = styled.span`
   width: ${(props) => (props.clicked ? "100%" : "0")};
   
   margin-left: 1.5rem;
   transition: all 0.3s ease;
 `;
-
 const Profile = styled.div`
   width: 10rem;
   height: 3rem;
@@ -103,7 +97,6 @@ const Profile = styled.div`
   }
 `;
 
-
 const Name = styled.div`
 text-decoration: none;
 color: var(--white);
@@ -114,56 +107,40 @@ display: flex;
 padding-left: 1rem;
 padding-top: 1.5rem;
 `;
-
 const Sidebar = () => {
   const [click, setClick] = useState(false);
-
   return (
     <Container>
       <SidebarContainer>
         <SlickBar>
           <Profile >
-            <img
-              src="https://picsum.photos/200"
-              alt="Profile"
-            />
+            <img src="https://picsum.photos/200" alt="Profile" />
             <Name>
               <h6>Jhon&nbsp;Doe</h6>
             </Name>
           </Profile>
-          <Item
-            exact
-            activeClassName="active"
-            to="/"
-          >
-            <img src={Home} alt="Home" />
-            <Text clicked={click}>Home</Text>
+          <Item activeClassName="active" exact to="/" >
+            <img src={HomeIcon} alt="HomeIcon" />
+            <Text clicked={click}>
+              Home
+            </Text>
           </Item>
-          <Item
-            activeClassName="active"
-            to="/dashboard"
-          >
-            <img src={Dashboard} alt="about" />
+          <Item activeClassName="active" to="/dashboard" >
+            <img src={DashboardIcon} alt="DashboardIcon" />
             <Text clicked={click}>Dashboard</Text>
           </Item>
-          <Item
-            activeClassName="active"
-            to="/calendar"
-          >
-            <img src={Calendar} alt="Calendar" />
+          <Item activeClassName="active" to="/calendar" >
+            <img src={CalendarIcon} alt="CalendarIcon" />
             <Text clicked={click}>Calendar</Text>
           </Item>
-          <Item
-            activeClassName="active"
-            to="/new"
-          >
-            <img src={NewTrip} alt="Documents" />
+          <Item activeClassName="active" to="/new" >
+            <img src={NewTripIcon} alt="NewTripIcon" />
             <Text clicked={click}>NewTrip</Text>
           </Item>
+          
         </SlickBar>
       </SidebarContainer>
     </Container>
   );
 };
-
 export default Sidebar;

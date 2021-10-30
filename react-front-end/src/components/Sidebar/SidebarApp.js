@@ -1,34 +1,35 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import Home from "../../pages/Home";
-import About from "../../pages/About";
-import Help from "../../pages/Help";
 import styled from "styled-components";
 import "./SidebarApp.css"
+
+
 import {
-  BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
+//import Gear from "../Gear/Gear";
+import Home from "../../pages/Home";
+import Dashboard from "../../pages/Dashboard";
+import NewTrip from "../../pages/NewTrip";
+import Calendar from "../../pages/Calendar";
 
 const Pages = styled.div`
   width: 100vw;
   height: 100vh;
 `;
-
 function SidebarApp() {
   return (
     <>
-      <Router>
         <Sidebar />
-        {/* <Pages>
+        <Pages>
             <Switch >
               <Route exact path="/" component={Home} />
-              <Route path="/help" component={Help} />
-              <Route path="/about" component={About} />
+              <Route path="/dashboard" component={Dashboard} />
+              <Route path="/calendar" component={Calendar} />
+              <Route path="/new" component={NewTrip} />
             </Switch>
-        </Pages> */}
-      </Router>
+        </Pages>
     </>
   );
 }

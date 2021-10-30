@@ -12,7 +12,7 @@ export default function Map(props) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   const geocoder = useRef(null);
-  const tempMarker = useRef(new mapboxgl.Marker());
+  const tempMarker = useRef(null);
 
   const [lng, setLng] = useState(-123.1207);
   const [lat, setLat] = useState(49.2827);
@@ -47,29 +47,29 @@ export default function Map(props) {
   }
   const [mapList, setMapList] = useState(null);
 
-  // const stopMarkerPropagation = function() {
-  //   $('.mapboxgl-marker').on('click', e => e.stopPropagation());
-  // }
-  // const stopMapPropagation = function() {
-  //   $('.map-container').on('click', e => e.stopPropagation());
-  // }
-  
   const loadMarkers = function(list) {
     removeMarkers();
     for (const marker of list.current) {
-      markerGroup.current.push(new mapboxgl.Marker()
-      .on('render', (e) => {console.log('test')})
+      markerGroup.current.push(new mapboxgl.Marker({
+        color: 'orange'
+      })
         .setLngLat(marker.coordinates)
         .setPopup(new mapboxgl.Popup().setHTML(`<h1>${marker.name}</h1>`))
         .addTo(map.current)
       );
+    }
     for (const marker of markerGroup.current) {
-      $('.mapboxgl-marker').on('click', e => console.log(e));
+      marker._element.addEventListener('click', e => {
+        e.stopPropagation();
+        if (tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
+        console.log(marker);
+        removePopups(marker);
+        marker.togglePopup();
+        setLng(marker.getLngLat().lng);
+        setLat(marker.getLngLat().lat);
+      });
     }
-    }
-    // stopMarkerPropagation();
   }
-
   const removeMarkers = function() {
     for (let marker of markerGroup.current) {
       marker.remove();
@@ -77,29 +77,36 @@ export default function Map(props) {
     markerGroup.current.splice(0, markerGroup.current.length);
   };
 
+  const removePopups = function(currentMarker) {
+    for (let marker of markerGroup.current) {
+      if(marker.getPopup().isOpen()) {
+        marker.togglePopup();
+      };
+    }
+  }
+
   const onMapClick = function(e) {
-    removeMarkers();
+    // removeMarkers();
+    removePopups();
     console.log('Current Click Coords', e);
     setLng(e.lngLat.lng.toFixed(6));
     setLat(e.lngLat.lat.toFixed(6));
-
-    tempMarker.current
+    if (tempMarker.current) tempMarker.current.remove();
+    tempMarker.current = new mapboxgl.Marker()
       .setLngLat([e.lngLat.lng, e.lngLat.lat])
-      .addTo(map.current);
-    // geocoder.current.clear();
+      .setPopup(new mapboxgl.Popup().setHTML(`<h1>New Trip</h1>`))
+      .addTo(map.current)
+      .togglePopup();
+    tempMarker.current._element.addEventListener('click', event => {
+    event.stopPropagation();
+    removePopups();
+    console.log(tempMarker);
+    if (!tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
+    setLng(tempMarker.current.getLngLat().lng.toFixed(6));
+    setLat(tempMarker.current.getLngLat().lat.toFixed(6));
 
+    });
   };
-
-  // function toggleChange() {
-  //   document.getElementById('listing-group').addEventListener('change', (e) => {
-  //       const handler = e.target.id;
-  //       if (e.target.checked) {
-  //       map.current[handler].enable();
-  //       } else {
-  //       map.current[handler].disable();
-  //       }
-  //       });
-  //   }
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -113,8 +120,7 @@ export default function Map(props) {
 
   // useEffect(() => {
   //   map.current.on('load', () => {
-  //     // loadMarkers(mapList);
-  //     stopMapPropagation();
+  //     loadMarkers(mapList);
   //   })
   // }, [map])
   
@@ -124,46 +130,61 @@ export default function Map(props) {
     loadMarkers(mapList);
   }, [mapList])
 
+  useEffect(() => {
+    if (!map.current) return; // wait for map to initialize
+    map.current.on('move', () => {
+      setZoom(map.current.getZoom().toFixed(4));
+      geocoder.current.setFlyTo({
+        zoom: map.current.getZoom().toFixed(4),
+        minZonm: map.current.getZoom().toFixed(4),
+        curve: 1,
+        easing: t => t
+      });
+    });
+  }, [map, zoom]);
 
-  // useEffect(() => {
-  //   if (!map.current) return; // wait for map to initialize
-  //   map.current.on('move', () => {
-  //     setLng(map.current.getCenter().lng.toFixed(4));
-  //     setLat(map.current.getCenter().lat.toFixed(4));
-  //     setZoom(map.current.getZoom().toFixed(2));
-  //   });
-  // });
+  useEffect(() => {
+    map.current.on('click', e => {
+      // setMapList(null);
+      onMapClick(e);
+    });
+  }, [map, geocoder, tempMarker]);
 
-  // useEffect(() => {
-  //   map.current.on('click', e => {
-  //     setMapList(null);
-  //     onMapClick(e);
-  //   });
-  //   map.current.on('click', 'layer_1', e => {
-  //     e.originalEvent.preventDefault();
-  //   });
-  // }, [map, geocoder]);
-
-  // Creating the map object
   useEffect(() => {
     if (geocoder.current) return;
+    console.log("Zoom, ", zoom);
     geocoder.current = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
       marker: {
-      color: 'orange'
+      color: 'orange',
       },
       mapboxgl: mapboxgl
       });
        
     map.current.addControl(geocoder.current);
     geocoder.current.on('result', e => {
+      console.log("getflytTo: ", geocoder.current.getFlyTo());
+      console.log("geocoder.flyto zoom", geocoder.current)
+      geocoder.current.clear();
       setLng(e.result.center[0]);
       setLat(e.result.center[1]);
-      setZoom(map.current.getZoom().toFixed(2));
-      tempMarker.current.remove();
+      setZoom(map.current.getZoom().toFixed(4));
+      if (tempMarker.current) tempMarker.current.remove();
+      tempMarker.current = new mapboxgl.Marker()
+        .setLngLat([e.result.center[0], e.result.center[1]])
+        .setPopup(new mapboxgl.Popup().setHTML(`<h1>New Trip</h1>`))
+        .addTo(map.current)
+        .togglePopup();
+      tempMarker.current._element.addEventListener('click', event => {
+        event.stopPropagation();
+        removePopups();
+        console.log(tempMarker);
+        if (!tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
+        setLng(tempMarker.current.getLngLat().lng.toFixed(6));
+        setLat(tempMarker.current.getLngLat().lat.toFixed(6));
+      });
     })
-  }, [map, geocoder, tempMarker])
-
+  }, [map, geocoder, tempMarker, zoom, setZoom])
 
   return (
     <>
