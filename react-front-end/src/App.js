@@ -2,10 +2,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NavbarApp from './components/Navbar/NavbarApp';
-import Map from './components/Map'
-import './components/Map.css'
-import Gear from './components/Gear/Gear';
-
 import SidebarApp from './components/Sidebar/SidebarApp';
 import {
   BrowserRouter as Router,
