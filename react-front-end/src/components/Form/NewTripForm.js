@@ -13,21 +13,21 @@ const NewTripForm = () => {
   const { currentStep } = useContext(multiStepsContext)
   function showStep(step) {
     switch (step) {
+      // case 1:
+      //   return <TripInfoForm />
       case 1:
-        return <Map />
-      case 2:
         return <TripInfoForm />
-      case 3:
+      case 2:
         return <ActivityForm />
-      case 4:
+      case 3:
         return <GearList />
       default:
-        return <Map />
+        return <TripInfoForm />
     }
   }
 
   return (
-    <div style={{  paddingLeft: '12rem',paddingTop: '2rem' }}>
+    <div style={{ paddingLeft: '12rem', paddingTop: '2rem' }}>
       <Stepper style={{ width: '100%', background: 'none', paddingTop: '2rem', position: 'relative' }} activeStep={currentStep - 1} orientation="horizontal">
         <Step>
           <StepLabel></StepLabel>
@@ -38,11 +38,11 @@ const NewTripForm = () => {
         <Step>
           <StepLabel></StepLabel>
         </Step>
-        <Step>
+        {/* <Step>
           <StepLabel></StepLabel>
-        </Step>
+        </Step> */}
       </Stepper>
-      {showStep(4)}
+      {showStep(currentStep)}
 
     </div >
   )

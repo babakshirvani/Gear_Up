@@ -67,17 +67,17 @@ const TripInfoForm = () => {
           rows={4}
         />
         <div style={{ padding: "2rem" }}>
-          <Button
+          {/* <Button
             variant="contained"
             color="secondary"
             onClick={() => setStep(1)}
           >
             Back
-          </Button> <span> </span>
+          </Button> <span> </span> */}
           <Button
             variant="contained"
             color="primary"
-            onClick={() => setStep(3)}
+            onClick={() => setStep(2)}
           >
             Next
           </Button>

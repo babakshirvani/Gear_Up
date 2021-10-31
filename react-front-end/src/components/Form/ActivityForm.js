@@ -41,14 +41,14 @@ export default function ActivityForm() {
           <Button
             variant="contained"
             color="secondary"
-            onClick={() => setStep(2)}
+            onClick={() => setStep(1)}
           >
             Back
           </Button> <span> </span>
           <Button
             variant="contained"
             color="primary"
-            onClick={() => setStep(4)}
+            onClick={() => setStep(3)}
           >
             Generate
           </Button>
