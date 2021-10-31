@@ -31,13 +31,12 @@ html, body, #root, .App {
   font-family: monospace;
   z-index: 1;
   position: absolute;
-  bottom: 4rem;
+  bottom: 6rem;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
-
 }
 
 .step-counter {
@@ -60,14 +59,14 @@ html, body, #root, .App {
 }
 
 .form-button {
-  position: absolute !important;
-  z-index: 1 !important;
-  bottom: 4rem !important;
-  left: 33 !important;
-  margin-left: 20rem !important;
-  /* right: 0 !important; */
-  /* margin-left: auto !important; */
-  /* margin-right: auto !important; */
+  z-index: 1;
+  position: absolute;
+  bottom: 4rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
 }
 
 /* .mapboxgl-marker {

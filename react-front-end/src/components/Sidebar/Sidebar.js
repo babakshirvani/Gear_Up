@@ -8,6 +8,7 @@ import CalendarIcon from "../assets/scheduled.svg";
 import NewTripIcon from "../assets/draft.svg";
 
 const Container = styled.div`
+  z-index: 1;
   position: fixed;
   .active {
     border-right: 4px solid var(--white);
