@@ -39,8 +39,6 @@ export default function Geocoder(props) {
   console.log(map);
 
 
-
-
   useEffect(() => {
     if (geocoder.current) return;
     if (map.current){
