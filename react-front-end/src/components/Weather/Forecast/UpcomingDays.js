@@ -7,14 +7,13 @@ const UpcomingDays = ({ weatherData }) => {
   return (
     <>
       {weatherData.map((day, i) => {
-        // { console.log("9", moment.unix(1636225200).format("ddd, MMM do")) }
         return (
           <div className="weather-card" key={i}>
             <p className="weather-card-day">{moment.unix(Number(day.dt)).format("ddd")}</p>
-            <p>{moment.unix(Number(day.dt)).format("MMM Do")}</p>
+            <p className="weather-card-date">{moment.unix(Number(day.dt)).format("MMM Do")}</p>
             <img src={getIcon(day.weather[0].id).icon} alt={getIcon(day.weather[0].id).text} />
             <p className="weather-card-temp">{Math.round(day.temp.day)}°C</p>
-            <p>{getIcon(day.weather[0].id).text}</p>
+            <p className="weather-card-condition">{getIcon(day.weather[0].id).text}</p>
           </div>
         )
       })}
