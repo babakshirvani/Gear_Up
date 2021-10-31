@@ -12,6 +12,7 @@ import Friendship from "../Friendship/Friendship";
 
 
 const Container = styled.div`
+  z-index: 1;
   position: fixed;
   .active {
     border-right: 4px solid var(--white);

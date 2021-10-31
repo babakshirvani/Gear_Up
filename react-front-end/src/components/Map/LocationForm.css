@@ -1,5 +1,5 @@
 html, body, #root, .App {
-  overflow: hidden;
+  /* overflow: hidden; */
   /* height: 100vh; */
 }
 
@@ -17,11 +17,13 @@ html, body, #root, .App {
 }
 
 .mapboxgl-canvas, .mapboxgl-map, .map-container, .container {
-  height: 100vh !IMPORTANT;
-  width: 100vw !IMPORTANT;
-  padding: 0 !IMPORTANT;
+  height: 100vh !important;
+  width: 100vw !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
-/* .sidebar {
+
+.location-prompt {
   font-size: 2em;
   background-color: rgba(35, 55, 75, 0.9);
   color: #fff;
@@ -29,16 +31,43 @@ html, body, #root, .App {
   font-family: monospace;
   z-index: 1;
   position: absolute;
-  top: 0;
+  bottom: 6rem;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  width: fit-content */
+  width: fit-content;
+}
+
+.step-counter {
+  font-size: 2em;
+  background-color: rgba(213, 214, 214, 0.606);
+  color: #fff;
+  /* padding: 12px 12px; */
+  font-family: monospace;
+  z-index: 1;
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40vw;
   /* right: 33%; */
   /* margin: 12px; */
-  /* border-radius: 4px;
-} */
+  /* border-radius: 4px; */
+}
+
+.form-button {
+  z-index: 1;
+  position: absolute;
+  bottom: 4rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
 
 /* .mapboxgl-marker {
   z-index: 1;
