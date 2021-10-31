@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { authContext } from '../../providers/AuthProvider';
 import React from "react";
-import Navbar from "./Navbar";
+import HomeNavbar from "./HomeNavbar";
 import Home from "../../pages/Home";
 import About from "../../pages/About";
 import Help from "../../pages/Help";
@@ -24,12 +24,12 @@ const Pages = styled.div`
   width: 100vw;
   height: 100vh;
 `;
-function NavbarApp() {
+function HomeNavbarApp() {
   const { auth } = useContext(authContext);
 
   return (
     <>
-      <Navbar />
+      <HomeNavbar />
       <Pages>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -44,4 +44,4 @@ function NavbarApp() {
     </>
   );
 }
-export default NavbarApp;
+export default HomeNavbarApp;

@@ -1,7 +1,10 @@
-import React from "react";
+import React,{useContext} from "react";
 import Sidebar from "./Sidebar";
 import styled from "styled-components";
 import "./SidebarApp.css"
+import { authContext } from '../../providers/AuthProvider';
+import Login from '../../pages/Login'
+
 
 
 import {
@@ -20,16 +23,17 @@ const Pages = styled.div`
   height: 100vh;
 `;
 function SidebarApp() {
+  const { auth } = useContext(authContext);
   return (
     <>
         <Sidebar />
         <Pages>
             <Switch >
               <Route exact path="/" component={Home} />
-              <Route path="/dashboard" ><Dashboard/></Route>
-              <Route path="/calendar" component={Calendar} />
-              <Route path="/new" component={NewTrip} />
-              <Route path="/logout" component={Home} />
+              <Route path="/dashboard" >{!auth && <Redirect to="/login"/>}{auth && <Dashboard/>}</Route>
+              <Route path="/calendar" >{!auth && <Redirect to="/login"/>}{auth && <Calendar/>}</Route>
+              <Route path="/new" >{!auth && <Redirect to="/login"/>}{auth && <NewTrip/>}</Route>
+              <Route path="/logout" component={Home} ></Route>
 
             </Switch>
         </Pages>

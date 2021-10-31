@@ -1,10 +1,13 @@
 
 import React, { Component } from 'react';
 import axios from 'axios';
+//import HomeNavbarApp from './components/HomeNavbar/HomeNavbarApp';
 import NavbarApp from './components/Navbar/NavbarApp';
+
 import Map from './components/Map'
 import './components/Map.css'
 import Gear from './components/Gear/Gear';
+import PopularPlace1 from './pages/PopularPlace1'
 
 import SidebarApp from './components/Sidebar/SidebarApp';
 import {
@@ -33,8 +36,7 @@ class App extends Component {
   }
   render() {
     return (
-      <>
-      
+      <>      
         <Router>
           <Switch>
           <Route exact path='/' component={NavbarApp} />
@@ -45,8 +47,9 @@ class App extends Component {
           <Route path='/dashboard' > <SidebarApp/></Route>
           <Route path='/calendar' component={SidebarApp} />
           <Route path='/new' component={SidebarApp} />
-          
-          {/* <Map></Map> */}
+          <Route exact path="/popularplace1" component={PopularPlace1}>
+        
+        </Route>
           </Switch>
         </Router>
 
