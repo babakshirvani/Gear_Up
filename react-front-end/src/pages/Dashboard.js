@@ -1,15 +1,17 @@
 
 import React from 'react'
 import WeatherApp from '../components/Weather/WeatherApp';
+import './Styles/Dashboard.scss';
+// import { ChakraProvider } from "@chakra-ui/react"
 
 const Dashboard = () => {
   return (
     <div className="container">
-      <h1 className="text-center" style={{ paddingTop: "30%" }}>
-        Dashboard
-      </h1>
-      <WeatherApp />
-
+      {/* <ChakraProvider> */}
+      <div className="weather-app-container">
+        <WeatherApp />
+      </div>
+      {/* </ChakraProvider> */}
 
     </div>
   )
