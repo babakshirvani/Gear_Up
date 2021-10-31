@@ -30,7 +30,7 @@ function FormRow() {
     
       <Grid item xs={4}>
         
-      <Link to="/popularplace1">
+      <Link to="#">
         <Item><ImageListItem key={place7} >
         <img
           src={`${place7}?w=365&h=365&fit=crop&auto=format`}
@@ -46,7 +46,9 @@ function FormRow() {
         
       </ImageListItem></Item></Link>
       </Grid>
+
       <Grid item xs={4}>
+      <Link to="#">
       <Item><ImageListItem key={place6} >
         
         <img
@@ -62,8 +64,10 @@ function FormRow() {
         />
       
       </ImageListItem></Item>
+      </Link>
       </Grid>
       <Grid item xs={4}>
+      <Link to="#">
       <Item><ImageListItem key={place8} >
         <img
           src={`${place8}?w=365&h=365&fit=crop&auto=format`}
@@ -77,6 +81,7 @@ function FormRow() {
           
         />
       </ImageListItem></Item>
+      </Link>
       </Grid>
     </React.Fragment>
   );
