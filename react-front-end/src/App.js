@@ -2,11 +2,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NavbarApp from './components/Navbar/NavbarApp';
+import PopularPlace1 from './pages/PopularPlace1'
 import SidebarApp from './components/Sidebar/SidebarApp';
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 class App extends Component {
   constructor(props) {
@@ -28,18 +30,24 @@ class App extends Component {
   }
   render() {
     return (
-      <>
+      <>      
         <Router>
           <Switch>
-            <Route exact path='/' component={NavbarApp} />
-            <Route path='/about' component={NavbarApp} />
-            <Route path='/help' component={NavbarApp} />
-            <Route path='/dashboard' component={SidebarApp} />
-            <Route path='/calendar' component={SidebarApp} />
-            <Route path='/new' component={SidebarApp} />
+          <Route exact path='/' component={NavbarApp} />
+          <Route path='/about' component={NavbarApp} />
+          <Route path='/login' component={NavbarApp} />
+          <Route path='/logout' component={NavbarApp} />
+          <Route path='/help' component={NavbarApp} />
+          <Route path='/dashboard' > <SidebarApp/></Route>
+          <Route path='/calendar' component={SidebarApp} />
+          <Route path='/new' component={SidebarApp} />
+          <Route exact path="/popularplace1" component={PopularPlace1}>
+        
+        </Route>
           </Switch>
         </Router>
 
+      
       </>
     );
   }

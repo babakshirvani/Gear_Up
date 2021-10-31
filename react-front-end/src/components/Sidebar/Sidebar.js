@@ -6,6 +6,10 @@ import HomeIcon from "../assets/home-solid.svg";
 import DashboardIcon from "../assets/Forum.svg";
 import CalendarIcon from "../assets/scheduled.svg";
 import NewTripIcon from "../assets/draft.svg";
+import { useContext, useState } from 'react';
+import { authContext } from '../../providers/AuthProvider';
+import Friendship from "../Friendship/Friendship";
+
 
 const Container = styled.div`
   position: fixed;
@@ -108,15 +112,19 @@ padding-left: 1rem;
 padding-top: 1.5rem;
 `;
 const Sidebar = () => {
+  const [click, setClick] = useState(false);
+  const { auth, user, logout } = useContext(authContext);
+//  console.log("user ", user);
 
   return (
     <Container>
       <SidebarContainer>
+      
         <SlickBar>
           <Profile >
-            <img src="https://picsum.photos/200" alt="Profile" />
+            <img src={localStorage.getItem('avatar')} alt="Profile" />
             <Name>
-              <h6>Jhon&nbsp;Doe</h6>
+            {localStorage.getItem('username')}
             </Name>
           </Profile>
           <Item activeClassName="active" exact to="/" >
@@ -137,9 +145,15 @@ const Sidebar = () => {
             <img src={NewTripIcon} alt="NewTripIcon" />
             <Text >NewTrip</Text>
           </Item>
-
+          <Item onClick={logout} activeClassName="active" to="/logout" >
+            <img src={NewTripIcon} alt="NewTripIcon" />
+            <Text clicked={click}>Logout</Text>
+          </Item>
+          
+          
         </SlickBar>
       </SidebarContainer>
+     <Friendship/>
     </Container>
   );
 };

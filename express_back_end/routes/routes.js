@@ -1,12 +1,27 @@
 const { response } = require("express");
 const express = require("express");
+//const cookieSession = require("cookie-session");
 const router = express.Router();
 
 const routes = (db) => {
-  //GET landingpage
-  // router.get("/", (req, res) => {
-  // });
+  
 
+  router.get("/login/:username",(req, res) => {
+    db.query(`select * from users where user_name='${req.params.username}'`)
+    .then((response) => {
+      
+      res.send(response.rows);
+    })
+    .catch((err) => console.log(err));
+  })
+
+  router.get("/friendlist/:id",(req, res) => {
+    db.query(`select users.user_name,users.avatar from friendship join users on friendship.user_id2=users.id where friendship.user_id1=${req.params.id};`)
+    .then((response) => {
+      res.send(response.rows)
+    })
+    .catch((err)=>console.log(err))
+  })
   //GET dashboard
   router.get("/dashboard", (req, res) => {
     //select trips
