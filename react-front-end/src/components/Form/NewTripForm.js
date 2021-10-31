@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import LocationForm from '../Map/LocationForm'
 import TripInfoForm from './TripInfoForm';
 import ActivityForm from './ActivityForm';
 import GearList from './GearList';
@@ -16,7 +17,7 @@ const NewTripForm = () => {
       // case 1:
       //   return <TripInfoForm />
       case 1:
-        return <TripInfoForm />
+        return <LocationForm />
       case 2:
         return <ActivityForm />
       case 3:
@@ -27,8 +28,8 @@ const NewTripForm = () => {
   }
 
   return (
-    <div style={{ paddingLeft: '12rem', paddingTop: '2rem' }}>
-      <Stepper style={{ width: '100%', background: 'none', paddingTop: '2rem', position: 'relative' }} activeStep={currentStep - 1} orientation="horizontal">
+    <div>
+      <Stepper activeStep={currentStep - 1} orientation="horizontal">
         <Step>
           <StepLabel></StepLabel>
         </Step>
@@ -43,7 +44,6 @@ const NewTripForm = () => {
         </Step> */}
       </Stepper>
       {showStep(currentStep)}
-
     </div >
   )
 }

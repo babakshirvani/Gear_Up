@@ -155,13 +155,14 @@ export default function LocationForm(props) {
   useEffect(() => {
     if (geocoder.current) return;
     geocoder.current = new MapboxGeocoder({
+      limit: 10,
       flyTo: false,
       accessToken: mapboxgl.accessToken,
       marker: {
       color: 'orange',
       },
       mapboxgl: mapboxgl
-      });
+    });
 
     map.current.addControl(geocoder.current);
     geocoder.current.on('result', e => {
@@ -184,8 +185,8 @@ export default function LocationForm(props) {
         setLat(tempMarker.current.getLngLat().lat.toFixed(6));
        });
        map.current.flyTo({
-        minZoom: 22,
-        curve: 1,
+        // minZoom: 22,
+        // curve: 1,
         zoom: map.current.getZoom().toFixed(4),
         center: [e.result.center[0], e.result.center[1]],
         around: [e.result.center[0], e.result.center[1]]
@@ -200,9 +201,8 @@ export default function LocationForm(props) {
         <div className="step-counter">
         {props.children}
         </div>
-        <div className="location-prompt">
+        <div className={(!lng ? "location-prompt" : null)}>
           {!lng && 'Please select or choose a location'}
-          {lng && `Longitude: ${lng} | Latitude: ${lat} | Zoom: ${zoom}`}
         </div>
         <div className="form-button">
           <Button
