@@ -2,10 +2,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import NavbarApp from './components/Navbar/NavbarApp';
-import Map from './components/Map/Map'
-import './components/Map/Map.css'
-import Gear from './components/Gear/Gear';
-
 import SidebarApp from './components/Sidebar/SidebarApp';
 import {
   BrowserRouter as Router,
@@ -35,13 +31,12 @@ class App extends Component {
       <>
         <Router>
           <Switch>
-          <Route exact path='/' component={NavbarApp} />
-          <Route path='/about' component={NavbarApp} />
-          <Route path='/help' component={NavbarApp} />
-          <Route path='/dashboard' component={SidebarApp} />
-          <Route path='/calendar' component={SidebarApp} />
-          <Route path='/new' component={SidebarApp} />
-          
+            <Route exact path='/' component={NavbarApp} />
+            <Route path='/about' component={NavbarApp} />
+            <Route path='/help' component={NavbarApp} />
+            <Route path='/dashboard' component={SidebarApp} />
+            <Route path='/calendar' component={SidebarApp} />
+            <Route path='/new' component={SidebarApp} />
           </Switch>
         </Router>
 
