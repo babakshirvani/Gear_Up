@@ -14,7 +14,7 @@ const NewTripForm = () => {
   function showStep(step) {
     switch (step) {
       // case 1:
-      //   return <TripInfoForm />
+      //   return <MAP />
       case 1:
         return <TripInfoForm />
       case 2:

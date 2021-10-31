@@ -51,47 +51,19 @@ function App() {
   const getWeatherData = async (lat, lon) => {
     console.log(lat, lon)
     setLoading(true);
-    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=880e10faa7b040b083238d0c9124ae38`;
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`;
     try {
       const response = await axios.get(url);
-      // if (response.data) {
-      setWeatherData({ ...weatherData, weather: response.data })
-      setLoading(false);
-      // }
+      if (response.data) {
+        setWeatherData({ ...weatherData, weather: response.data })
+        setLoading(false);
+      }
     } catch (error) {
       setLoading(false);
       setErrorMessage(error.message);
     }
 
   }
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   const lat = "49.2104055"
-  //   const lon = "-123.1173438"
-  //   const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=880e10faa7b040b083238d0c9124ae38`;
-  //   Promise.all([
-  //     axios.get(url)
-  //   ])
-  //     .then((all) => {
-  //       console.log("2 ", all[0].data)
-  //       setWeatherData({ ...weatherData, weather: all[0].data })
-  //     }).then(() => {
-  //       setIsLocationExist(true);
-  //       setLoading(false);
-  //     }
-
-  //     )
-  //   // eslint-disable-next-line
-  // }, []);
-
-
-  useEffect(() => {
-    if (weatherData.weather) {
-      console.log("8", weatherData)
-    }
-  }, [weatherData.weather])
-
 
   useEffect(() => {
     setLoading(true);
