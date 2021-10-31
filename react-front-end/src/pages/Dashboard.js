@@ -1,5 +1,6 @@
 
 import React from 'react'
+import WeatherApp from '../components/Weather/WeatherApp';
 
 const Dashboard = () => {
   return (
@@ -7,6 +8,7 @@ const Dashboard = () => {
       <h1 className="text-center" style={{ paddingTop: "30%" }}>
         Dashboard
       </h1>
+      <WeatherApp />
 
 
     </div>
