@@ -2,6 +2,9 @@
 node_modules/
 package-lock.json
 
+# Test files
+Test.html
+
 # misc
 .DS_Store
 .env

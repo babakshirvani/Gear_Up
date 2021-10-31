@@ -29,9 +29,7 @@ const SidebarContainer = styled.div`
   justify-content: space-between;
   position: relative;
   
-  height: 100%;
-  padding-bottom: 2000px;
-  margin-bottom: -2000px;
+  height: 100vh;
   `;
 const SlickBar = styled.ul`
   color: var(--white);
