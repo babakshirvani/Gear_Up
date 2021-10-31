@@ -12,6 +12,9 @@ const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
 const PORT = 8080;
+const morgan = require('morgan');
+
+App.use(morgan('dev'));
 
 // Express Configuration
 App.use(cors());

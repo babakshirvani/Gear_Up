@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { Button, TextField } from '@material-ui/core';
 import { multiStepsContext } from './StepContext';
 import Box from '@mui/material/Box';
@@ -10,12 +10,6 @@ import DateRangePicker from '@mui/lab/DateRangePicker';
 const TripInfoForm = () => {
   const [value, setValue] = useState([null, null]);
   const { setStep, userData, setUserData } = useContext(multiStepsContext)
-  console.log(Array.isArray(value))
-  useEffect(() => {
-    // console.log("useeffect::", userData)
-    
-    console.log("date inside effect:", userData.date)
-  }, [userData.end_date])
 
   return (
     <>
@@ -42,8 +36,6 @@ const TripInfoForm = () => {
             endText="End date"
             value={value}
             onChange={(e) => {
-              
-              // setValue(e)
               if (e[1]) {
                 setUserData({ ...userData, "start_date": e[0], "end_date": e[1], "date": e })
                 setValue(e)
@@ -73,17 +65,23 @@ const TripInfoForm = () => {
           color="secondary"
           multiline
           rows={4}
-        // id="standard-multiline-static"
         />
-      </div>
-      <div>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setStep(2)}
-        >
-          Next
-        </Button>
+        <div style={{ padding: "2rem" }}>
+          {/* <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => setStep(1)}
+          >
+            Back
+          </Button> <span> </span> */}
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setStep(2)}
+          >
+            Next
+          </Button>
+        </div >
       </div>
     </>
 
@@ -91,4 +89,3 @@ const TripInfoForm = () => {
 }
 
 export default TripInfoForm;
-// multiline

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 //All the svg files
@@ -6,7 +6,7 @@ import HomeIcon from "../assets/home-solid.svg";
 import DashboardIcon from "../assets/Forum.svg";
 import CalendarIcon from "../assets/scheduled.svg";
 import NewTripIcon from "../assets/draft.svg";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { authContext } from '../../providers/AuthProvider';
 import Friendship from "../Friendship/Friendship";
 
@@ -129,21 +129,21 @@ const Sidebar = () => {
           </Profile>
           <Item activeClassName="active" exact to="/" >
             <img src={HomeIcon} alt="HomeIcon" />
-            <Text clicked={click}>
+            <Text >
               Home
             </Text>
           </Item>
           <Item activeClassName="active" to="/dashboard" >
             <img src={DashboardIcon} alt="DashboardIcon" />
-            <Text clicked={click}>Dashboard</Text>
+            <Text >Dashboard</Text>
           </Item>
           <Item activeClassName="active" to="/calendar" >
             <img src={CalendarIcon} alt="CalendarIcon" />
-            <Text clicked={click}>Calendar</Text>
+            <Text >Calendar</Text>
           </Item>
           <Item activeClassName="active" to="/new" >
             <img src={NewTripIcon} alt="NewTripIcon" />
-            <Text clicked={click}>NewTrip</Text>
+            <Text >NewTrip</Text>
           </Item>
           <Item onClick={logout} activeClassName="active" to="/logout" >
             <img src={NewTripIcon} alt="NewTripIcon" />

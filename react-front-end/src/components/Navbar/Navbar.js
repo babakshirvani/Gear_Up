@@ -7,6 +7,9 @@ import DashboardIcon from "../assets/Forum.svg";
 
 import styled from "styled-components";
 import HomeIcon from "../assets/home-solid.svg";
+import logo from '../assets/hiking.png'
+
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -46,7 +49,6 @@ const Item = styled(NavLink)`
 `;
 const Text = styled.span`
   width: ${(props) => (props.clicked ? "100%" : "0")};
-  
   margin-left: 1.5rem;
   transition: all 0.3s ease;
 `;
@@ -58,7 +60,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-mainbg">
       <NavLink className="navbar-brand navbar-logo" to="/" exact>
-        Gear Up
+        <img src={logo} alt="logo" style={{maxHeight: '35px'}} />  Gear Up
       </NavLink>
       <button
         className="navbar-toggler"
@@ -67,11 +69,7 @@ const Navbar = () => {
       </button>
       <div
         className="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul className="navbar-nav ml-auto">
-          <div className="hori-selector">
-            <div className="left"></div>
-            <div className="right"></div>
-          </div>
+        <ul className="navbar-nav ml-auto" >
           <Container>
               <li className="nav-item ">
                 <Item exact activeClassName="active" to="/" >
@@ -117,7 +115,7 @@ const Navbar = () => {
             <li className="nav-item ">
               <Item exact activeClassName="active" to="/help" >
                 <i className="far fa-clone"></i>
-                <Text clicked={click}>help</Text>
+                <Text >help</Text>
               </Item>
             </li>
           </Container>
