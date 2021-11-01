@@ -5,9 +5,6 @@ import ActivityForm from './ActivityForm';
 import GearList from './GearList';
 import { Stepper, StepLabel, Step } from '@material-ui/core';
 import { multiStepsContext } from './StepContext';
-import Map from '../Map/Map';
-// import '../Map/Map.css'
-import { flexbox, positions } from '@mui/system';
 
 const NewTripForm = () => {
 
@@ -19,16 +16,18 @@ const NewTripForm = () => {
       case 1:
         return <LocationForm />
       case 2:
-        return <ActivityForm />
+        return <TripInfoForm />
       case 3:
+        return <ActivityForm />
+      case 4:
         return <GearList />
       default:
-        return <TripInfoForm />
+        return <LocationForm />
     }
   }
 
   return (
-    <div>
+    < >
       <Stepper activeStep={currentStep - 1} orientation="horizontal">
         <Step>
           <StepLabel></StepLabel>
@@ -39,12 +38,12 @@ const NewTripForm = () => {
         <Step>
           <StepLabel></StepLabel>
         </Step>
-        {/* <Step>
+        <Step>
           <StepLabel></StepLabel>
-        </Step> */}
+        </Step>
       </Stepper>
       {showStep(currentStep)}
-    </div >
+    </ >
   )
 }
 

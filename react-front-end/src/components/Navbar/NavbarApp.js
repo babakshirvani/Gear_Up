@@ -13,7 +13,7 @@ import SidebarApp from '../Sidebar/SidebarApp';
 
 import Dashboard from "../../pages/Dashboard";
 
-  import styled from "styled-components";
+import styled from "styled-components";
 import {
   Route,
   Redirect,
@@ -33,7 +33,8 @@ function NavbarApp() {
       <Pages>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/login" ><Redirect to="/dashboard"/></Route>
+          <Route path="/login" >{!auth && <Login />}{auth && <Redirect to="/dashboard" />}</Route>
+          {/* <Route path="/login" ><Redirect to="/dashboard"/></Route> */}
           <Route path="/logout" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/help" component={Help} />

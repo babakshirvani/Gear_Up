@@ -1,5 +1,5 @@
 html, body, #root, .App {
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 100vh;
 }
 
@@ -25,7 +25,7 @@ html, body, #root, .App {
 }
 
 .location-prompt {
-  font-size: 2em;
+  font-size: 1.3em;
   background-color: rgba(35, 55, 75, 0.9);
   color: #fff;
   padding: 12px 12px;
@@ -57,12 +57,12 @@ html, body, #root, .App {
 
 .MuiStepper-root {
   font-size: 2em;
-  background-color: rgba(169, 174, 174, 0.4) !important;
+  background-color: rgba(255, 255, 255, 0.4) !important;
   color: #fff;
   font-family: monospace;
   z-index: 1;
   position: absolute;
-  top: 4rem;
+  top: 4vh;
   left: 0;
   right: 0;
   margin-left: auto;

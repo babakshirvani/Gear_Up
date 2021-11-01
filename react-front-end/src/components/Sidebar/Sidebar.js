@@ -18,7 +18,7 @@ const Container = styled.div`
 
 const SidebarContainer = styled.div`
   background-color: #F3F5FA;
-  width: 18rem;
+  width: 14rem;
   position: relative;  
   height: 100vh;
   box-shadow: 1px 2px 8px 2px rgb(166, 166, 166);
@@ -37,13 +37,11 @@ const Item = styled(NavLink)`
 
   padding-left: 2.8rem;
   margin-right: 1rem;
-  margin-bottom: 1rem;
-  margin-top: 1.2rem;
+  margin-top: 1.4rem;
   color: #48454B;
   &.active {
     border-top-right-radius: 19px;
     border-bottom-right-radius: 19px;
-    // background-color: rgba(229, 236, 255, 1);
     background-color: rgba(211, 224, 251, 1);
   }
   &:hover {
@@ -73,7 +71,7 @@ const Text = styled.span`
   width: ${(props) => (props.clicked ? "100%" : "0")};
   text-decoration: none;
   margin-left: 1.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 `;
 
 const Profile = styled.div`
