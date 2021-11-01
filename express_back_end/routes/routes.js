@@ -4,16 +4,17 @@ const express = require("express");
 const router = express.Router();
 
 const routes = (db) => {
-  
 
-  router.get("/login/:username",(req, res) => {
+
+  router.get("/login/:username", (req, res) => {
     db.query(`select * from users where user_name='${req.params.username}'`)
-    .then((response) => {
-      
-      res.send(response.rows);
-    })
-    .catch((err) => console.log(err));
+      .then((response) => {
+
+        res.send(response.rows);
+      })
+      .catch((err) => console.log(err));
   })
+
 
   router.get("/friendlist/:id",(req, res) => {
     db.query(`select users.user_name, users.avatar from friendship 
@@ -27,6 +28,7 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
       res.send(response.rows)
     })
     .catch((err)=>console.log(err))
+
   })
   //GET dashboard
   router.get("/dashboard", (req, res) => {
@@ -52,8 +54,7 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
   // POST new trip:
   router.post('/newTrip', (req, res) => {
     // const creator_id = req.session.user_id;
-    // const creator_id = req.body.creator_id;
-    const creator_id = 1;
+    const creator_id = req.body.creator_id;
     const title = req.body.title;
     const description = req.body.description;
     const start_date = req.body.start_date;
@@ -140,6 +141,22 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
     ).then(({ rows: dbResponse }) => {
       // console.log("newRes:::", dbResponse);
       res.json(dbResponse)
+
+    });
+  });
+  router.get('/trips/:trip_id', (req, res) => {
+    const { id } = req.params;
+    db.query(
+      `
+      SELECT
+        *
+      FROM
+      trips;
+      WHERE id = $1
+    `, [id]
+    ).then(({ rows: dbResponse }) => {
+      // console.log("newRes:::", dbResponse);
+      res.json(dbResponse);
 
     });
   });

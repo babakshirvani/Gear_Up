@@ -81,7 +81,7 @@ export default function GearList() {
       <div style={{
         zIndex: '1',
         position: 'absolute',
-        top: '14vh',
+        top: '15vh',
         left: '0',
         right: '0',
         marginLeft: 'auto',
