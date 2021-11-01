@@ -91,7 +91,7 @@ const Navbar = () => {
 
                 <li className="nav-item " onClick={logout}>
                 <Item exact activeClassName="active" to="/logout" >
-                  <i class="fas fa-sign-in-alt"></i>
+                  <i className="fas fa-sign-in-alt"></i>
                   <Text clicked={click}>Logout</Text>
                 </Item>
               </li>  
