@@ -5,12 +5,17 @@ import Box from '@mui/material/Box';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DateRangePicker from '@mui/lab/DateRangePicker';
-import { padding } from '@mui/system';
 
 
 const TripInfoForm = () => {
   const [value, setValue] = useState([null, null]);
   const { setStep, userData, setUserData } = useContext(multiStepsContext)
+
+  const handleNext = () => {
+    if (userData.title && userData.start_date && userData.end_date) {
+      setStep(3)
+    }
+  }
 
   return (
     <>
@@ -28,7 +33,7 @@ const TripInfoForm = () => {
         <div >
           <TextField
             id="standard-basic"
-            label="Title"
+            label="Title*"
             value={userData['title']}
             onChange={(e) => setUserData({ ...userData, "title": e.target.value })}
             margin="normal"
@@ -43,8 +48,8 @@ const TripInfoForm = () => {
             <DateRangePicker
               disablePast
               calendars={2}
-              startText="Start date"
-              endText="End date"
+              startText="Start date*"
+              endText="End date*"
               value={value}
               onChange={(e) => {
                 if (e[1]) {
@@ -88,7 +93,7 @@ const TripInfoForm = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={() => setStep(3)}
+              onClick={handleNext}
             >
               Next
             </Button>

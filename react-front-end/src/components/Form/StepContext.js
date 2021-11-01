@@ -14,11 +14,11 @@ const defaultData = {
 
 const StepContext = () => {
   const [currentStep, setStep] = useState(1);
-  const [userData, setUserData] = useState(defaultData);
+  const [userData, setUserData] = useState([]);
   const [finalData, setFinalData] = useState([]);
   function submitData() {
     console.log(userData)
-    
+
 
   }
   return (

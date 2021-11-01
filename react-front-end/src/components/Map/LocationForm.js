@@ -12,11 +12,6 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiYWNlZmxhbmtlciIsImEiOiJja3RudjFrZDEwNmxxMnVwb
 export default function LocationForm(props) {
 
   const { setStep, userData, setUserData } = useContext(multiStepsContext)
-
-  const handleChange = (event) => {
-    setUserData({ ...userData, "activity": event.target.value });
-  };
-
   const mapContainer = useRef(null);
   const map = useRef(null);
   const geocoder = useRef(null);
@@ -79,10 +74,11 @@ export default function LocationForm(props) {
   }
   const removeMarkers = function() {
     for (let marker of markerGroup.current) {
-      if (marker.getPopup().isOpen() && !tempMarker.current.getPopup().isOpen()) {
-        setLng(null);
-        setLat(null);
+      if(tempMarker.current && tempMarker.current.getPopup().isOpen()) {
+        return marker.remove();
       };
+      setLng(null);
+      setLat(null);
       marker.remove();
     }
     markerGroup.current.splice(0, markerGroup.current.length);
@@ -194,6 +190,11 @@ export default function LocationForm(props) {
     })
   }, [map, geocoder, tempMarker, zoom, setZoom])
 
+  const handleNext = () => {
+    setUserData({ ...userData, "latitude": lat, "longitude": lng })
+    setStep(2)
+  }
+
   return (
     <>
       <div ref={mapContainer} className="map-container">
@@ -208,7 +209,7 @@ export default function LocationForm(props) {
           <Button
             variant="contained"
             color="primary"
-            onClick={!lng ? () => setStep(1) : () => setStep(2)}
+            onClick={lng ? handleNext : null}
           >
             Next
           </Button>

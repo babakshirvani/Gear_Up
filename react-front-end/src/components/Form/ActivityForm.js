@@ -7,9 +7,15 @@ import { multiStepsContext } from './StepContext';
 export default function ActivityForm() {
   const { setStep, userData, setUserData } = useContext(multiStepsContext)
   const handleChange = (event) => {
-    console.log("thisIsThe ACtiviti:::", event.target.value)
     setUserData({ ...userData, "activity": event.target.value });
   };
+
+  const handleNext = () => {
+    if (userData.activity) {
+      setStep(4)
+      console.log("Selected Activity:", userData.activity)
+    }
+  }
 
 
   return (
@@ -57,7 +63,7 @@ export default function ActivityForm() {
             <Button
               variant="contained"
               color="primary"
-              onClick={() => setStep(4)}
+              onClick={handleNext}
             >
               Generate
             </Button>
