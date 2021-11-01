@@ -44,12 +44,12 @@ export default function ActivityForm() {
               value={userData.activity || ""}
               onChange={handleChange}
             >
-              <FormControlLabel value="Day Hiking" control={<Radio />} label="Day Hiking" />
+              <FormControlLabel value="hiking" control={<Radio />} label="Day Hiking" />
               <img style={{ maxWidth: 650, maxHeight: 162, borderRadius: "30px", boxShadow: "3px 9px 9px #9E9E9E", marginBottom: "30px" }} src="https://res.cloudinary.com/getpackup/image/upload/c_fill,g_north,h_512,w_2048/v1626723073/getpackup/0F1A2340_zy0asj.jpg" alt="Day Hiking" />
-              <FormControlLabel value="Backpacking" control={<Radio />} label="Backpacking" />
+              <FormControlLabel value="backpacking" control={<Radio />} label="Backpacking" />
               <img style={{ maxWidth: 650, maxHeight: 162, borderRadius: "30px", boxShadow: "3px 9px 9px #9E9E9E", marginBottom: "30px" }} src="https://res.cloudinary.com/getpackup/image/upload/c_fill,h_512,w_2048/v1626131669/getpackup/GrosMorneNFLD_TaylorBurk-2_oio34q.jpg" alt="Backpacking" />
-              <FormControlLabel value="Car Camping" control={<Radio />} label="Car Camping" />
-              <img style={{ maxWidth: 650, maxHeight: 162, borderRadius: "30px", boxShadow: "3px 9px 9px #9E9E9E", marginBottom: "30px" }} src="https://purewows3.imgix.net/images/articles/2020_06/car_camping_checklist_400.png?auto=format,compress&cs=strip" alt="Car Camping" />
+              <FormControlLabel value="camping" control={<Radio />} label="Car Camping" />
+              <img style={{ maxWidth: 650, maxHeight: 162, borderRadius: "30px", boxShadow: "3px 9px 9px #9E9E9E", marginBottom: "30px" }} src="https://res.cloudinary.com/getpackup/image/upload/c_fill,g_south,h_512,w_2048/v1626131671/getpackup/GrosMorneNFLD_TaylorBurk-15_cxae7q.jpg" alt="Car Camping" />
             </RadioGroup>
           </FormControl>
 
