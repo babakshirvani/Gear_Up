@@ -13,7 +13,7 @@ import SidebarApp from '../Sidebar/SidebarApp';
 
 import Dashboard from "../../pages/Dashboard";
 
-  import styled from "styled-components";
+import styled from "styled-components";
 import {
   Route,
   Redirect,
@@ -25,24 +25,22 @@ const Pages = styled.div`
   height: 100vh;
 `;
 function NavbarApp() {
-
-
   return (
     <authContext.Consumer>
-      {({auth}) => (
-      <>
-        <Navbar />
-        <Pages>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/login" >{!auth && <Login />}{auth && <Redirect to="/dashboard"/>}</Route>
-            <Route path="/logout" component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/help" component={Help} />
-            <Redirect to="/" />
-          </Switch>
-        </Pages>
-      </>
+      {({ auth }) => (
+        <>
+          <Navbar />
+          <Pages>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/login" >{!auth && <Login />}{auth && <Redirect to="/dashboard" />}</Route>
+              <Route path="/logout" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/help" component={Help} />
+              <Redirect to="/" />
+            </Switch>
+          </Pages>
+        </>
       )}
     </authContext.Consumer>
   );

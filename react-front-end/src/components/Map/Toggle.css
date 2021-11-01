@@ -2,7 +2,7 @@
   /* font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: 600; */
   position: absolute;
-  top: 12.8vh;
+  top: 14vh;
   left: 30vw;
   z-index: 10;
   width: fit-content;
@@ -68,7 +68,7 @@
 } */
 
 .listing-group label {
-  font-size: 1.2rem;
+  font-size: 1rem;
   box-sizing:content-box;
   border-radius: 4px;
   background-color: #E68C37;
