@@ -139,7 +139,7 @@ export const FutureTrips = function(props) {
             </TripDate>
             <TripTitle>{(trip2 && trip2.title)}</TripTitle>
           </LaterTrip>
-          <LaterTrip image={(trip1 && trip1.image)} style={{marginTop: "1rem"}}>
+          <LaterTrip image={(trip3 && trip3.image)} style={{marginTop: "1rem"}}>
             <TripDate>
             <TripActivity className={(trip3 && trip3.activity)}>{(trip3 && trip3.activity)}</TripActivity>
             {moment((trip3 && trip3.start_date)).format("MMM DD, YYYY")}
