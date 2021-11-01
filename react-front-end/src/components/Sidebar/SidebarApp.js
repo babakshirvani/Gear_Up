@@ -32,10 +32,10 @@ function SidebarApp() {
           <Route exact path="/" component={Home} />
           {/* <Route path="/dashboard" ><Dashboard/></Route> */}
           {/* <Route path="/calendar" ><Calendar/></Route> */}
-          <Route path="/new" ><NewTrip /></Route>
+          {/* <Route path="/new" ><NewTrip /></Route> */}
           <Route path="/dashboard" >{!auth && <Redirect to="/login" />}{auth && <Dashboard />}</Route>
           <Route path="/calendar" >{!auth && <Redirect to="/login" />}{auth && <Calendar />}</Route>
-          {/* <Route path="/new" >{!auth && <Redirect to="/login" />}{auth && <NewTrip />}</Route> */}
+          <Route path="/new" >{!auth && <Redirect to="/login" />}{auth && <NewTrip />}</Route>
           <Route path="/logout" component={Home} ></Route>
         </Switch>
       </Pages>
