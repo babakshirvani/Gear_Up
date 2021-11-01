@@ -46,8 +46,7 @@ const routes = (db) => {
   // POST new trip:
   router.post('/newTrip', (req, res) => {
     // const creator_id = req.session.user_id;
-    // const creator_id = localStorage.getItem('user_id');
-    const creator_id = 1;
+    const creator_id = req.body.creator_id;
     const title = req.body.title;
     const description = req.body.description;
     const start_date = req.body.start_date;
