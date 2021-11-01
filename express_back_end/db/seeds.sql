@@ -279,6 +279,6 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('ID', 'Personal It
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Car keys', 'Personal Items','Backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Cellphone', 'Personal Items','Backpacking');
 
-INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Joffre Lake', null, 'Camping', '2021-11-11', '2021-11-12', -122.4762, 50.3413, '../assets/trip1.jpg');
-INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Brunswick Mountain', null, 'Hiking', '2021-11-23', '2021-11-23', -123.234719, 49.470883, '../assets/trip2.jpg');
-INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Heather Trail', null, 'Backpacking', '2021-12-25', '2021-12-26', -120.764843, 49.099188, '../assets/trip3.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Joffre Lake', null, 'camping', '2021-11-11', '2021-11-12', -122.4762, 50.3413, '/images/trip1.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Brunswick Mountain', null, 'hiking', '2021-11-23', '2021-11-23', -123.234719, 49.470883, '/images/trip2.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Heather Trail', null, 'backpacking', '2021-12-25', '2021-12-26', -120.764843, 49.099188, '/images/trip3.jpg');

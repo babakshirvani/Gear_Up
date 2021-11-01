@@ -9,7 +9,7 @@ const Dashboard = () => {
 
   const [friendList, setFriendList] = useState([]);
   const [upcomingTrips, setUpcomingTrips] = useState([]);
-  const [trip1, setTrip1] = useState({});
+  const [trip1, setTrip1] = useState(null);
   
   useEffect(()=>{
     const user_id=localStorage.getItem('user_id');
@@ -24,15 +24,12 @@ const Dashboard = () => {
     axios.get(`api/trips/dashboard/${user_id}`)
     .then((res)=>{
       setUpcomingTrips([...res.data]);
-      setTrip1({...res.data[0].image});
-      console.log(res.data[0].image)
     })
   }, [])
-
  
   return (
     <div className="container">
-      <FutureTrips trip1={trip1}/>
+        <FutureTrips upcomingTrips={upcomingTrips}/>
       <div className="weather-app-container">
         <WeatherApp />
       </div>

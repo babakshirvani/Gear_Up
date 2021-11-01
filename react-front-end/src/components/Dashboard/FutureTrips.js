@@ -119,41 +119,32 @@ const LaterTrip = styled.div`
 
 export const FutureTrips = function(props) {
 
-  // const [trip1, setTrip1] = useState({...props.trip1});
-  // const [trip2, setTrip2] = useState({...props.trip2});
-  // const [trip3, setTrip3] = useState({...props.trip3});
-  // const [loaded, setLoaded] = useState(props.loaded);
-
-  // useEffect(() => {
-  //   console.log(trip1);
-  //   console.log(trip1.image);
-  // }, [])
-
+  const [trip1, trip2, trip3] = props.upcomingTrips;
 
   return (
     <>
       <TripContainer>
-        <NextTrip image={bgImage1}>
+        <NextTrip image={(trip1 && trip1.image)}>
           <TripDate>
-            <TripActivity className="hiking">Hiking</TripActivity>
-            {moment(date).format("MMM DD, YYYY")}
+            <TripActivity className={(trip1 && trip1.activity)}>{(trip1 && trip1.activity)}</TripActivity>
+            {moment((trip1 && trip1.start_date)).format("MMM DD, YYYY")}
           </TripDate>
-          <TripTitle>{props.trip1}</TripTitle>
+          <TripTitle>{(trip1 && trip1.title)}</TripTitle>
         </NextTrip>
         <SideTripContainer>
-          <LaterTrip image={bgImage2} style={{marginBottom: "1rem"}}>
+          <LaterTrip image={(trip2 && trip2.image)} style={{marginBottom: "1rem"}}>
             <TripDate>
-              <TripActivity className="backpacking">Backpacking</TripActivity>
-              {moment(date).format("MMM DD, YYYY")}
+            <TripActivity className={(trip2 && trip2.activity)}>{(trip2 && trip2.activity)}</TripActivity>
+            {moment((trip1 && trip2.start_date)).format("MMM DD, YYYY")}
             </TripDate>
-            <TripTitle>Test</TripTitle>
+            <TripTitle>{(trip3 && trip3.title)}</TripTitle>
           </LaterTrip>
-          <LaterTrip image={bgImage3} style={{marginTop: "1rem"}}>
+          <LaterTrip image={(trip1 && trip1.image)} style={{marginTop: "1rem"}}>
             <TripDate>
-              <TripActivity className="camping">camping</TripActivity>
-              {moment(date).format("MMM DD, YYYY")}
+            <TripActivity className={(trip3 && trip3.activity)}>{(trip3 && trip3.activity)}</TripActivity>
+            {moment((trip3 && trip3.start_date)).format("MMM DD, YYYY")}
             </TripDate>
-            <TripTitle>Test</TripTitle>
+            <TripTitle>{(trip3 && trip3.title)}</TripTitle>
           </LaterTrip>
         </SideTripContainer>
       </TripContainer>
