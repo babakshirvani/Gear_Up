@@ -28,7 +28,8 @@ CREATE TABLE trips (
   start_date DATE NOT NULL,
   end_date DATE NOT NULL,
   longitude DOUBLE PRECISION NOT NULL,
-  latitude DOUBLE PRECISION NOT NULL
+  latitude DOUBLE PRECISION NOT NULL,
+  image TEXT
 );
 
 CREATE TABLE friendship (

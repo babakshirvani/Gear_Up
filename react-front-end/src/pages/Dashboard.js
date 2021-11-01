@@ -7,13 +7,15 @@ import { FutureTrips } from '../components/Dashboard/FutureTrips';
 
 const Dashboard = () => {
 
-  const [friendlist, setFriendlist] = useState([]);
+  const [friendList, setFriendList] = useState([]);
+  const [upcomingTrips, setUpcomingTrips] = useState([]);
+  const [trip1, setTrip1] = useState({});
   
   useEffect(()=>{
     const user_id=localStorage.getItem('user_id');
     axios.get(`api/friendlist/${user_id}`)
     .then((res)=>{
-      setFriendlist([...res.data]);
+      setFriendList([...res.data]);
     })
   }, [])
   
@@ -21,15 +23,16 @@ const Dashboard = () => {
     const user_id=localStorage.getItem('user_id');
     axios.get(`api/trips/dashboard/${user_id}`)
     .then((res)=>{
-      console.log("UPCOMING TRIPS ", res.data);
+      setUpcomingTrips([...res.data]);
+      setTrip1({...res.data[0].image});
+      console.log(res.data[0].image)
     })
   }, [])
 
  
-  
   return (
     <div className="container">
-      <FutureTrips />
+      <FutureTrips trip1={trip1}/>
       <div className="weather-app-container">
         <WeatherApp />
       </div>

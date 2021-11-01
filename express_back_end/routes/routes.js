@@ -144,6 +144,7 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
 
     });
   });
+
   router.get('/trips/:trip_id', (req, res) => {
     const { id } = req.params;
     db.query(
@@ -158,6 +159,33 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
       // console.log("newRes:::", dbResponse);
       res.json(dbResponse);
 
+    });
+  });
+
+  // Displays user's upcoming trips as well as their friend's
+  router.get('/trips/dashboard/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+    db.query(
+      `
+      SELECT * FROM trips
+      WHERE start_date >= CURRENT_DATE AND (creator_id = $1 OR creator_id IN
+        (
+          SELECT users.id FROM friendship 
+          JOIN users ON friendship.user_id2 = users.id
+          WHERE friendship.user_id1 = $1
+        
+          UNION
+        
+          SELECT users.id FROM friendship 
+          JOIN users ON friendship.user_id1 = users.id
+          WHERE friendship.user_id2 = $1
+        )
+      )
+      ORDER BY start_date ASC
+      LIMIT 3
+    `, [user_id]
+    ).then(({ rows: dbResponse }) => {
+      res.json(dbResponse);
     });
   });
 
