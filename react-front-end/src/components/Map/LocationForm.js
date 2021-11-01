@@ -77,12 +77,14 @@ export default function LocationForm(props) {
       });
     }
   }
+  
   const removeMarkers = function() {
     for (let marker of markerGroup.current) {
-      if(marker.getPopup().isOpen() && !tempMarker.current.getPopup().isOpen()) {
-        setLng(null);
-        setLat(null);
+      if(tempMarker.current && tempMarker.current.getPopup().isOpen()) {
+        return marker.remove();
       };
+      setLng(null);
+      setLat(null);
       marker.remove();
     }
     markerGroup.current.splice(0, markerGroup.current.length);
@@ -134,6 +136,7 @@ export default function LocationForm(props) {
   
   useEffect(() => {
     removeMarkers();
+    console.log(lng);
     if (!mapList) return;
     loadMarkers(mapList);
   }, [mapList])
