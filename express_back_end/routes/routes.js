@@ -16,7 +16,7 @@ const routes = (db) => {
   })
 
 
-  router.get("/friendlist/:id",(req, res) => {
+  router.get("/friendlist/:id", (req, res) => {
     db.query(`select users.user_name, users.avatar from friendship 
 join users on friendship.user_id2=users.id where friendship.user_id1=${req.params.id}
 
@@ -24,10 +24,10 @@ union
 
 select users.user_name, users.avatar from friendship 
 join users on friendship.user_id1=users.id where friendship.user_id2=${req.params.id}`)
-    .then((response) => {
-      res.send(response.rows)
-    })
-    .catch((err)=>console.log(err))
+      .then((response) => {
+        res.send(response.rows)
+      })
+      .catch((err) => console.log(err))
 
   })
   //GET dashboard
@@ -208,16 +208,18 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
   });
 
   // GET user gear list:
-  router.get('/trip/gearList/:id', (req, res) => {
-    const { id } = req.params;
+  router.get('/calendar/trips/:trip_id', (req, res) => {
+    const trip_id = req.params.trip_id;
+
     db.query(
       `
       SELECT
         *
       FROM
       user_checklist
-      WHERE id = $1;
-    `, [id,]
+      JOIN gear_checklist on user_checklist.type_id = gear_checklist.id
+      WHERE trip_id = $1;
+    `, [trip_id]
     ).then((dbResponse) => {
       console.log("newRes:::", dbResponse.rows);
       res.json(dbResponse.rows)
