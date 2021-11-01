@@ -23,7 +23,6 @@ export default function GearList() {
       axios.get(`/api/activities/${activity}`)
     ])
       .then((all) => {
-        // console.log("2 ", all[0].data)
         function createGearObject() {
           const categories = [];
           for (let item of all[0].data) {
@@ -79,37 +78,41 @@ export default function GearList() {
 
   return (
     <>
-      <h4 style={{ color: 'white' }}>Your Gear List!</h4>
-      <br />
-      <div>
-        <div className="accordion">
-          {/* {console.log("BEFORE MAP::", gear)} */}
-          {gear.map((item) => (
-            <>
-              <Accordion key={item.id} category={item.category} gears={item.gears} />
-            </>
-          ))}
-        </div>
+      <div style={{
+        zIndex: '1',
+        position: 'absolute',
+        top: '14vh',
+        left: '0',
+        right: '0',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        width: '40vw',
+      }}>
+        <h4 style={{ color: 'white' }}>Your Gear List!</h4>
+        <br />
+        <div>
+          <div className="accordion">
+            {/* {console.log("BEFORE MAP::", gear)} */}
+            {gear.map((item) => (
+              <>
+                <Accordion key={item.id} category={item.category} gears={item.gears} />
+              </>
+            ))}
+          </div>
 
-        <div style={{
-          padding: "2rem"
-        }} >
-          {/* <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => setStep(2)}
-          >
-            Back
-          </Button><span> </span> */}
-          < Button
-            variant="contained"
-            color="primary"
-            onClick={redirect}
-          >
-            Save
-          </Button>
-        </div>
-      </div >
+          <div style={{
+            padding: "2rem"
+          }} >
+            < Button
+              variant="contained"
+              color="primary"
+              onClick={redirect}
+            >
+              Save
+            </Button>
+          </div>
+        </div >
+      </div>
     </>
   )
 }

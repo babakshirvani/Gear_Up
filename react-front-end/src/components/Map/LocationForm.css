@@ -1,10 +1,11 @@
 html, body, #root, .App {
   /* overflow: hidden; */
-  /* height: 100vh; */
+  height: 100vh;
 }
 
 .mapboxgl-ctrl-top-right {
-  right: 15rem;
+  top: 12vh;
+  right: 29.8vw !important;
 }
 
 .map-container {
@@ -24,38 +25,19 @@ html, body, #root, .App {
 }
 
 .location-prompt {
-  font-size: 2em;
+  font-size: 1.3em;
   background-color: rgba(35, 55, 75, 0.9);
   color: #fff;
   padding: 12px 12px;
   font-family: monospace;
   z-index: 1;
   position: absolute;
-  bottom: 6rem;
+  bottom: 8rem;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
-}
-
-.step-counter {
-  font-size: 2em;
-  background-color: rgba(213, 214, 214, 0.606);
-  color: #fff;
-  /* padding: 12px 12px; */
-  font-family: monospace;
-  z-index: 1;
-  position: absolute;
-  top: 4rem;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40vw;
-  /* right: 33%; */
-  /* margin: 12px; */
-  /* border-radius: 4px; */
 }
 
 .form-button {
@@ -69,26 +51,36 @@ html, body, #root, .App {
   width: fit-content;
 }
 
-/* .mapboxgl-marker {
-  z-index: 1;
-} */
-
-/* #geocoder {
-  position: relative;
-  width: 30%;
-  left: 50%
-} */
-
-/* .mapboxgl-control-container {
-  width: 100%;
+.form-button button {
+  font-size: 1.3rem;
 }
 
-.mapboxgl-ctrl-geocoder {
-  width: 10%;
-  max-width: 1080px;
-} */
+.MuiStepper-root {
+  font-size: 2em;
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  color: #fff;
+  font-family: monospace;
+  z-index: 1;
+  position: absolute;
+  top: 4vh;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40vw;
+}
 
-/* #geocoder-container > div {
-  min-width: 50%;
-  margin-left: 25%;
-  } */
+.step-counter {
+  font-size: 2em;
+  background-color: rgba(213, 214, 214, 0.606);
+  color: #fff;
+  font-family: monospace;
+  z-index: 1;
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40vw;
+}

@@ -33,17 +33,15 @@ class App extends Component {
       <>      
         <Router>
           <Switch>
-          <Route exact path='/' component={NavbarApp} />
-          <Route path='/about' component={NavbarApp} />
-          <Route path='/login' component={NavbarApp} />
-          <Route path='/logout' component={NavbarApp} />
-          <Route path='/help' component={NavbarApp} />
-          <Route path='/dashboard' > <SidebarApp/></Route>
-          <Route path='/calendar' component={SidebarApp} />
-          <Route path='/new' component={SidebarApp} />
-          <Route exact path="/popularplace1" component={PopularPlace1}>
-        
-        </Route>
+            <Route exact path='/' component={NavbarApp} />
+            <Route path='/about' component={NavbarApp} />
+            <Route path='/login' component={NavbarApp} />
+            <Route path='/logout' component={NavbarApp} />
+            <Route path='/help' component={NavbarApp} />
+            <Route path='/dashboard' > <SidebarApp/></Route>
+            <Route path='/calendar' component={SidebarApp} />
+            <Route path='/new' component={SidebarApp} />
+            <Route exact path="/popularplace1" component={PopularPlace1}></Route>
           </Switch>
         </Router>
 
