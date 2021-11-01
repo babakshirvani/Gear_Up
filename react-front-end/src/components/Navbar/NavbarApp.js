@@ -13,7 +13,7 @@ import SidebarApp from '../Sidebar/SidebarApp';
 
 import Dashboard from "../../pages/Dashboard";
 
-  import styled from "styled-components";
+import styled from "styled-components";
 import {
   Route,
   Redirect,

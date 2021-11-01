@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import Sidebar from "./Sidebar";
 import styled from "styled-components";
 import "./SidebarApp.css"

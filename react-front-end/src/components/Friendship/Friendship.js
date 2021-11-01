@@ -93,6 +93,6 @@ const AvatarWithText = () => {
         </Content>
       </ThemeProvider>
     </StylesProvider>
-  );
+  )
 }
 export default AvatarWithText;
