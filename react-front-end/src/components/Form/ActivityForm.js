@@ -14,6 +14,7 @@ export default function ActivityForm() {
     if (userData.activity) {
       setStep(4)
       console.log("Selected Activity:", userData.activity)
+      console.log("User Data in by the end of Activity Form:", userData)
     }
   }
 

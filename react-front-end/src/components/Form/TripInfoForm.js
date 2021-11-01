@@ -13,9 +13,11 @@ const TripInfoForm = () => {
 
   const handleNext = () => {
     if (userData.title && userData.start_date && userData.end_date) {
+      setUserData({ ...userData, "creator_id": localStorage.getItem('user_id') })
       setStep(3)
     }
   }
+
 
   return (
     <>
