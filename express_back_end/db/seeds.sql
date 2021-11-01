@@ -13,6 +13,46 @@ INSERT INTO friendship (user_id1, user_id2) VALUES (2, 3);
 INSERT INTO friendship (user_id1, user_id2) VALUES (2, 4);
 INSERT INTO friendship (user_id1, user_id2) VALUES (2, 5);
 
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Joffre Lake', null, 'camping', '2021-11-11', '2021-11-12', -122.4762, 50.3413, '/images/trip1.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Brunswick Mountain', null, 'hiking', '2021-11-23', '2021-11-23', -123.234719, 49.470883, '/images/trip2.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Heather Trail', null, 'backpacking', '2021-12-25', '2021-12-26', -120.764843, 49.099188, '/images/trip3.jpg'); 
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Spanish Banks and Jericho Beach', null, 'camping', '2021-11-11', '2021-11-12', -123.19159,49.27074,'/images/trip1.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Dam Mountain', null, 'hiking', '2021-11-23', '2021-11-23', -123.1335577,49.3562217, '/images/trip2.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Stanley Park Seawall Trail', null, 'backpacking', '2021-12-25', '2021-12-26',-123.13071,49.29772,'/images/trip3.jpg'); 
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Sunset Beach to Second Beach', null, 'camping', '2021-11-11', '2021-11-12',-123.14004,49.28102,'/images/trip1.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Crown Mountain', null, 'hiking', '2021-11-23', '2021-11-23', -123.2216091,49.3376785, '/images/trip2.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Stanley Park Inner Loop', null, 'backpacking', '2021-12-25', '2021-12-26', -123.14821,49.2928,'/images/trip3.jpg'); 
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Stanley Park', null, 'camping', '2021-11-11', '2021-11-12', -113.9192897,50.9208507, '/images/trip1.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Coliseum Mountain', null, 'hiking', '2021-11-23', '2021-11-23',-123.2112447, 49.3644801, '/images/trip2.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Everett Crowley Loop', null, 'backpacking', '2021-12-25', '2021-12-26', -123.04134,49.21204,'/images/trip3.jpg'); 
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Cypress Provincial Park', null, 'camping', '2021-11-11', '2021-11-12',-113.9192897,50.9208507, '/images/trip1.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Mount Seymour', null, 'hiking', '2021-11-23', '2021-11-23', -123.2112447,49.3989194, '/images/trip2.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Vancouver and Stanley Park Seawall', null, 'backpacking', '2021-12-25', '2021-12-26', -123.14222,49.27571,'/images/trip3.jpg'); 
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Say Nuth Khaw Yum Provincial Park', null, 'camping', '2021-11-11', '2021-11-12', -120.3728448,51.3064702, '/images/trip1.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Cypress Mountain', null, 'hiking', '2021-11-23', '2021-11-23', -123.2112447,49.3989194, '/images/trip2.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Second Narrows and Lions Gate Cycling Loop', null, 'backpacking', '2021-12-25', '2021-12-26', -123.10529,49.278,'/images/trip3.jpg'); 
+
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Stanley Park Seawall Trail',NULL,49.29772,-123.13071,'https://photos.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMzExNTg5NjQvM2U1MDdiYWI1N2JhM2FiOGJjOTM1NmE5MWU4OWIyMjEuanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJqcGVnIiwicmVzaXplIjp7IndpZHRoIjoyMDQ4LCJoZWlnaHQiOjIwNDgsImZpdCI6Imluc2lkZSJ9LCJyb3RhdGUiOm51bGwsImpwZWciOnsidHJlbGxpc1F1YW50aXNhdGlvbiI6dHJ1ZSwib3ZlcnNob290RGVyaW5naW5nIjp0cnVlLCJvcHRpbWlzZVNjYW5zIjp0cnVlLCJxdWFudGlzYXRpb25UYWJsZSI6M319fQ==');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('False Creek South Trail',null,49.27499,-123.10231,'https://cdn-assets.alltrails.com/uploads/photo/image/24202461/extra_large_11b4e40c52ad9bf6c98bd3d40babd4ac.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Sunset Beach to Second Beach',null,49.28102,-123.14004,'https://cdn-assets.alltrails.com/uploads/photo/image/20510028/extra_large_8210355fdf50323cc306aedf2ca59217.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Spanish Banks and Jericho Beach',null,49.27074,-123.19159,'https://cdn-assets.alltrails.com/uploads/photo/image/17721856/extra_large_639497eff7a5fec4fb2362e5872c7c8d.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Salish Trail to Spanish Trail',null,49.25897,-123.22235,'https://cdn-assets.alltrails.com/uploads/photo/image/11415703/extra_large_2cc4b9c50aff0581f9a9a4989d0dd878.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Devonian Harbour Park to Harbour Green Park',null,49.29329,-123.13324,'https://cdn-assets.alltrails.com/uploads/photo/image/27801611/extra_large_e9a09867d9106d070467640140b761ac.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Queen Elizabeth Park',null,49.24123,-123.11507,'https://cdn-assets.alltrails.com/uploads/photo/image/19452360/extra_large_23daf9cfbe3c808f958c688ddaed587e.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Stanley Park Inner Loop',null,49.2928,-123.14821,'https://farm8.static.flickr.com/7205/6845779860_9bd8f7f9c4.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Arbutus Greenway',null,49.2669,-123.1409,'https://cdn-assets.alltrails.com/uploads/photo/image/35591991/extra_large_794d576cc3e6d2233322b09e296d9e06.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('VanDusen Botanical Gardens',null,49.23835,-123.12919,'https://photos.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMzcwNTk0NTQvNzBlN2ZiZTZhODE2OWJhOTk3ZTJkMzk3N2RjNmM5NTEuanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJqcGVnIiwicmVzaXplIjp7IndpZHRoIjoyMDQ4LCJoZWlnaHQiOjIwNDgsImZpdCI6Imluc2lkZSJ9LCJyb3RhdGUiOm51bGwsImpwZWciOnsidHJlbGxpc1F1YW50aXNhdGlvbiI6dHJ1ZSwib3ZlcnNob290RGVyaW5naW5nIjp0cnVlLCJvcHRpbWlzZVNjYW5zIjp0cnVlLCJxdWFudGlzYXRpb25UYWJsZSI6M319fQ==');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Lost Lagoon and Rose Garden Loop',null,49.30019,-123.13695,'https://cdn-assets.alltrails.com/uploads/photo/image/23905098/extra_large_ef1215502ef00af2c55b1e9a5d475df6.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Easy Canyon and West Canyon Loop Trail',null,49.27927,-123.2416,'https://photos.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMzc2OTQ2NDIvZjZlN2E0YmIyNWM3OTNmNGRmNGI4OTNjMDA4YTc3ZjAuanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJqcGVnIiwicmVzaXplIjp7IndpZHRoIjoyMDQ4LCJoZWlnaHQiOjIwNDgsImZpdCI6Imluc2lkZSJ9LCJyb3RhdGUiOm51bGwsImpwZWciOnsidHJlbGxpc1F1YW50aXNhdGlvbiI6dHJ1ZSwib3ZlcnNob290RGVyaW5naW5nIjp0cnVlLCJvcHRpbWlzZVNjYW5zIjp0cnVlLCJxdWFudGlzYXRpb25UYWJsZSI6M319fQ==');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Coal Harbour Via Stanley Park Trail',null,49.27868,-123.1375,'https://cdn-assets.alltrails.com/uploads/photo/image/27801649/extra_large_421957be0182a83f386d9af8435db208.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Fraser Foreshore Park Trail',null,49.20575,-123.03205,'https://cdn-assets.alltrails.com/uploads/photo/image/25741262/extra_large_b3d646b5a9f9368fff59140fc9ad757b.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Second Narrows and Lions Gate Cycling Loop',null,49.278,-123.10529,'https://cdn-assets.alltrails.com/uploads/photo/image/20936707/extra_large_31d0b08d62eddfba1f7429eb9236eac1.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Trout Lake Loop',null,49.25596,-123.06534,'https://photos.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMzYwNDY2NTgvMTE1NzI2OWFmZGY5MGVjMTg5MmY0NjVkZDQ1YTRkNDIuanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJqcGVnIiwicmVzaXplIjp7IndpZHRoIjoyMDQ4LCJoZWlnaHQiOjIwNDgsImZpdCI6Imluc2lkZSJ9LCJyb3RhdGUiOm51bGwsImpwZWciOnsidHJlbGxpc1F1YW50aXNhdGlvbiI6dHJ1ZSwib3ZlcnNob290RGVyaW5naW5nIjp0cnVlLCJvcHRpbWlzZVNjYW5zIjp0cnVlLCJxdWFudGlzYXRpb25UYWJsZSI6M319fQ==');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Everett Crowley Loop',null,49.21204,-123.04134,'https://cdn-assets.alltrails.com/uploads/photo/image/30915700/extra_large_48159e5b8781617fb4b87b285ae37966.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Avison, Seawall and Merilees Loop',null,49.31272,-123.14384,'https://cdn-assets.alltrails.com/uploads/photo/image/24004895/extra_large_ca8049ebe44092fbb29e2b70aaeb2d28.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Chinatown Neighborhood Tour',null,49.28001,-123.10518,'https://cdn-assets.alltrails.com/uploads/photo/image/13802962/extra_large_2730dc9c56ed9c73e44492b2857fee3d.jpg');
+INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Vancouver and Stanley Park Seawall',null,49.27571,-123.14222,'https://photos.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMzEwNzM0MDEvNjAzMDY1MTAwNzA4YzcwZDZiODMyMTQ5N2Q0ZDIyNjQuanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJqcGVnIiwicmVzaXplIjp7IndpZHRoIjoyMDQ4LCJoZWlnaHQiOjIwNDgsImZpdCI6Imluc2lkZSJ9LCJyb3RhdGUiOm51bGwsImpwZWciOnsidHJlbGxpc1F1YW50aXNhdGlvbiI6dHJ1ZSwib3ZlcnNob290RGVyaW5naW5nIjp0cnVlLCJvcHRpbWlzZVNjYW5zIjp0cnVlLCJxdWFudGlzYXRpb25UYWJsZSI6M319fQ==');
+
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Daypack', 'Essential Gear','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Trekking poles', 'Essential Gear','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Moisture-wicking underwear', 'Clothing & Footwear','Day Hiking');
@@ -23,12 +63,10 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Lightweight fleec
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Boots or shoes', 'Clothing & Footwear','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Socks', 'Clothing & Footwear','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Extra clothes', 'Clothing & Footwear','Day Hiking');
-
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Rainwear', 'Clothing & Footwear','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Long underwear', 'Clothing & Footwear','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Warm, insulated jacket or vest', 'Clothing & Footwear','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Fleece pants', 'Clothing & Footwear','Day Hiking');
-
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Gloves or mittens', 'Clothing & Footwear','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Warm hat', 'Clothing & Footwear','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Bandana or Buff', 'Clothing & Footwear','Day Hiking');
@@ -43,7 +81,6 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Compass', 'Naviga
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Route description or guidebook', 'Navigation','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Altimeter watch', 'Navigation','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('GPS', 'Navigation','Day Hiking');
-
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Satellite messenger/personal locator beacon', 'Navigation','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('First-aid kit or first-aid supplies', 'Emergency & First Aid','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Lighter/matches and firestarter', 'Emergency & First Aid','Day Hiking');
@@ -77,10 +114,6 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Credit card and/o
 INSERT INTO gear_checklist (type, category, activity) VALUES ('ID', 'Personal Items','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Cellphone', 'Personal Items','Day Hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Car keys', 'Personal Items','Day Hiking');
-
-
-
-
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Camp chairs', 'Campsite','Car Camping');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Camp table', 'Campsite','Car Camping');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Lantern', 'Campsite','Car Camping');
@@ -192,8 +225,6 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Credit card and/o
 INSERT INTO gear_checklist (type, category, activity) VALUES ('ID', 'Personal Items','Car Camping');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Cellphone', 'Personal Items','Car Camping');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Campsite reservation confirmation (if required)*', 'Personal Items','Car Camping');
-
-
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Backpack', 'Essential Gear','Backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Backpacking tent', 'Essential Gear','Backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Sleeping bag', 'Essential Gear','Backpacking');
@@ -279,3 +310,5 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Credit card and/o
 INSERT INTO gear_checklist (type, category, activity) VALUES ('ID', 'Personal Items','Backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Car keys', 'Personal Items','Backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Cellphone', 'Personal Items','Backpacking');
+
+
