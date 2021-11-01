@@ -2,17 +2,11 @@ import React, { useState, useEffect } from 'react';
 import UpcomingDays from "./Forecast/UpcomingDays";
 import CurrentDay from "./Forecast/CurrentDay";
 
-import { Button, FormControl, FormControlLabel, FormLabel } from '@material-ui/core';
-import Box from '@mui/material/Box';
+import { Button } from '@material-ui/core';
 import CircularProgress from '@mui/material/CircularProgress';
-import {
-  Progress,
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-  CloseButton,
-} from "@chakra-ui/react"
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+
 import axios from 'axios'
 import './Styles/WeatherApp.scss';
 
@@ -24,7 +18,6 @@ function App() {
   const [weatherData, setWeatherData] = useState([]);
 
   const onSuccessLocation = async (position) => {
-    const location = `lat=${position.coords.latitude},&lon=${position.coords.longitude}`;
     const lat = `${position.coords.latitude}`
     const lon = `${position.coords.longitude}`
     localStorage.setItem('lat', lat);
@@ -46,7 +39,6 @@ function App() {
       setLoading(false);
     }
   }
-  //${process.env.REACT_APP_CLIMACELL_API_KEY}
 
   const getWeatherData = async (lat, lon) => {
     console.log(lat, lon)
@@ -74,6 +66,7 @@ function App() {
       getWeatherData(lat, lon);
     }
     setLoading(false);
+    // eslint-disable-next-line
   }, [])
 
   return (
@@ -81,8 +74,11 @@ function App() {
       {
         loading === true ?
           (
-            <div className="weather-app-loader">
-              <Progress isIndeterminate hasStripe value={44} size="md" />
+            <div style={{
+              padding: "10rem 0",
+              textAlign: 'center'
+            }}>
+              <CircularProgress />
             </div>
           ) :
           !isLocationExist ?
@@ -90,11 +86,9 @@ function App() {
               <div className="weather-app-home">
                 {
                   locationError !== "" && (
-                    <Alert status="error">
-                      <AlertIcon />
-                      <AlertTitle mr={2}>{errorMessage.split(".")[0]}.</AlertTitle>
-                      <AlertDescription>{errorMessage.split(".")[1]}.</AlertDescription>
-                      <CloseButton position="absolute" right="8px" top="8px" />
+                    <Alert onClose={() => { }} severity="error">
+                      <AlertTitle>{errorMessage.split(".")[0]}.</AlertTitle>
+                      {errorMessage.split(".")[1]}.
                     </Alert>
                   )
                 }

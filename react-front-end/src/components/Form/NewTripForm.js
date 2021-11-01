@@ -1,12 +1,10 @@
 import React, { useContext } from 'react';
+import LocationForm from '../Map/LocationForm'
 import TripInfoForm from './TripInfoForm';
 import ActivityForm from './ActivityForm';
 import GearList from './GearList';
 import { Stepper, StepLabel, Step } from '@material-ui/core';
 import { multiStepsContext } from './StepContext';
-import Map from '../Map/Map';
-// import '../Map/Map.css'
-import { flexbox, positions } from '@mui/system';
 
 const NewTripForm = () => {
 
@@ -16,19 +14,21 @@ const NewTripForm = () => {
       // case 1:
       //   return <MAP />
       case 1:
-        return <TripInfoForm />
+        return <LocationForm />
       case 2:
-        return <ActivityForm />
+        return <TripInfoForm />
       case 3:
+        return <ActivityForm />
+      case 4:
         return <GearList />
       default:
-        return <TripInfoForm />
+        return <LocationForm />
     }
   }
 
   return (
-    <div style={{ paddingLeft: '12rem', paddingTop: '2rem' }}>
-      <Stepper style={{ width: '100%', background: 'none', paddingTop: '2rem', position: 'relative' }} activeStep={currentStep - 1} orientation="horizontal">
+    < >
+      <Stepper activeStep={currentStep - 1} orientation="horizontal">
         <Step>
           <StepLabel></StepLabel>
         </Step>
@@ -38,13 +38,12 @@ const NewTripForm = () => {
         <Step>
           <StepLabel></StepLabel>
         </Step>
-        {/* <Step>
+        <Step>
           <StepLabel></StepLabel>
-        </Step> */}
+        </Step>
       </Stepper>
       {showStep(currentStep)}
-
-    </div >
+    </ >
   )
 }
 
