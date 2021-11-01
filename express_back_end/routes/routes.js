@@ -15,12 +15,20 @@ const routes = (db) => {
       .catch((err) => console.log(err));
   })
 
-  router.get("/friendlist/:id", (req, res) => {
-    db.query(`select users.user_name,users.avatar from friendship join users on friendship.user_id2=users.id where friendship.user_id1=${req.params.id};`)
-      .then((response) => {
-        res.send(response.rows)
-      })
-      .catch((err) => console.log(err))
+
+  router.get("/friendlist/:id",(req, res) => {
+    db.query(`select users.user_name, users.avatar from friendship 
+join users on friendship.user_id2=users.id where friendship.user_id1=${req.params.id}
+
+union 
+
+select users.user_name, users.avatar from friendship 
+join users on friendship.user_id1=users.id where friendship.user_id2=${req.params.id}`)
+    .then((response) => {
+      res.send(response.rows)
+    })
+    .catch((err)=>console.log(err))
+
   })
   //GET dashboard
   router.get("/dashboard", (req, res) => {
