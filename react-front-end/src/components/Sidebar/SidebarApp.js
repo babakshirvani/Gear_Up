@@ -23,23 +23,22 @@ const Pages = styled.div`
   height: 100vh;
 `;
 function SidebarApp() {
-  const { auth } = useContext(authContext);
   return (
-    <>
-      <Sidebar />
-      <Pages>
-        <Switch >
-          <Route exact path="/" component={Home} />
-          {/* <Route path="/dashboard" ><Dashboard/></Route> */}
-          {/* <Route path="/calendar" ><Calendar/></Route> */}
-          {/* <Route path="/new" ><NewTrip /></Route> */}
-          <Route path="/dashboard" >{!auth && <Redirect to="/login" />}{auth && <Dashboard />}</Route>
-          <Route path="/calendar" >{!auth && <Redirect to="/login" />}{auth && <Calendar />}</Route>
-          <Route path="/new" >{!auth && <Redirect to="/login" />}{auth && <NewTrip />}</Route>
-          <Route path="/logout" component={Home} ></Route>
-        </Switch>
-      </Pages>
-    </>
+    <authContext.Consumer>
+      {({ auth }) => (
+        <>
+          <Sidebar />
+          <Pages>
+            <Switch >
+              <Route path="/dashboard" >{!auth && <Redirect to="/login" />}{auth && <Dashboard />}</Route>
+              <Route path="/calendar" >{!auth && <Redirect to="/login" />}{auth && <Calendar />}</Route>
+              <Route path="/new" >{!auth && <Redirect to="/login" />}{auth && <NewTrip />}</Route>
+              <Route path="/logout" component={Home} ></Route>
+            </Switch>
+          </Pages>
+        </>
+      )}
+    </authContext.Consumer>
   );
 }
 

@@ -25,24 +25,24 @@ const Pages = styled.div`
   height: 100vh;
 `;
 function NavbarApp() {
-  const { auth } = useContext(authContext);
-
   return (
-    <>
-      <Navbar />
-      <Pages>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/login" >{!auth && <Login />}{auth && <Redirect to="/dashboard" />}</Route>
-          {/* <Route path="/login" ><Redirect to="/dashboard"/></Route> */}
-          <Route path="/logout" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/help" component={Help} />
-          <Redirect to="/" />
-        </Switch>
-      </Pages>
-
-    </>
+    <authContext.Consumer>
+      {({ auth }) => (
+        <>
+          <Navbar />
+          <Pages>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/login" >{!auth && <Login />}{auth && <Redirect to="/dashboard" />}</Route>
+              <Route path="/logout" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/help" component={Help} />
+              <Redirect to="/" />
+            </Switch>
+          </Pages>
+        </>
+      )}
+    </authContext.Consumer>
   );
 }
 export default NavbarApp;
