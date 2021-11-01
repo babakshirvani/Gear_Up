@@ -16,7 +16,7 @@ export default function LocationForm(props) {
   const handleChange = (event) => {
     setUserData({ ...userData, "activity": event.target.value });
   };
-  
+
   const mapContainer = useRef(null);
   const map = useRef(null);
   const geocoder = useRef(null);
@@ -79,7 +79,7 @@ export default function LocationForm(props) {
   }
   const removeMarkers = function() {
     for (let marker of markerGroup.current) {
-      if(marker.getPopup().isOpen() && !tempMarker.current.getPopup().isOpen()) {
+      if (marker.getPopup().isOpen() && !tempMarker.current.getPopup().isOpen()) {
         setLng(null);
         setLat(null);
       };
@@ -90,7 +90,7 @@ export default function LocationForm(props) {
 
   const removePopups = function() {
     for (let marker of markerGroup.current) {
-      if(marker.getPopup().isOpen()) {
+      if (marker.getPopup().isOpen()) {
         marker.togglePopup();
       };
     }
@@ -131,7 +131,7 @@ export default function LocationForm(props) {
   //     loadMarkers(mapList);
   //   })
   // }, [map])
-  
+
   useEffect(() => {
     removeMarkers();
     if (!mapList) return;
@@ -159,7 +159,7 @@ export default function LocationForm(props) {
       flyTo: false,
       accessToken: mapboxgl.accessToken,
       marker: {
-      color: 'orange',
+        color: 'orange',
       },
       mapboxgl: mapboxgl
     });
@@ -183,8 +183,8 @@ export default function LocationForm(props) {
         if (!tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
         setLng(tempMarker.current.getLngLat().lng.toFixed(6));
         setLat(tempMarker.current.getLngLat().lat.toFixed(6));
-       });
-       map.current.flyTo({
+      });
+      map.current.flyTo({
         // minZoom: 22,
         // curve: 1,
         zoom: map.current.getZoom().toFixed(4),
@@ -199,7 +199,7 @@ export default function LocationForm(props) {
       <div ref={mapContainer} className="map-container">
         <Toggle setMapList={setMapList} mapLists={mapLists}></Toggle>
         <div className="step-counter">
-        {props.children}
+          {props.children}
         </div>
         <div className={(!lng ? "location-prompt" : null)}>
           {!lng && 'Please select or choose a location'}
@@ -208,7 +208,7 @@ export default function LocationForm(props) {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => setStep(2)}
+            onClick={!lng ? () => setStep(1) : () => setStep(2)}
           >
             Next
           </Button>
