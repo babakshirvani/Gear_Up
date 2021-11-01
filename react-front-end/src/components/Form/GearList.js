@@ -8,13 +8,13 @@ import { useHistory } from 'react-router-dom';
 
 
 export default function GearList() {
-  const { userData } = useContext(multiStepsContext)
+  const { userData, setUserData } = useContext(multiStepsContext)
   const [gear, setGear] = useState([])
   const [gearIdList, setGearIdList] = useState([null])
   let history = useHistory();
 
   const redirect = () => {
-    history.push('/calendar')
+    history.push(`/calendar/trips/${userData.tripID}`)
   }
 
   useEffect(() => {
@@ -56,11 +56,8 @@ export default function GearList() {
         axios.post(`/api/newTrip`,
           userData
         ).then((resPost) => {
-          console.log("this is after createing new trip:", resPost.data)
-          console.log("this is all gear ids:", gearIdList)
-
+          setUserData({ ...userData, tripID: resPost.data.id })
           res.map((id) => (
-
             axios.post('/api/newGearList',
               {
                 "trip_id": resPost.data.id,
