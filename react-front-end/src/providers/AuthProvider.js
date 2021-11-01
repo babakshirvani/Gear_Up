@@ -23,7 +23,6 @@ export default function AuthProvider(props) {
 
     return new Promise((resolve, reject) => {
       axios.get(`/api/login/${username}`)
-
         .then((all) => {
           setAuth(true);
           console.log(all.data[0].user_name);

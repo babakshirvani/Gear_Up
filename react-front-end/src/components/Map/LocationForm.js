@@ -72,6 +72,7 @@ export default function LocationForm(props) {
       });
     }
   }
+  
   const removeMarkers = function() {
     for (let marker of markerGroup.current) {
       if(tempMarker.current && tempMarker.current.getPopup().isOpen()) {
@@ -130,6 +131,7 @@ export default function LocationForm(props) {
 
   useEffect(() => {
     removeMarkers();
+    console.log(lng);
     if (!mapList) return;
     loadMarkers(mapList);
   }, [mapList])
@@ -204,6 +206,7 @@ export default function LocationForm(props) {
         </div>
         <div className={(!lng ? "location-prompt" : null)}>
           {!lng && 'Please select or choose a location'}
+          {/* {lng && `Longitude: ${lng} | Latitude: ${lat} | Zoom: ${zoom}`} */}
         </div>
         <div className="form-button">
           <Button
