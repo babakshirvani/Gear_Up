@@ -12,7 +12,8 @@ import {
 export const authContext = createContext();
 
 export default function AuthProvider(props) {
-  const [auth, setAuth] = useState(false);
+  const userID = localStorage.getItem('user_id');
+  const [auth, setAuth] = useState(userID ? true : false);
   const [user, setUser] = useState({});
   const [error, setError] = useState('');
 
@@ -24,16 +25,22 @@ export default function AuthProvider(props) {
       axios.get(`/api/login/${username}`)
       
     .then((all) => {
+      console.log(localStorage.getItem('user_id'))
+    if (localStorage.getItem('user_id')) {
+      setAuth(true);
+    } else {
+
       setAuth(true);
       console.log(all.data[0].user_name);
     
     localStorage.setItem('username', all.data[0].user_name);
     localStorage.setItem('user_id', all.data[0].id);
     localStorage.setItem('avatar', all.data[0].avatar);
-
+    console.log(localStorage.getItem('user_id'));
     resolve(all)
     //     const id = "1234-1234-1234";  // Some random userId
      setUser({ username:all.data[0].user_name});
+    }
     })
     .catch((err) => {
      reject(err)

@@ -77,7 +77,7 @@ const TripInfoForm = () => {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => setStep(2)}
+            onClick={() => setStep(3)}
           >
             Next
           </Button>

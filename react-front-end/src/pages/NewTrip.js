@@ -5,11 +5,10 @@ import StepContext from '../components/Form/StepContext';
 
 const NewTrip = () => {
   return (
-    <div className="container">
+    <div>
       <StepContext>
         <NewTripForm />
       </StepContext>
-
     </div>
   )
 }
