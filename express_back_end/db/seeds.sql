@@ -8,7 +8,6 @@ INSERT INTO friendship (user_id1, user_id2) VALUES (1, 2);
 INSERT INTO friendship (user_id1, user_id2) VALUES (1, 3);
 INSERT INTO friendship (user_id1, user_id2) VALUES (1, 4);
 INSERT INTO friendship (user_id1, user_id2) VALUES (1, 5);
-INSERT INTO friendship (user_id1, user_id2) VALUES (2, 1);
 INSERT INTO friendship (user_id1, user_id2) VALUES (2, 3);
 INSERT INTO friendship (user_id1, user_id2) VALUES (2, 4);
 INSERT INTO friendship (user_id1, user_id2) VALUES (2, 5);
