@@ -99,7 +99,3 @@ export default function NestedGrid() {
     </Box>
   );
 }
-
-
-
- 

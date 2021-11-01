@@ -12,7 +12,8 @@ import {
 export const authContext = createContext();
 
 export default function AuthProvider(props) {
-  const [auth, setAuth] = useState(false);
+  const userID = localStorage.getItem('user_id');
+  const [auth, setAuth] = useState(userID ? true : false);
   const [user, setUser] = useState({});
   const [error, setError] = useState('');
 

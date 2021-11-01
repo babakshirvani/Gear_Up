@@ -25,9 +25,10 @@ const Pages = styled.div`
   height: 100vh;
 `;
 function NavbarApp() {
-  const { auth } = useContext(authContext);
 
   return (
+    <authContext.Consumer>
+    {({auth}) => (
     <>
       <Navbar />
       <Pages>
@@ -40,8 +41,9 @@ function NavbarApp() {
           <Redirect to="/" />
         </Switch>
       </Pages>
-
     </>
+    )}
+  </authContext.Consumer>
   );
 }
 export default NavbarApp;

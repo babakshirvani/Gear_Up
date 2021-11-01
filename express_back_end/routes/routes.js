@@ -7,7 +7,7 @@ const routes = (db) => {
   
 
   router.get("/login/:username",(req, res) => {
-    db.query(`select * from users where user_name='${req.params.username}'`)
+    db.query(`SELECT * FROM users WHERE user_name=$1`,[req.params.username])
     .then((response) => {
       
       res.send(response.rows);
@@ -16,7 +16,15 @@ const routes = (db) => {
   })
 
   router.get("/friendlist/:id",(req, res) => {
-    db.query(`select users.user_name,users.avatar from friendship join users on friendship.user_id2=users.id where friendship.user_id1=${req.params.id};`)
+    db.query(`
+    SELECT 
+    users.user_name, users.avatar 
+    FROM 
+    friendship 
+    JOIN users 
+    ON friendship.user_id2=users.id 
+    WHERE 
+    friendship.user_id1=$1;`,[req.params.id])
     .then((response) => {
       res.send(response.rows)
     })
