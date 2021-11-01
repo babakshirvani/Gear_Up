@@ -204,9 +204,9 @@ export default function LocationForm(props) {
         <div className="step-counter">
           {props.children}
         </div>
-        <div className={(!lng ? "location-prompt" : "location-prompt")}>
+        <div className={(!lng ? "location-prompt" : null)}>
           {!lng && 'Please select or choose a location'}
-          {lng && `Longitude: ${lng} | Latitude: ${lat} | Zoom: ${zoom}`}
+          {/* {lng && `Longitude: ${lng} | Latitude: ${lat} | Zoom: ${zoom}`} */}
         </div>
         <div className="form-button">
           <Button
