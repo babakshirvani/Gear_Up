@@ -1,12 +1,12 @@
 
 import React from 'react'
-// import UserGearList from '../components/Calendar/UserGearList';
+import TripGearList from '../components/GearList/TripGearList';
 
 const Calendar = () => {
   return (
     <>
 
-      {/* <UserGearList /> */}
+      <TripGearList />
 
     </>
   )

@@ -37,17 +37,19 @@ export default function GearList() {
             for (let gear of all[0].data) {
               if (category === gear.category) {
                 gearId.push(gear.id);
-                userGearList["gears"].push({ "id": gear.id, "name": gear.type, checked: false });
+                userGearList["gears"].push({ "id": gear.id, "name": gear.type, checked: gear.checked });
               }
             }
             gearList.push(userGearList);
           }
           setGearIdList(gearId);
           setGear(gearList);
+          console.log("86:", gearList)
+          // console.log("86:",gearList)
           return gearId;
         }
-        console.log("sofar userData::", userData)
-        console.log("so far gear IDSS:: ", createGearObject())
+        // console.log("sofar userData::", userData)
+        // console.log("so far gear IDSS:: ", createGearObject())
         return createGearObject()
       }).then((res) => {
         axios.post(`/api/newTrip`,
