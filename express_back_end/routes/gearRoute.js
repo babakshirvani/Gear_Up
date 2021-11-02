@@ -1,30 +1,30 @@
 const Express = require('express');
-const morgan = require('morgan');
 const router = require("express").Router();
 const App = Express();
-App.use(morgan('dev'));
 
 
 module.exports = (db) => {
 
 
-  // Sample GET route
-  // App.get('/api/data', (req, res) => res.json({
-  //   message: "Seems to work!",
-  // }));
+  // GET user gear list: BABAK DONT REMOVE
+  App.get('/calendar/userGearList/:trip_id', (req, res) => {
+    const trip_id = req.params.trip_id;
 
-  // router.get('/api/activities', (req, res) => {
-  //   db.query(
-  //     `
-  //     SELECT
-  //       *
-  //     FROM
-  //     gear_checklist;
-  //   `
-  //   ).then((newRes) => {
-  //     console.log("newRes:::", newRes);
-  //   });
-  // });
+    db.query(
+      `
+    SELECT
+      *
+    FROM
+    user_checklist
+    JOIN gear_checklist on user_checklist.type_id = gear_checklist.id
+    WHERE trip_id = $1;
+  `, [trip_id]
+    ).then((dbResponse) => {
+      console.log("newRes:::", dbResponse.rows);
+      res.json(dbResponse.rows)
+
+    });
+  });
 
   return App;
 };
