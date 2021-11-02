@@ -13,7 +13,7 @@ const UpcomingDays = ({ weatherData }) => {
             <p className="weather-card-date">{moment.unix(Number(day.dt)).format("MMM Do")}</p>
             <img src={getIcon(day.weather[0].id).icon} alt={getIcon(day.weather[0].id).text} />
             <p className="weather-card-temp">{Math.round(day.temp.day)}°C</p>
-            <p className="weather-card-condition">{getIcon(day.weather[0].id).text}</p>
+            <p className="weather-card-condition">{day.weather[0].main}</p>
           </div>
         )
       })}
