@@ -5,7 +5,8 @@ import bgImage2 from "../assets/trip2.jpg";
 import bgImage3 from "../assets/trip3.jpg";
 import moment from "moment";
 
-import { Link, Route } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import TripGearList from "../GearList/TripGearList";
 
 
 const TripContainer = styled.div`
@@ -146,18 +147,20 @@ export const FutureTrips = function(props) {
   const [trip1, trip2, trip3] = props.upcomingTrips;
   const { friendList } = props;
   const currentUserID = Number(localStorage.getItem('user_id'));
+  const history = useHistory();
 
   const handleTripOne = (trip1) => {
     console.log("you've Clicked me 01", trip1)
-      // {component = { Link } to = "/gear"}
-      // < Route path = "/logout" component = { Home } ></Route >
-      
+    history.push(`/calendar/userGearList/${trip1.id}`);
+
   }
   const handleTripTwo = (trip2) => {
     console.log("you've Clicked me 02", trip2)
+    history.push(`/calendar/userGearList/${trip2.id}`);
   }
   const handleTripThree = (trip3) => {
     console.log("you've Clicked me 03", trip3)
+    history.push(`/calendar/userGearList/${trip3.id}`);
   }
 
 

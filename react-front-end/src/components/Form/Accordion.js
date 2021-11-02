@@ -50,6 +50,7 @@ const Accordion = ({ category, gears, tripID }) => {
   useEffect(() => {
     console.log("clicked!!!!!!!!!  state", isComplete)
   }, [isComplete])
+
   return (
     <>
       <div className="accordion-item">
@@ -70,6 +71,10 @@ const Accordion = ({ category, gears, tripID }) => {
 
     </>
   );
+
+
+
+
 };
 
 export default Accordion;

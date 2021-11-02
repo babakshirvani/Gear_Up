@@ -1,31 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './TripGearList.css'
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 
 const TripGearList = () => {
   const [isActive, setIsActive] = useState(false);
   const [isComplete, setComplete] = useState("");
-  const [upcomingTrips, setUpcomingTrips] = useState([]);
+  const [trip, setTrip] = useState(0);
   const [gearList, setGearList] = useState([]);
-
-
-  // useEffect(() => {
-  //   const user_id = localStorage.getItem('user_id');
-  //   axios.get(`api/trips/dashboard/${user_id}`)
-  //     .then((res) => {
-  //       setUpcomingTrips([...res.data]);
-  //     })
-  // }, [])
+  const history = useLocation();
 
 
   useEffect(() => {
-
-    // const user_id = localStorage.getItem('user_id');
-    axios.get(`/api/userGearList/19`)
+    console.log("history44", history)
+    axios.get(history.pathname)
       .then((res) => {
-        console.log(res.data)
+        setTrip(res.data[0].trip_id)
 
         function createGearObject() {
           const categories = [];
@@ -49,10 +40,6 @@ const TripGearList = () => {
             }
             gearList.push(userGearList);
           }
-          // setGearIdList(gearId);
-          // setGear(gearList);
-          console.log("87:", gearList)
-          // console.log("86:",gearList)
           setGearList(gearList);
           return gearId;
         }
@@ -67,7 +54,7 @@ const TripGearList = () => {
     if (!gear.checked && gear.id) {
       gear.checked = true
       setComplete(makeid(5))
-      axios.put(`/api/userGear/update/19`,
+      axios.put(`/api/userGear/update/${trip}`,
         {
           "type_id": gear.id,
           "checked": true
@@ -79,15 +66,13 @@ const TripGearList = () => {
     else {
       gear.checked = false
       setComplete(makeid(5))
-      axios.put(`/api/userGear/update/19`,
+      axios.put(`/api/userGear/update/${trip}`,
         {
           "type_id": gear.id,
           "checked": false
         }
       ).then(res => {
-        console.log("res false", res)
       })
-      // console.log("clicked!!!!!!!!! FALSE state", isComplete)
     }
 
   }
