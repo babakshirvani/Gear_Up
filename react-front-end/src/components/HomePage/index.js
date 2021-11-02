@@ -26,9 +26,9 @@ export default function Friendship() {
         <img src={image6} className="sliderimg" alt=""/>
       </AliceCarousel>
       <div className="container">
-      <StyledEngineProvider injectFirst>
+      {/* <StyledEngineProvider injectFirst>
     <Images/>
-  </StyledEngineProvider>,
+  </StyledEngineProvider>, */}
       <h3 style={{textAlign:"center",padding:10}}>POPULAR PLACES</h3>
         <PopularTrails/>
       </div>

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+//import img1 from './images/5-Must-see-Campgrounds-in-Canda.jpg'
 
 
 function srcset(image, size, rows = 1, cols = 1) {
@@ -35,16 +36,16 @@ export default function QuiltedImageList() {
 
 const itemData = [
   {
-    img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
+    img: '../../images/5-Must-see-Campgrounds-in-Canda.jpg',
     title: 'Breakfast',
-    rows: 4,
-    cols: 1,
+    rows: 3,
+    cols: 2,
   },
   {
-    img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
+    img: '../../images/long-term-camping.jpg',
     title: 'Burger',
-    rows:2,
-    cols:2,
+    rows:5,
+    cols:1,
   },
   {
     img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
