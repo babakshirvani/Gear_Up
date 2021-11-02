@@ -16,12 +16,10 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-
 const Dashboard = () => {
   
   const [friendList, setFriendList] = useState([]);
   const [upcomingTrips, setUpcomingTrips] = useState([]);
-  const [trip1, setTrip1] = useState(null);
   
   useEffect(()=>{
     const user_id=localStorage.getItem('user_id');
@@ -41,6 +39,7 @@ const Dashboard = () => {
  
   return (
     <div className="container">
+     <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList}/>/>
       {/* <Grid container spacing={1}>
         <Grid item xs={12}>
           <Item><FutureTrips upcomingTrips={upcomingTrips}/></Item>
@@ -56,16 +55,12 @@ const Dashboard = () => {
         </Grid>
       </Grid>
        */}
-        <FutureTrips upcomingTrips={upcomingTrips}/>
-      
-      
       <div className="weather-app-container">
-        <WeatherApp />
+        {/* <WeatherApp /> */}
       </div>
       <div className="friend-list-container">
         <FriendList/>
       </div>
-
     </div>
   )
 }

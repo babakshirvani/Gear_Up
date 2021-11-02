@@ -3,7 +3,7 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import './LocationForm.css';
-import { Button, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { multiStepsContext } from '../Form/StepContext';
 import Toggle from './Toggle';
 
@@ -72,15 +72,15 @@ export default function LocationForm(props) {
       });
     }
   }
+
   const removeMarkers = function() {
     for (let marker of markerGroup.current) {
-      if(tempMarker.current && tempMarker.current.getPopup().isOpen()) {
-        return marker.remove();
-      };
-      setLng(null);
-      setLat(null);
       marker.remove();
     }
+    if(tempMarker.current && !tempMarker.current.getPopup().isOpen()) {
+      setLng(null);
+      setLat(null);
+    };
     markerGroup.current.splice(0, markerGroup.current.length);
   };
 

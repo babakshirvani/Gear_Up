@@ -12,7 +12,6 @@ INSERT INTO friendship (user_id1, user_id2) VALUES (2, 3);
 INSERT INTO friendship (user_id1, user_id2) VALUES (2, 4);
 INSERT INTO friendship (user_id1, user_id2) VALUES (2, 5);
 
-
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Daypack', 'Essential Gear','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Trekking poles', 'Essential Gear','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Moisture-wicking underwear', 'Clothing & Footwear','hiking');
@@ -281,9 +280,6 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Cellphone', 'Pers
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Joffre Lakes', null, 'camping', '2021-11-11', '2021-11-12', -122.4762, 50.3413, '/images/trip1.jpg');
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Brunswick Mountain', null, 'hiking', '2021-11-23', '2021-11-23', -123.234719, 49.470883, '/images/trip2.jpg');
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Heather Trail', null, 'backpacking', '2021-12-25', '2021-12-26', -120.764843, 49.099188, '/images/trip3.jpg');
-INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Joffre Lake', null, 'camping', '2021-11-11', '2021-11-12', -122.4762, 50.3413, '/images/trip1.jpg');
-INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Brunswick Mountain', null, 'hiking', '2021-11-23', '2021-11-23', -123.234719, 49.470883, '/images/trip2.jpg');
-INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Heather Trail', null, 'backpacking', '2021-12-25', '2021-12-26', -120.764843, 49.099188, '/images/trip3.jpg'); 
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Spanish Banks and Jericho Beach', null, 'camping', '2021-11-11', '2021-11-12', -123.19159,49.27074,'/images/trip1.jpg');
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Dam Mountain', null, 'hiking', '2021-11-23', '2021-11-23', -123.1335577,49.3562217, '/images/trip2.jpg');
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Stanley Park Seawall Trail', null, 'backpacking', '2021-12-25', '2021-12-26',-123.13071,49.29772,'/images/trip3.jpg'); 

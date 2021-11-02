@@ -10,7 +10,10 @@ const TripContainer = styled.div`
   background-color: #F3F5FA;
   width: 50vw;
   height: 48vh;
-  left: 15rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 
   position: absolute;  
   box-shadow: 2px 2px 7px 0px rgb(166, 166, 166);
@@ -99,6 +102,7 @@ const LaterTrip = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   font-size: calc(80%) !important;
+  text-align: right;
   &:hover {
     cursor: pointer;
     filter: brightness(115%);
@@ -117,20 +121,38 @@ const LaterTrip = styled.div`
   }
   `; 
 
+const FriendAvatar = styled.img`
+  height: 80%;
+  border: 3px solid skyblue;
+  border-radius: 45px;
+  display: inline-block;
+  src: ${props => props.avatar};
+`;
+
 const mapboxCap = function(trip) {
   return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/${trip.longitude},${trip.latitude},14,0/600x600?access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`;
+}
+
+const avatarFinder = function(friendID, list) {
+  for (const friend of list) {
+    if (friend.id === friendID) return friend.avatar;
+  }
 }
 
 export const FutureTrips = function(props) {
 
   const [trip1, trip2, trip3] = props.upcomingTrips;
-  console.log("PROCES ENV", process.env.REACT_APP_MAPBOX_API_KEY);
+  const {friendList} = props;
+  const currentUserID = Number(localStorage.getItem('user_id'));
+
+
   return (
     <>
       <TripContainer>
-        {trip1 &&
+        {trip1 && friendList.length !== 0 &&
         <NextTrip image={trip1.image || mapboxCap(trip1)}>
           <TripDate>
+            {trip1.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip1.creator_id, friendList)} />}
             <TripActivity className={trip1.activity}>{trip1.activity}</TripActivity>
             {moment(trip1.start_date).format("MMM DD, YYYY")}
           </TripDate>
@@ -138,18 +160,22 @@ export const FutureTrips = function(props) {
         </NextTrip>        
         }
         <SideTripContainer>
-          {trip2 &&
+          {trip2 && friendList.length !== 0  &&
             <LaterTrip image={trip2.image || mapboxCap(trip2)} style={{marginBottom: "1rem"}}>
               <TripDate>
+              {console.log(trip2.creator_id, friendList)}
+              {console.log("avatar", avatarFinder(trip2.creator_id, friendList))}
+              {trip2.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip2.creator_id, friendList)} />}
               <TripActivity className={trip2.activity}>{trip2.activity}</TripActivity>
               {moment(trip2.start_date).format("MMM DD, YYYY")}
               </TripDate>
               <TripTitle>{trip2.title}</TripTitle>
             </LaterTrip>          
           }
-          {trip3 &&
+          {trip3 && friendList.length !== 0  &&
             <LaterTrip image={trip3.image || mapboxCap(trip3)} style={{marginTop: "1rem"}}>
               <TripDate>
+              {trip3.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip3.creator_id, friendList)} />}
               <TripActivity className={trip3.activity}>{trip3.activity}</TripActivity>
               {moment(trip3.start_date).format("MMM DD, YYYY")}
               </TripDate>
