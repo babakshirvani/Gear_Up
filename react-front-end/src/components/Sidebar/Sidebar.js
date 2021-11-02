@@ -8,7 +8,7 @@ import CalendarIcon from "../assets/scheduled.svg";
 import NewTripIcon from "../assets/draft.svg";
 import { useContext, useState } from 'react';
 import { authContext } from '../../providers/AuthProvider';
-import Friendlist from '../Friendship/Friendlist'
+
 
 import bgImage from "../assets/homePage.jpg";
 

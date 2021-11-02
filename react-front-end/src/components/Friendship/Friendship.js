@@ -80,7 +80,7 @@ const AvatarWithText = () => {
               <AvatarLabel>
                   <Avatar
                     style={{ marginRight: "14px" }}
-                    alt="Jack Sparrow"
+                    alt={friend.user_name}
                     src={friend.avatar}
                   />
                   <Typography variant="body2">{friend.user_name}</Typography>
