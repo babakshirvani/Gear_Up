@@ -13,10 +13,12 @@ const TripContainer = styled.div`
   box-shadow: 2px 2px 7px 0px rgb(166, 166, 166);
   display: flex;
   flex-direction: column;
+
+  border-radius: 5px;
 `;
 
 const NextTrip = styled.div`
-  border-radius: 19px;
+  border-radius: 12px;
   margin: 1rem 2rem;
   background-image: url(${props => props.image});
   background-size: cover;

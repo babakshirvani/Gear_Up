@@ -18,6 +18,9 @@ const TripContainer = styled.div`
   box-shadow: 2px 2px 7px 0px rgb(166, 166, 166);
   display: flex;
   flex-direction: row;
+
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 `;
 
 const NextTrip = styled.div`
