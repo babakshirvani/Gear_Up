@@ -16,7 +16,6 @@ const StepContext = () => {
   const [currentStep, setStep] = useState(1);
   const [userData, setUserData] = useState([]);
   const [finalData, setFinalData] = useState([]);
-  const [tripInfo, setTripInfo] = useState([]);
   function submitData() {
     console.log(userData)
 
@@ -31,9 +30,7 @@ const StepContext = () => {
         setUserData,
         finalData,
         setFinalData,
-        submitData,
-        tripInfo,
-        setTripInfo
+        submitData
       }} >
         <NewTripForm />
       </multiStepsContext.Provider>

@@ -4,22 +4,15 @@ import { Button } from '@material-ui/core';
 import { multiStepsContext } from './StepContext';
 import axios from 'axios';
 import Accordion from './Accordion';
-import { useHistory, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { set } from 'date-fns';
 
 
 export default function GearList() {
-  const { userData, setUserData, tripInfo, setTripInfo } = useContext(multiStepsContext)
+  const { userData, setUserData } = useContext(multiStepsContext)
   const [gear, setGear] = useState([])
   const [gearIdList, setGearIdList] = useState([null])
-  let history = useHistory();
-
-  const redirect = () => {
-    setTripInfo({ ...tripInfo, "trip_id": userData.tripID })
-    history.push(`/calendar/trips/${userData.tripID}`)
-    // return < Redirect push to={`/calendar/trips/${userData.tripID}`} /
-
-  }
+  
 
   useEffect(() => {
     const activity = userData.activity;
@@ -107,9 +100,9 @@ export default function GearList() {
             < Button
               variant="contained"
               color="primary"
-              onClick={redirect}
+              component={Link} to="/dashboard"
             >
-              Save
+              Done
             </Button>
           </div>
         </div >
