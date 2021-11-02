@@ -43,7 +43,10 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
       <div className="dashboard-container-middle">
-        <WeatherApp />
+        <div className="dashboard-container-middle-left">
+          <WeatherApp />
+          <FriendList/>
+        </div>
         <MoreTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
       </div>
       {/* <Grid container spacing={1}>
@@ -62,9 +65,8 @@ const Dashboard = () => {
       </Grid>
     */}
 
-      {/* <div className="friend-list-container">
-        <FriendList/>
-      </div> */}
+      <div className="friend-list-container">
+      </div>
     </div>
   )
 }

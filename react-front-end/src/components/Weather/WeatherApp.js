@@ -43,7 +43,8 @@ function App() {
   const getWeatherData = async (lat, lon) => {
     console.log(lat, lon)
     setLoading(true);
-    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`;
+    const url = ``;
+    // const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`;
     try {
       const response = await axios.get(url);
       if (response.data) {
