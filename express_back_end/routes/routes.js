@@ -209,7 +209,7 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
   });
 
   // GET user gear list:
-  router.get('/calendar/trips/:trip_id', (req, res) => {
+  router.get('/userGearList/:trip_id', (req, res) => {
     const trip_id = req.params.trip_id;
 
     db.query(
@@ -229,23 +229,22 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
   });
 
 
-  // router.get('/gear/typeDetail/:type_id', (req, res) => {
-  //   const { id } = req.params;
-  //   db.query(
-  //     `
-  //     SELECT
-  //       *
-  //     FROM
-  //     gear_checklist
-  //     WHERE activity = $1
-  //   `, [activityName]
-  //   ).then((dbResponse) => {
-  //     console.log("newRes:::", dbResponse.rows);
-  //     res.json(dbResponse.rows)
-
-  //   });
-  // });
-
+  // PUT, Edit the trip:
+  router.put('/userGear/update/:trip_id', (req, res) => {
+    const checked = req.body.checked;
+    const trip_id = req.params.trip_id;
+    const type_id = req.body.type_id;
+    db.query(
+      `
+    UPDATE user_checklist SET checked=$1
+    WHERE trip_id=$2 AND type_id=$3 RETURNING *;`,
+      [checked, trip_id, type_id]
+    ).then(() => {
+      res.status(200).send("updated checked status");
+    }).catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+  });
 
 
 
