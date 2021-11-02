@@ -1,38 +1,98 @@
-import React, { useState, useEffect, useContext, Component } from 'react'
-import { Button } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import './TripGearList.css'
 import axios from 'axios';
-import Accordion from '../Form/Accordion';
-// import { multiStepsContext } from '../Form/StepContext';
-// import { useHistory, useLocation } from 'react-router-dom';
-
-const UserGearList = () => {
-  // const { tripInfo, setTripInfo } = useContext(multiStepsContext)
-  // let history = useHistory();
-  // // const location = useLocation();
-  // // const currentURL = window.location.pathname
-  // // const noo = `api2${currentURL}`
-  // // history.replace(noo)
-  // useEffect(() => {
-  //   if (history) {
-  //     console.log("what44:", history.location['pathname'])
-  //     axios.get(``)
-  //       .then((res) => {
-  //         console.log("gearList response 2:", res)
-  //       })
-  //   }
-  // }, [])
-
-  // useState(()=>{
+import { Link } from 'react-router-dom';
 
 
-  // },[])
+const TripGearList = () => {
+  const [isActive, setIsActive] = useState(false);
+  const [isComplete, setComplete] = useState("");
+  const [upcomingTrips, setUpcomingTrips] = useState([]);
+  const [gearList, setGearList] = useState([]);
+
+
+  useEffect(() => {
+    const user_id = localStorage.getItem('user_id');
+    axios.get(`api/trips/dashboard/${user_id}`)
+      .then((res) => {
+        setUpcomingTrips([...res.data]);
+      })
+  }, [])
+
+
+  useEffect(() => {
+
+    const user_id = localStorage.getItem('user_id');
+    axios.get(`/api/userGearList/10`)
+      .then((res) => {
+        setGearList([...res.data]);
+      })
+
+
+  }, [])
+
+
+  const handler = (gear) => {
+    if (!gear.checked && gear.id) {
+      gear.checked = true
+      setComplete(makeid(5))
+      axios.put(`/api/userGear/update/${tripID}`,
+        {
+          "type_id": gear.id,
+          "checked": true
+        }
+      ).then(res => {
+        console.log("res TRUE", res)
+      })
+    }
+    else {
+      gear.checked = false
+      setComplete(makeid(5))
+      axios.put(`/api/userGear/update/${tripID}`,
+        {
+          "type_id": gear.id,
+          "checked": false
+        }
+      ).then(res => {
+        console.log("res false", res)
+      })
+      // console.log("clicked!!!!!!!!! FALSE state", isComplete)
+    }
+
+  }
+
+  function makeid(length) {
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() *
+        charactersLength));
+    }
+    return result;
+  }
 
 
   return (
     <>
+      <div className="accordion-item">
+        <div className="accordion-title" onClick={() => setIsActive(!isActive)}>
+          <div>{gearList.category}</div>
+          <div>{isActive ? '-' : '+'}</div>
+        </div>
+        {gears.map((gear) => (
+          isActive &&
+          <div style={{
+            textDecoration: gear.checked && 'line-through'
+          }} className="accordion-content" key={gear.id} onClick={() => handler(gear)}>
+            {gear.name}
+          </div>
+        ))}
+
+      </div>
+
     </>
-  )
-}
+  );
+};
 
-
-export default UserGearList;
+export default TripGearList;

@@ -1,12 +1,12 @@
 
 import React from 'react'
-import UserGearList from '../components/Calendar/UserGearList';
+// import UserGearList from '../components/Calendar/UserGearList';
 
 const Calendar = () => {
   return (
     <>
 
-      <UserGearList />
+      {/* <UserGearList /> */}
 
     </>
   )
