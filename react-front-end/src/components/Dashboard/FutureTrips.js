@@ -15,7 +15,7 @@ const TripContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  position: absolute;  
+
   box-shadow: 2px 2px 7px 0px rgb(166, 166, 166);
   display: flex;
   flex-direction: row;

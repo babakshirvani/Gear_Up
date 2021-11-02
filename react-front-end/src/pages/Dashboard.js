@@ -27,8 +27,9 @@ const Dashboard = () => {
     })
   }, [])
  
+  
   return (
-    <div className="container">
+    <div className="dash-board-container">
         <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
         <MoreTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
       <div className="weather-app-container">

@@ -12,7 +12,6 @@ const TripContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  position: absolute;  
   box-shadow: 2px 2px 7px 0px rgb(166, 166, 166);
   display: flex;
   flex-direction: column;
@@ -84,7 +83,6 @@ export const MoreTrips = function(props) {
       <TripContainer>
         {upcomingTrips !==0 && friendList.length !== 0 && upcomingTrips.map(trip => {
         return (<NextTrip image={trip.image || mapboxCap(trip)}>
-
             {trip.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip.creator_id, friendList)} />}
             <TripActivity className={trip.activity}>{trip.activity}</TripActivity>
             {moment(trip.start_date).format("MMM DD, YYYY")}
