@@ -7,7 +7,8 @@ import DashboardIcon from "../assets/Forum.svg";
 
 import styled from "styled-components";
 import HomeIcon from "../assets/home-solid.svg";
-import logo from '../assets/hiking.png'
+import logo1 from '../assets/hiking.png'
+import logo2 from '../assets/img/logo2.png'
 
 
 const Container = styled.div`
@@ -60,7 +61,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-mainbg">
       <NavLink className="navbar-brand navbar-logo" to="/" exact>
-        <img src={logo} alt="logo" style={{maxHeight: '35px'}} />  Gear Up
+        <img src={logo1} className="logo1" alt="logo"  /><img src={logo2} className="logo2" alt="logo"  />
       </NavLink>
       <button
         className="navbar-toggler"
@@ -115,7 +116,7 @@ const Navbar = () => {
             <li className="nav-item ">
               <Item exact activeClassName="active" to="/help" >
                 <i className="far fa-clone"></i>
-                <Text >help</Text>
+                <Text >Help</Text>
               </Item>
             </li>
           </Container>

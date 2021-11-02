@@ -5,6 +5,8 @@ DROP TABLE IF EXISTS trip_user CASCADE;
 DROP TABLE IF EXISTS user_gear CASCADE;
 DROP TABLE IF EXISTS gear_checklist CASCADE;
 DROP TABLE IF EXISTS user_checklist CASCADE;
+DROP TABLE IF EXISTS recommendations CASCADE;
+
 -- DROP TABLE IF EXISTS day_hiking_checklist CASCADE;
 -- DROP TABLE IF EXISTS backpacking_checklist CASCADE;
 -- DROP TABLE IF EXISTS car_camping_checklist CASCADE;
@@ -69,6 +71,15 @@ CREATE TABLE user_checklist (
   trip_id INTEGER REFERENCES trips(id) ON DELETE CASCADE,
   type_id INTEGER REFERENCES gear_checklist(id) ON DELETE CASCADE,
   checked boolean NOT NULL DEFAULT FALSE 
+);
+
+CREATE TABLE recommendations (
+  id SERIAL PRIMARY KEY NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  description VARCHAR(255),
+  latitude DOUBLE PRECISION NOT NULL,
+  longitude DOUBLE PRECISION NOT NULL,
+  image TEXT
 );
 
 -- CREATE TABLE day_hiking_checklist (

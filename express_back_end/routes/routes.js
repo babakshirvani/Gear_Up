@@ -5,9 +5,8 @@ const router = express.Router();
 
 const routes = (db) => {
 
-
   router.get("/login/:username", (req, res) => {
-    db.query(`select * from users where user_name='${req.params.username}'`)
+    db.query(`SELECT * FROM users WHERE user_name=$1`, [req.params.username])
       .then((response) => {
 
         res.send(response.rows);
@@ -17,12 +16,12 @@ const routes = (db) => {
 
 
   router.get("/friendlist/:id", (req, res) => {
-    db.query(`select users.user_name, users.avatar from friendship 
+    db.query(`select users.id, users.user_name, users.avatar from friendship 
 join users on friendship.user_id2=users.id where friendship.user_id1=${req.params.id}
 
 union 
 
-select users.user_name, users.avatar from friendship 
+select users.id, users.user_name, users.avatar from friendship 
 join users on friendship.user_id1=users.id where friendship.user_id2=${req.params.id}`)
       .then((response) => {
         res.send(response.rows)
