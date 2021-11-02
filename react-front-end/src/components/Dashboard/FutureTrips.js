@@ -4,7 +4,7 @@ import bgImage1 from "../assets/trip1.jpg";
 import bgImage2 from "../assets/trip2.jpg";
 import bgImage3 from "../assets/trip3.jpg";
 import moment from "moment";
-const date = "2012-12-31";
+
 
 const TripContainer = styled.div`
   background-color: #F3F5FA;
@@ -35,13 +35,13 @@ const NextTrip = styled.div`
 
   &:hover {
     cursor: pointer;
-    filter: brightness(115%);
+    filter: brightness(108%);
   }
 `;
 
 const TripTitle = styled.div`
   margin: 0rem 1.5rem;
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: white;
   height: auto;
   text-shadow: 0 0 2px grey, 0 0 2px grey, 0 0 2px grey, 0 0 2px grey;
@@ -49,7 +49,7 @@ const TripTitle = styled.div`
 
 const TripDate = styled.span`
   display: block;
-  margin: 0rem 1.5rem;
+  margin: 0rem 1.2rem;
   font-size: 1.8rem;
   color: white;
   text-shadow: 0 0 2px grey, 0 0 2px grey, 0 0 2px grey, 0 0 2px grey;
@@ -62,7 +62,7 @@ const TripActivity = styled.span`
   padding: 0.3rem 0.6rem;
   border-radius: 9px;
   color: white;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-shadow: none;
   &.hiking {
     background-color: green;
@@ -105,47 +105,57 @@ const LaterTrip = styled.div`
   }
 
   & > ${TripTitle} {
-    font-size: calc(3.5rem * 0.8);
+    font-size: calc(3rem * 0.8);
   }
 
   & > ${TripDate} {
     font-size: calc(1.8rem * 0.8);
     & > ${TripActivity} {
-      font-size: calc(1rem * 0.8);
+      font-size: calc(0.8rem * 0.8);
       margin-right: calc(1.5rem * 0.8)
     }
   }
   `; 
 
+const mapboxCap = function(trip) {
+  return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/${trip.longitude},${trip.latitude},14,0/600x600?access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`;
+}
+
 export const FutureTrips = function(props) {
 
   const [trip1, trip2, trip3] = props.upcomingTrips;
-
+  console.log("PROCES ENV", process.env.REACT_APP_MAPBOX_API_KEY);
   return (
     <>
       <TripContainer>
-        <NextTrip image={(trip1 && trip1.image)}>
+        {trip1 &&
+        <NextTrip image={trip1.image || mapboxCap(trip1)}>
           <TripDate>
-            <TripActivity className={(trip1 && trip1.activity)}>{(trip1 && trip1.activity)}</TripActivity>
-            {moment((trip1 && trip1.start_date)).format("MMM DD, YYYY")}
+            <TripActivity className={trip1.activity}>{trip1.activity}</TripActivity>
+            {moment(trip1.start_date).format("MMM DD, YYYY")}
           </TripDate>
-          <TripTitle>{(trip1 && trip1.title)}</TripTitle>
-        </NextTrip>
+          <TripTitle>{trip1.title}</TripTitle>
+        </NextTrip>        
+        }
         <SideTripContainer>
-          <LaterTrip image={(trip2 && trip2.image)} style={{marginBottom: "1rem"}}>
-            <TripDate>
-            <TripActivity className={(trip2 && trip2.activity)}>{(trip2 && trip2.activity)}</TripActivity>
-            {moment((trip1 && trip2.start_date)).format("MMM DD, YYYY")}
-            </TripDate>
-            <TripTitle>{(trip2 && trip2.title)}</TripTitle>
-          </LaterTrip>
-          <LaterTrip image={(trip3 && trip3.image)} style={{marginTop: "1rem"}}>
-            <TripDate>
-            <TripActivity className={(trip3 && trip3.activity)}>{(trip3 && trip3.activity)}</TripActivity>
-            {moment((trip3 && trip3.start_date)).format("MMM DD, YYYY")}
-            </TripDate>
-            <TripTitle>{(trip3 && trip3.title)}</TripTitle>
-          </LaterTrip>
+          {trip2 &&
+            <LaterTrip image={trip2.image || mapboxCap(trip2)} style={{marginBottom: "1rem"}}>
+              <TripDate>
+              <TripActivity className={trip2.activity}>{trip2.activity}</TripActivity>
+              {moment(trip2.start_date).format("MMM DD, YYYY")}
+              </TripDate>
+              <TripTitle>{trip2.title}</TripTitle>
+            </LaterTrip>          
+          }
+          {trip3 &&
+            <LaterTrip image={trip3.image || mapboxCap(trip3)} style={{marginTop: "1rem"}}>
+              <TripDate>
+              <TripActivity className={trip3.activity}>{trip3.activity}</TripActivity>
+              {moment(trip3.start_date).format("MMM DD, YYYY")}
+              </TripDate>
+              <TripTitle>{trip3.title}</TripTitle>
+            </LaterTrip>
+          }
         </SideTripContainer>
       </TripContainer>
     </>
