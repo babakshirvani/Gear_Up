@@ -12,6 +12,10 @@ INSERT INTO friendship (user_id1, user_id2) VALUES (2, 3);
 INSERT INTO friendship (user_id1, user_id2) VALUES (2, 4);
 INSERT INTO friendship (user_id1, user_id2) VALUES (2, 5);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0cf46c83d5bd3dc18db43fa98ccba1cdef1b27fa
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Daypack', 'Essential Gear','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Trekking poles', 'Essential Gear','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Moisture-wicking underwear', 'Clothing & Footwear','hiking');
@@ -76,8 +80,6 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Credit card and/o
 INSERT INTO gear_checklist (type, category, activity) VALUES ('ID', 'Personal Items','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Cellphone', 'Personal Items','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Car keys', 'Personal Items','hiking');
-
-
 
 
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Camp chairs', 'Campsite','camping');
@@ -282,6 +284,12 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Cellphone', 'Pers
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Joffre Lakes', null, 'camping', '2021-11-11', '2021-11-12', -122.4762, 50.3413, '/images/trip1.jpg');
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Brunswick Mountain', null, 'hiking', '2021-11-23', '2021-11-23', -123.234719, 49.470883, '/images/trip2.jpg');
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Heather Trail', null, 'backpacking', '2021-12-25', '2021-12-26', -120.764843, 49.099188, '/images/trip3.jpg');
+<<<<<<< HEAD
+=======
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Joffre Lake', null, 'camping', '2021-11-11', '2021-11-12', -122.4762, 50.3413, '/images/trip1.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Brunswick Mountain', null, 'hiking', '2021-11-23', '2021-11-23', -123.234719, 49.470883, '/images/trip2.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Heather Trail', null, 'backpacking', '2021-12-25', '2021-12-26', -120.764843, 49.099188, '/images/trip3.jpg'); 
+>>>>>>> 0cf46c83d5bd3dc18db43fa98ccba1cdef1b27fa
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Spanish Banks and Jericho Beach', null, 'camping', '2021-11-11', '2021-11-12', -123.19159,49.27074,'/images/trip1.jpg');
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Dam Mountain', null, 'hiking', '2021-11-23', '2021-11-23', -123.1335577,49.3562217, '/images/trip2.jpg');
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Stanley Park Seawall Trail', null, 'backpacking', '2021-12-25', '2021-12-26',-123.13071,49.29772,'/images/trip3.jpg'); 
@@ -318,3 +326,4 @@ INSERT INTO recommendations (title, description, latitude, longitude, image) VAL
 INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Avison, Seawall and Merilees Loop',null,49.31272,-123.14384,'https://cdn-assets.alltrails.com/uploads/photo/image/24004895/extra_large_ca8049ebe44092fbb29e2b70aaeb2d28.jpg');
 INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Chinatown Neighborhood Tour',null,49.28001,-123.10518,'https://cdn-assets.alltrails.com/uploads/photo/image/13802962/extra_large_2730dc9c56ed9c73e44492b2857fee3d.jpg');
 INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Vancouver and Stanley Park Seawall',null,49.27571,-123.14222,'https://photos.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMzEwNzM0MDEvNjAzMDY1MTAwNzA4YzcwZDZiODMyMTQ5N2Q0ZDIyNjQuanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJqcGVnIiwicmVzaXplIjp7IndpZHRoIjoyMDQ4LCJoZWlnaHQiOjIwNDgsImZpdCI6Imluc2lkZSJ9LCJyb3RhdGUiOm51bGwsImpwZWciOnsidHJlbGxpc1F1YW50aXNhdGlvbiI6dHJ1ZSwib3ZlcnNob290RGVyaW5naW5nIjp0cnVlLCJvcHRpbWlzZVNjYW5zIjp0cnVlLCJxdWFudGlzYXRpb25UYWJsZSI6M319fQ==');
+
