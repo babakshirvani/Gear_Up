@@ -7,7 +7,7 @@ module.exports = (db) => {
 
 
   // GET user gear list: BABAK DONT REMOVE
-  App.get('/calendar/userGearList/:trip_id', (req, res) => {
+  App.get('/tripGearList/:trip_id', (req, res) => {
     const trip_id = req.params.trip_id;
 
     db.query(
