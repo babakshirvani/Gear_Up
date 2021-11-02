@@ -1,32 +1,29 @@
 .weather-app {
-    width: 30vw;
-    height: 390.5px;
+
+    height: 25rem;
     box-shadow: 2px 2px 7px 0px rgb(166, 166, 166);
     background-color: #F3F5FA;
     margin: 2rem 0;
-    margin-right: 1rem;
+    // margin-right: 1rem;
     border-radius: 5px;
     &-home, &-error{
-        height: 100%;
-        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    @media screen and (max-width: 900px) {
-        width: auto;
-        height: auto;
-    }
+    // @media screen and (max-width: 900px) {
+    //     width: auto;
+    //     height: auto;
+    // }
 }
+
 .weather-cards {
     display: flex;
     height: 100%;
     & > div {
         display: flex;
     }
-
-
 }
 
 

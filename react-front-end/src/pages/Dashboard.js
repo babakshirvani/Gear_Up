@@ -10,6 +10,7 @@ import './Styles/Dashboard.scss';
 import { FutureTrips } from '../components/Dashboard/FutureTrips';
 import { MoreTrips } from '../components/Dashboard/MoreTrips';
 import FriendList from '../components/Friendship/Friendlist'
+import PieChart from '../components/Dashboard/PieChart';
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -45,7 +46,10 @@ const Dashboard = () => {
       <div className="dashboard-container-middle">
         <div className="dashboard-container-middle-left">
           <WeatherApp />
-          <FriendList/>
+          <div className="dashboard-container-bottom-left">
+            <FriendList/>
+            <PieChart/>
+          </div>
         </div>
         <MoreTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
       </div>
@@ -65,8 +69,8 @@ const Dashboard = () => {
       </Grid>
     */}
 
-      <div className="friend-list-container">
-      </div>
+      {/* <div className="friend-list-container">
+      </div> */}
     </div>
   )
 }

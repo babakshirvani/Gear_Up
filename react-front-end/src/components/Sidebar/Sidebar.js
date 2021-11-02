@@ -19,7 +19,7 @@ const Container = styled.div`
 
 const SidebarContainer = styled.div`
   background-color: #F3F5FA;
-  width: 14rem;
+  width: 16rem;
   position: relative;  
   height: 100vh;
   box-shadow: 1px 2px 8px 2px rgb(166, 166, 166);
@@ -99,6 +99,7 @@ const Profile = styled.div`
 
 const Name = styled.div`
   text-decoration: none;
+  font-size: 1.4rem;
   color: rgba(53, 97, 255, 1);
   width: 100%;
   padding: 1rem 0;
