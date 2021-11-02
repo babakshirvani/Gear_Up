@@ -5,14 +5,13 @@ const router = express.Router();
 
 const routes = (db) => {
 
-
-  router.get("/login/:username", (req, res) => {
-    db.query(`select * from users where user_name='${req.params.username}'`)
-      .then((response) => {
-
-        res.send(response.rows);
-      })
-      .catch((err) => console.log(err));
+  router.get("/login/:username",(req, res) => {
+    db.query(`SELECT * FROM users WHERE user_name=$1`,[req.params.username])
+    .then((response) => {
+      
+      res.send(response.rows);
+    })
+    .catch((err) => console.log(err));
   })
 
 
