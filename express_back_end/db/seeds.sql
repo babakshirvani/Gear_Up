@@ -66,12 +66,12 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Alcohol or antise
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Blister treatments', 'Health & Hygiene','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Knife or multi-tool', 'Tools & Repair Items','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Small gear-repair kit', 'Tools & Repair Items','hiking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Headlamp or flashlight', 'hiking Extras','hiking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Camera', 'hiking Extras','hiking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Interpretive field guide(s)', 'hiking Extras','hiking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Outdoor journal with pen/pencil', 'hiking Extras','hiking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Binoculars', 'hiking Extras','hiking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Two-way radios', 'hiking Extras','hiking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Headlamp or flashlight', 'Hiking Extras','hiking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Camera', 'Hiking Extras','Hiking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Interpretive field guide(s)', 'Hiking Extras','hiking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Outdoor journal with pen/pencil', 'Hiking Extras','hiking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Binoculars', 'Hiking Extras','hiking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Two-way radios', 'Hiking Extras','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Credit card and/or cash', 'Personal Items','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('ID', 'Personal Items','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Cellphone', 'Personal Items','hiking');
@@ -194,7 +194,7 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Campsite reservat
 
 
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Backpack', 'Essential Gear','backpacking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('backpacking tent', 'Essential Gear','backpacking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Backpacking tent', 'Essential Gear','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Sleeping bag', 'Essential Gear','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Sleeping pad', 'Essential Gear','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Headlamp or flashlight', 'Essential Gear','backpacking');
@@ -203,7 +203,7 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Packable lantern'
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Tent footprint', 'Essential Gear','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Pillow', 'Essential Gear','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Bear spray', 'Essential Gear','backpacking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('backpacking stove', 'Backcountry Kitchen','backpacking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Backpacking stove', 'Backcountry Kitchen','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Fuel', 'Backcountry Kitchen','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Cookset', 'Backcountry Kitchen','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Dishes/bowls', 'Backcountry Kitchen','backpacking');
@@ -264,15 +264,15 @@ INSERT INTO gear_checklist (type, category, activity) VALUES ('Additional bliste
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Duct tape strips', 'Tools & Repair Items','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Knife or Multi-tool ', 'Tools & Repair Items','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Repair kit (include mattress/stove supplies) ', 'Tools & Repair Items','backpacking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Daypack (for day trips away from camp)', 'backpacking Extras','backpacking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Star chart/night-sky identifier', 'backpacking Extras','backpacking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Book/reading material', 'backpacking Extras','backpacking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Cards or games', 'backpacking Extras','backpacking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Camera or action cam (with extra memory cards)', 'backpacking Extras','backpacking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Compact binoculars', 'backpacking Extras','backpacking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Interpretive field guide(s)', 'backpacking Extras','backpacking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Two-way radios', 'backpacking Extras','backpacking');
-INSERT INTO gear_checklist (type, category, activity) VALUES ('Outdoor journal with pen/pencil', 'backpacking Extras','backpacking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Daypack (for day trips away from camp)', 'Backpacking Extras','backpacking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Star chart/night-sky identifier', 'Backpacking Extras','backpacking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Book/reading material', 'Backpacking Extras','backpacking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Cards or games', 'Backpacking Extras','backpacking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Camera or action cam (with extra memory cards)', 'Backpacking Extras','backpacking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Compact binoculars', 'Backpacking Extras','backpacking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Interpretive field guide(s)', 'Backpacking Extras','backpacking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Two-way radios', 'Backpacking Extras','backpacking');
+INSERT INTO gear_checklist (type, category, activity) VALUES ('Outdoor journal with pen/pencil', 'Backpacking Extras','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Permits (if needed)', 'Personal Items','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Credit card and/or cash', 'Personal Items','backpacking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('ID', 'Personal Items','backpacking');
