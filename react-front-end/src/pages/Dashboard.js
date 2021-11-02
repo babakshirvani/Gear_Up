@@ -5,11 +5,11 @@ import WeatherApp from '../components/Weather/WeatherApp';
 import './Styles/Dashboard.scss';
 import { FutureTrips } from '../components/Dashboard/FutureTrips';
 
+
 const Dashboard = () => {
 
   const [friendList, setFriendList] = useState([]);
   const [upcomingTrips, setUpcomingTrips] = useState([]);
-  const [trip1, setTrip1] = useState(null);
   
   useEffect(()=>{
     const user_id=localStorage.getItem('user_id');
@@ -31,7 +31,7 @@ const Dashboard = () => {
     <div className="container">
         <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
       <div className="weather-app-container">
-        <WeatherApp />
+        {/* <WeatherApp /> */}
       </div>
 
     </div>

@@ -10,7 +10,10 @@ const TripContainer = styled.div`
   background-color: #F3F5FA;
   width: 50vw;
   height: 48vh;
-  left: 15rem;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
 
   position: absolute;  
   box-shadow: 2px 2px 7px 0px rgb(166, 166, 166);
