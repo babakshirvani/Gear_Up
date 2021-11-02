@@ -44,7 +44,7 @@ const NextTrip = styled.div`
 
 const TripTitle = styled.div`
   margin: 0rem 1.5rem;
-  font-size: 3rem;
+  font-size: 1.8rem;
   color: white;
   height: auto;
   text-shadow: 0 0 2px grey, 0 0 2px grey, 0 0 2px grey, 0 0 2px grey;
@@ -109,17 +109,17 @@ const LaterTrip = styled.div`
   }
 
   & > ${TripTitle} {
-    font-size: calc(3rem * 0.8);
+    font-size: calc(1.8rem * 0.8);
   }
 
   & > ${TripDate} {
     font-size: calc(1.8rem * 0.8);
     & > ${TripActivity} {
-      font-size: calc(0.8rem * 0.8);
+      font-size: calc(0.8rem * 0.9);
       margin-right: calc(1.5rem * 0.8)
     }
   }
-  `; 
+  `;
 
 const FriendAvatar = styled.img`
   height: 80%;
@@ -142,7 +142,7 @@ const avatarFinder = function(friendID, list) {
 export const FutureTrips = function(props) {
 
   const [trip1, trip2, trip3] = props.upcomingTrips;
-  const {friendList} = props;
+  const { friendList } = props;
   const currentUserID = Number(localStorage.getItem('user_id'));
 
 
@@ -150,34 +150,34 @@ export const FutureTrips = function(props) {
     <>
       <TripContainer>
         {trip1 && friendList.length !== 0 &&
-        <NextTrip image={trip1.image || mapboxCap(trip1)}>
-          <TripDate>
-            {trip1.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip1.creator_id, friendList)} />}
-            <TripActivity className={trip1.activity}>{trip1.activity}</TripActivity>
-            {moment(trip1.start_date).format("MMM DD, YYYY")}
-          </TripDate>
-          <TripTitle>{trip1.title}</TripTitle>
-        </NextTrip>        
+          <NextTrip image={trip1.image || mapboxCap(trip1)}>
+            <TripDate>
+              {trip1.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip1.creator_id, friendList)} />}
+              <TripActivity className={trip1.activity}>{trip1.activity}</TripActivity>
+              {moment(trip1.start_date).format("MMM DD, YYYY")}
+            </TripDate>
+            <TripTitle>{trip1.title}</TripTitle>
+          </NextTrip>
         }
         <SideTripContainer>
-          {trip2 && friendList.length !== 0  &&
-            <LaterTrip image={trip2.image || mapboxCap(trip2)} style={{marginBottom: "1rem"}}>
+          {trip2 && friendList.length !== 0 &&
+            <LaterTrip image={trip2.image || mapboxCap(trip2)} style={{ marginBottom: "1rem" }}>
               <TripDate>
-              {console.log(trip2.creator_id, friendList)}
-              {console.log("avatar", avatarFinder(trip2.creator_id, friendList))}
-              {trip2.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip2.creator_id, friendList)} />}
-              <TripActivity className={trip2.activity}>{trip2.activity}</TripActivity>
-              {moment(trip2.start_date).format("MMM DD, YYYY")}
+                {console.log(trip2.creator_id, friendList)}
+                {console.log("avatar", avatarFinder(trip2.creator_id, friendList))}
+                {trip2.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip2.creator_id, friendList)} />}
+                <TripActivity className={trip2.activity}>{trip2.activity}</TripActivity>
+                {moment(trip2.start_date).format("MMM DD, YYYY")}
               </TripDate>
               <TripTitle>{trip2.title}</TripTitle>
-            </LaterTrip>          
+            </LaterTrip>
           }
-          {trip3 && friendList.length !== 0  &&
-            <LaterTrip image={trip3.image || mapboxCap(trip3)} style={{marginTop: "1rem"}}>
+          {trip3 && friendList.length !== 0 &&
+            <LaterTrip image={trip3.image || mapboxCap(trip3)} style={{ marginTop: "1rem" }}>
               <TripDate>
-              {trip3.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip3.creator_id, friendList)} />}
-              <TripActivity className={trip3.activity}>{trip3.activity}</TripActivity>
-              {moment(trip3.start_date).format("MMM DD, YYYY")}
+                {trip3.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip3.creator_id, friendList)} />}
+                <TripActivity className={trip3.activity}>{trip3.activity}</TripActivity>
+                {moment(trip3.start_date).format("MMM DD, YYYY")}
               </TripDate>
               <TripTitle>{trip3.title}</TripTitle>
             </LaterTrip>

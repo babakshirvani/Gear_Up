@@ -17,29 +17,29 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Dashboard = () => {
-  
+
   const [friendList, setFriendList] = useState([]);
   const [upcomingTrips, setUpcomingTrips] = useState([]);
-  
-  useEffect(()=>{
-    const user_id=localStorage.getItem('user_id');
+
+  useEffect(() => {
+    const user_id = localStorage.getItem('user_id');
     axios.get(`api/friendlist/${user_id}`)
-    .then((res)=>{
-      setFriendList([...res.data]);
-    })
+      .then((res) => {
+        setFriendList([...res.data]);
+      })
   }, [])
-  
-  useEffect(()=>{
-    const user_id=localStorage.getItem('user_id');
+
+  useEffect(() => {
+    const user_id = localStorage.getItem('user_id');
     axios.get(`api/trips/dashboard/${user_id}`)
-    .then((res)=>{
-      setUpcomingTrips([...res.data]);
-    })
+      .then((res) => {
+        setUpcomingTrips([...res.data]);
+      })
   }, [])
- 
+
   return (
     <div className="container">
-     <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList}/>/>
+      <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList} />
       {/* <Grid container spacing={1}>
         <Grid item xs={12}>
           <Item><FutureTrips upcomingTrips={upcomingTrips}/></Item>
@@ -56,10 +56,10 @@ const Dashboard = () => {
       </Grid>
        */}
       <div className="weather-app-container">
-        {/* <WeatherApp /> */}
+        <WeatherApp />
       </div>
       <div className="friend-list-container">
-        <FriendList/>
+        <FriendList />
       </div>
     </div>
   )
