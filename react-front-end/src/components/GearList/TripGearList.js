@@ -92,7 +92,7 @@ const TripGearList = () => {
 
   return (
     <>
-      <div className="accordion-item" style={{ margin: '20rem' }}>
+      <div className="accordion-item" >
         {gearList.map((item, index) => (
 
           <div key={index}>
