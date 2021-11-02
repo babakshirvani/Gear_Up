@@ -5,3 +5,13 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.dashboard-container-middle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+}

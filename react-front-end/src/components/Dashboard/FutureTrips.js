@@ -8,18 +8,16 @@ import moment from "moment";
 
 const TripContainer = styled.div`
   background-color: #F3F5FA;
-  width: 50vw;
+  width: 100%;
   height: 48vh;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-
-
+    
   box-shadow: 2px 2px 7px 0px rgb(166, 166, 166);
   display: flex;
   flex-direction: row;
-
 `;
 
 const NextTrip = styled.div`

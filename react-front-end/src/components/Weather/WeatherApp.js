@@ -105,7 +105,7 @@ function App() {
                     <CurrentDay currentWeather={weatherData.weather['current']} />
                   </div>
                   <div className="weather-cards">
-                    <div><UpcomingDays weatherData={weatherData.weather.daily.slice(1, 7)} /></div>
+                    <UpcomingDays weatherData={weatherData.weather.daily.slice(1, 7)} />
                   </div>
                 </>
               ) :

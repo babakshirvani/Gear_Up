@@ -9,11 +9,10 @@ const TripContainer = styled.div`
   height: fit-to-content;
 
   margin: 2rem 0;
+  margin-left: 1rem;
   box-shadow: 2px 2px 7px 0px rgb(166, 166, 166);
   display: flex;
   flex-direction: column;
-
-  align-self: flex-end;
 `;
 
 const NextTrip = styled.div`

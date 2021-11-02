@@ -38,12 +38,14 @@ const Dashboard = () => {
       setUpcomingTrips([...res.data]);
     })
   }, [])
- 
-  
+
   return (
     <div className="dashboard-container">
-     <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
-     <MoreTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
+      <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
+      <div className="dashboard-container-middle">
+        <WeatherApp />
+        <MoreTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
+      </div>
       {/* <Grid container spacing={1}>
         <Grid item xs={12}>
           <Item><FutureTrips upcomingTrips={upcomingTrips}/></Item>
@@ -58,10 +60,8 @@ const Dashboard = () => {
           <Item>  <WeatherApp /></Item>
         </Grid>
       </Grid>
-       */}
-      <div className="weather-app-container">
-        {/* <WeatherApp /> */}
-      </div>
+    */}
+
       {/* <div className="friend-list-container">
         <FriendList/>
       </div> */}

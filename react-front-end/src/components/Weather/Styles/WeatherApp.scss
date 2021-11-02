@@ -1,11 +1,11 @@
 .weather-app {
-    width: 535.5px;
+    width: 30vw;
     height: 390.5px;
-    border: 1px solid #000000;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15);
-    position: absolute;
-    right: 5rem;
-    bottom: 2rem;
+    box-shadow: 2px 2px 7px 0px rgb(166, 166, 166);
+    background-color: #F3F5FA;
+    margin: 2rem 0;
+    margin-right: 1rem;
+
     &-home, &-error{
         height: 100%;
         width: 100%;
@@ -21,21 +21,12 @@
 }
 .weather-cards {
     display: flex;
-
+    height: 100%;
     & > div {
         display: flex;
     }
 
-    @media screen and (max-width: 600px) {
-        width: 100%;
-        overflow-x: auto;
-        -ms-overflow-style: none;
-        scrollbar-width: none; /* Firefox */
 
-        &::-webkit-scrollbar {
-            display: none;
-        }
-    }
 }
 
 
