@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Button, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio } from '@material-ui/core';
+import { Button, TextField, FormControl, FormControlLabel, FormLabel, RadioGroup, Radio } from '@material-ui/core';
 import { multiStepsContext } from './StepContext';
 
 
@@ -52,6 +52,16 @@ export default function ActivityForm() {
               <img style={{ maxWidth: 650, maxHeight: 162, borderRadius: "30px", boxShadow: "3px 9px 9px #9E9E9E", marginBottom: "30px" }} src="https://purewows3.imgix.net/images/articles/2020_06/car_camping_checklist_400.png?auto=format,compress&cs=strip" alt="Car Camping" />
             </RadioGroup>
           </FormControl>
+
+          <TextField id="standard-basic"
+            label="Add Custom Image URL"
+            value={userData['image'] || ""}
+            onChange={(e) => setUserData({ ...userData, "image": e.target.value })}
+            margin="normal"
+            variant="standard"
+            color="secondary"
+            fullWidth
+          />
 
           <div style={{ padding: "2rem" }}>
             <Button
