@@ -4,7 +4,7 @@ import axios from 'axios';
 import WeatherApp from '../components/Weather/WeatherApp';
 import './Styles/Dashboard.scss';
 import { FutureTrips } from '../components/Dashboard/FutureTrips';
-
+import { MoreTrips } from '../components/Dashboard/MoreTrips';
 
 const Dashboard = () => {
 
@@ -30,6 +30,7 @@ const Dashboard = () => {
   return (
     <div className="container">
         <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
+        <MoreTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
       <div className="weather-app-container">
         {/* <WeatherApp /> */}
       </div>

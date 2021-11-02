@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import bgImage1 from "../assets/trip1.jpg";
-import bgImage2 from "../assets/trip2.jpg";
-import bgImage3 from "../assets/trip3.jpg";
 import moment from "moment";
 
 
@@ -82,19 +79,18 @@ export const MoreTrips = function(props) {
   const {friendList} = props;
   const currentUserID = Number(localStorage.getItem('user_id'));
 
-
   return (
     <>
       <TripContainer>
-        {upcomingTrips !==0 && friendList.length !== 0 && upcomingTrips.map
-        <NextTrip image={trip1.image || mapboxCap(trip1)}>
-          <TripDate>
-            {trip1.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip1.creator_id, friendList)} />}
-            <TripActivity className={trip1.activity}>{trip1.activity}</TripActivity>
-            {moment(trip1.start_date).format("MMM DD, YYYY")}
-          </TripDate>
-          <TripTitle>{trip1.title}</TripTitle>
-        </NextTrip>}
+        {upcomingTrips !==0 && friendList.length !== 0 && upcomingTrips.map(trip => {
+        return (<NextTrip image={trip.image || mapboxCap(trip)}>
+
+            {trip.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip.creator_id, friendList)} />}
+            <TripActivity className={trip.activity}>{trip.activity}</TripActivity>
+            {moment(trip.start_date).format("MMM DD, YYYY")}
+          <TripTitle>{trip.title}</TripTitle>
+        </NextTrip>)
+        })}
       </TripContainer>
     </>
   )
