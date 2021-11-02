@@ -151,16 +151,16 @@ export const FutureTrips = function(props) {
 
   const handleTripOne = (trip1) => {
     console.log("you've Clicked me 01", trip1)
-    history.push(`/calendar/userGearList/${trip1.id}`);
+    history.push(`/tripGearList/${trip1.id}`);
 
   }
   const handleTripTwo = (trip2) => {
     console.log("you've Clicked me 02", trip2)
-    history.push(`/calendar/userGearList/${trip2.id}`);
+    history.push(`/tripGearList/${trip2.id}`);
   }
   const handleTripThree = (trip3) => {
     console.log("you've Clicked me 03", trip3)
-    history.push(`/calendar/userGearList/${trip3.id}`);
+    history.push(`/tripGearList/${trip3.id}`);
   }
 
 
