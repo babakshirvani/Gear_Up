@@ -29,7 +29,7 @@ const Dashboard = () => {
  
   return (
     <div className="container">
-        <FutureTrips upcomingTrips={upcomingTrips}/>
+        <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
       <div className="weather-app-container">
         <WeatherApp />
       </div>
