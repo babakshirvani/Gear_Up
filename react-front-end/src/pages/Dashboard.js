@@ -40,29 +40,30 @@ const Dashboard = () => {
   }, [])
  
   return (
-    <div className="">
+    <div className="container">
       {/* <Grid container spacing={1}>
-        <Grid item xs={7}>
+        <Grid item xs={12}>
           <Item><FutureTrips upcomingTrips={upcomingTrips}/></Item>
         </Grid>
         <Grid item xs={4}>
           <Item><FriendList/></Item>
         </Grid>
         <Grid item xs={4}>
-          <Item>xs=4</Item>
+          <Item></Item>
         </Grid>
         <Grid item xs={8}>
           <Item>  <WeatherApp /></Item>
         </Grid>
-      </Grid> */}
-      <div className="trip-container">
+      </Grid>
+       */}
         <FutureTrips upcomingTrips={upcomingTrips}/>
-      </div>
-       {/* <div className="friend-list-container">
-        <FriendList/>
-        </div> */}
+      
+      
       <div className="weather-app-container">
         <WeatherApp />
+      </div>
+      <div className="friend-list-container">
+        <FriendList/>
       </div>
 
     </div>
