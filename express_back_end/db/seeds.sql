@@ -12,7 +12,6 @@ INSERT INTO friendship (user_id1, user_id2) VALUES (2, 3);
 INSERT INTO friendship (user_id1, user_id2) VALUES (2, 4);
 INSERT INTO friendship (user_id1, user_id2) VALUES (2, 5);
 
-
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Daypack', 'Essential Gear','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Trekking poles', 'Essential Gear','hiking');
 INSERT INTO gear_checklist (type, category, activity) VALUES ('Moisture-wicking underwear', 'Clothing & Footwear','hiking');

@@ -4,18 +4,15 @@ import { Button } from '@material-ui/core';
 import { multiStepsContext } from './StepContext';
 import axios from 'axios';
 import Accordion from './Accordion';
-import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { set } from 'date-fns';
 
 
 export default function GearList() {
-  const { userData } = useContext(multiStepsContext)
+  const { userData, setUserData } = useContext(multiStepsContext)
   const [gear, setGear] = useState([])
   const [gearIdList, setGearIdList] = useState([null])
-  let history = useHistory();
 
-  const redirect = () => {
-    history.push('/calendar')
-  }
 
   useEffect(() => {
     const activity = userData.activity;
@@ -40,27 +37,26 @@ export default function GearList() {
             for (let gear of all[0].data) {
               if (category === gear.category) {
                 gearId.push(gear.id);
-                userGearList["gears"].push({ "id": gear.id, "name": gear.type });
+                userGearList["gears"].push({ "id": gear.id, "name": gear.type, checked: gear.checked });
               }
             }
             gearList.push(userGearList);
           }
           setGearIdList(gearId);
           setGear(gearList);
+          console.log("86:", gearList)
+          // console.log("86:",gearList)
           return gearId;
         }
-        console.log("sofar userData::", userData)
-        console.log("so far gear IDSS:: ", createGearObject())
+        // console.log("sofar userData::", userData)
+        // console.log("so far gear IDSS:: ", createGearObject())
         return createGearObject()
       }).then((res) => {
         axios.post(`/api/newTrip`,
           userData
         ).then((resPost) => {
-          console.log("this is after createing new trip:", resPost.data)
-          console.log("this is all gear ids:", gearIdList)
-
+          setUserData({ ...userData, tripID: resPost.data.id })
           res.map((id) => (
-
             axios.post('/api/newGearList',
               {
                 "trip_id": resPost.data.id,
@@ -92,10 +88,10 @@ export default function GearList() {
         <br />
         <div>
           <div className="accordion">
-            {/* {console.log("BEFORE MAP::", gear)} */}
-            {gear.map((item) => (
+            {console.log("BEFORE MAP::", gear)}
+            {gear.map((item, i) => (
               <>
-                <Accordion key={item.id} category={item.category} gears={item.gears} />
+                <Accordion key={item.id} category={item.category} gears={item.gears} tripID={userData.tripID} />
               </>
             ))}
           </div>
@@ -106,9 +102,9 @@ export default function GearList() {
             < Button
               variant="contained"
               color="primary"
-              onClick={redirect}
+              component={Link} to="/dashboard"
             >
-              Save
+              Done
             </Button>
           </div>
         </div >

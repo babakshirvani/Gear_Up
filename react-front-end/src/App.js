@@ -40,6 +40,7 @@ class App extends Component {
             <Route path='/help' component={NavbarApp} />
             <Route path='/dashboard' > <SidebarApp/></Route>
             <Route path='/calendar' component={SidebarApp} />
+            <Route path='/tripGearList' component={SidebarApp} />
             <Route path='/new' component={SidebarApp} />
             <Route exact path="/popularplace1" component={PopularPlace1}></Route>
           </Switch>

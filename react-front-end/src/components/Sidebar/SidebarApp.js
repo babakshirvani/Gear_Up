@@ -17,27 +17,29 @@ import Home from "../../pages/Home";
 import Dashboard from "../../pages/Dashboard";
 import NewTrip from "../../pages/NewTrip";
 import Calendar from "../../pages/Calendar";
+import TripGearListPage from "../../pages/TripGearListPage";
 
 const Pages = styled.div`
   width: 100vw;
   height: 100vh;
 `;
 function SidebarApp() {
-  
+
   return (
     <authContext.Consumer>
-      {({auth}) => (
-      <>
-        <Sidebar />
-        <Pages>
+      {({ auth }) => (
+        <>
+          <Sidebar />
+          <Pages>
             <Switch >
-            <Route path="/dashboard" >{!auth && <Redirect to="/login"/>}{auth && <Dashboard/>}</Route>
-              <Route path="/calendar" >{!auth && <Redirect to="/login"/>}{auth && <Calendar/>}</Route>
-              <Route path="/new" >{!auth && <Redirect to="/login"/>}{auth && <NewTrip/>}</Route>
+              <Route path="/dashboard" >{!auth && <Redirect to="/login" />}{auth && <Dashboard />}</Route>
+              <Route path="/calendar" >{!auth && <Redirect to="/login" />}{auth && <Calendar />}</Route>
+              <Route path="/new" >{!auth && <Redirect to="/login" />}{auth && <NewTrip />}</Route>
+              <Route path="/tripGearList" >{!auth && <Redirect to="/login" />}{auth && <TripGearListPage />}</Route>
               <Route path="/logout" component={Home} ></Route>
             </Switch>
-        </Pages>        
-    </>
+          </Pages>
+        </>
       )}
     </authContext.Consumer>
   );
