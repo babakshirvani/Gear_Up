@@ -62,12 +62,13 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
     const activity = req.body.activity;
     const longitude = req.body.longitude;
     const latitude = req.body.latitude;
+    const image = req.body.image;
 
     db.query(`
     INSERT INTO trips (creator_id, title, description,
-      start_date, end_date, activity, longitude, latitude)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
-      [creator_id, title, description, start_date, end_date, activity, longitude, latitude]
+      start_date, end_date, activity, longitude, latitude, image)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
+      [creator_id, title, description, start_date, end_date, activity, longitude, latitude, image]
     ).then((data) => {
       return res.json(data.rows[0]);
     });
