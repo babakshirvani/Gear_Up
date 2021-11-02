@@ -8,7 +8,8 @@ import CalendarIcon from "../assets/scheduled.svg";
 import NewTripIcon from "../assets/draft.svg";
 import { useContext, useState } from 'react';
 import { authContext } from '../../providers/AuthProvider';
-import Friendship from "../Friendship/Friendship";
+import Friendlist from '../Friendship/Friendlist'
+
 import bgImage from "../assets/homePage.jpg";
 
 const Container = styled.div`
@@ -144,11 +145,13 @@ const Sidebar = () => {
             <img src={NewTripIcon} alt="NewTripIcon" />
             <Text clicked={click}>Logout</Text>
           </Item>
-          
+        
           
         </SlickBar>
+        
       </SidebarContainer>
-     <Friendship/>
+    
+      
     </Container>
   );
 };
