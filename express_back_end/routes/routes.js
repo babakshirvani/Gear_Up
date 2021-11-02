@@ -181,7 +181,7 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
         )
       )
       ORDER BY start_date ASC
-      LIMIT 3
+      LIMIT 9
     `, [user_id]
     ).then(({ rows: dbResponse }) => {
       res.json(dbResponse);

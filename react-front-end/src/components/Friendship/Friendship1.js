@@ -3,6 +3,8 @@ import styled, { ThemeProvider } from "styled-components";
 import ReactDOM from "react-dom";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
+import Grid from '@mui/material/Grid';
+
 //import IconButton from "@material-ui/core/IconButton";
 //import AvatarGroup from "@material-ui/lab/AvatarGroup";
 import { StylesProvider, useTheme } from "@material-ui/core/styles";
@@ -61,13 +63,16 @@ const AvatarWithText = () => {
     axios.get(`api/friendlist/${user_id}`)
     .then((res)=>{
       setFriendlist([...res.data]);
+    
     })
   },[])
 
+  
   const theme = useTheme();
 
   return (
-  
+    <Grid item xs={12} md={4}>
+      {friendlist}
     <StylesProvider injectFirst>  
       <ThemeProvider theme={theme}>
         <Content>
@@ -76,7 +81,7 @@ const AvatarWithText = () => {
             <ul>
               {
               friendlist.map((friend) =>             
-              <li style={{ padding: "10px" }}>
+              <li style={{ paddingLeft: "10px" }}>
               <AvatarLabel>
                   <Avatar
                     style={{ marginRight: "14px" }}
@@ -93,6 +98,7 @@ const AvatarWithText = () => {
         </Content>
       </ThemeProvider>
     </StylesProvider>
+    </Grid>
   )
 }
 export default AvatarWithText;

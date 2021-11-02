@@ -1,4 +1,7 @@
-.dash-board-container {
+.dashboard-container {
   display: flex;
   flex-direction: column;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }

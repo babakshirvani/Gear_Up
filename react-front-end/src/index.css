@@ -19,3 +19,7 @@ code {
   margin-left: auto !important;
   margin-right: auto !important;
 }
+
+.friend-list-container {
+  padding-top: 50%;
+}
