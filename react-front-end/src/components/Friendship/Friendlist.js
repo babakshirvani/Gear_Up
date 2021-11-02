@@ -13,24 +13,8 @@ import axios from "axios";
 
 
 
-function generate(element) {
-  return [0, 1, 2].map((value) =>
-    React.cloneElement(element, {
-      key: value,
-    }),
-  );
-}
-
-const Demo = styled('div')(({ theme }) => ({
-  backgroundColor: theme.palette.background.paper,
-}));
-
-
-
-
 export default function InteractiveList() {
-  const [dense, setDense] = React.useState(false);
-  const [secondary, setSecondary] = React.useState(false);
+
   const [friendlist, setFriendlist] = useState([]);
 
   useEffect(()=>{
@@ -41,7 +25,6 @@ export default function InteractiveList() {
     })
   },[])
 
-  console.log(friendlist);
   return (
     <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '10px' }}>
       <h6 style={{padding: '10px',borderBottom: '1px black solid'}}>FRIENDLIST</h6>
