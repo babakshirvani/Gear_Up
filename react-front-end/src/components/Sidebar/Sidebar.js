@@ -98,14 +98,14 @@ const Profile = styled.div`
 `;
 
 const Name = styled.div`
-text-decoration: none;
-color: rgba(53, 97, 255, 1);
-width: 100%;
-padding: 1rem 0;
-cursor: pointer;
-display: flex;
-padding-left: 1rem;
-padding-top: 1.5rem;
+  text-decoration: none;
+  color: rgba(53, 97, 255, 1);
+  width: 100%;
+  padding: 1rem 0;
+  cursor: pointer;
+  display: flex;
+  padding-left: 1rem;
+  padding-top: 1.5rem;
 `;
 const Sidebar = () => {
   const [click, setClick] = useState(false);

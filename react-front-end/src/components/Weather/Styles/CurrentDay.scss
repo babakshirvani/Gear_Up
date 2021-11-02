@@ -1,0 +1,49 @@
+.current-weather{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 170px;
+  padding: 17px;
+  font-size: 14px;
+
+  &-temp{
+      font-size: 59.5px;
+      font-weight: bold;
+  }
+
+  &-day{
+      font-size: 15px;
+      margin-bottom: 17px;
+  }
+
+  & img{
+      width: 85px;
+      margin-top: 17px;
+  }
+
+  &-status{
+      font-style: italic;
+      font-weight: 500;
+      margin-top:51px;
+      margin-left: -42.5px;
+  }
+
+  @media screen and (max-width:900px){
+      padding: 8.5px;
+
+      &-day, &-status{
+          font-size: 12px;
+      }
+
+      &-temp{
+          font-size: 25.5px;
+      }
+
+      & img{
+          width: 55px;
+      }
+      width: auto;
+        height: auto;
+  }
+
+}

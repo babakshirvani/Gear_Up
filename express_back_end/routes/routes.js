@@ -4,7 +4,6 @@ const express = require("express");
 const router = express.Router();
 
 const routes = (db) => {
-  
 
   router.get("/login/:username",(req, res) => {
     db.query(`SELECT * FROM users WHERE user_name=$1`,[req.params.username])
@@ -15,20 +14,20 @@ const routes = (db) => {
     .catch((err) => console.log(err));
   })
 
+
   router.get("/friendlist/:id",(req, res) => {
-    db.query(`
-    SELECT 
-    users.user_name, users.avatar 
-    FROM 
-    friendship 
-    JOIN users 
-    ON friendship.user_id2=users.id 
-    WHERE 
-    friendship.user_id1=$1;`,[req.params.id])
+    db.query(`select users.user_name, users.avatar from friendship 
+join users on friendship.user_id2=users.id where friendship.user_id1=${req.params.id}
+
+union 
+
+select users.user_name, users.avatar from friendship 
+join users on friendship.user_id1=users.id where friendship.user_id2=${req.params.id}`)
     .then((response) => {
       res.send(response.rows)
     })
     .catch((err)=>console.log(err))
+
   })
   //GET dashboard
   router.get("/dashboard", (req, res) => {
@@ -54,8 +53,7 @@ const routes = (db) => {
   // POST new trip:
   router.post('/newTrip', (req, res) => {
     // const creator_id = req.session.user_id;
-    // const creator_id = req.body.creator_id;
-    const creator_id = 1;
+    const creator_id = req.body.creator_id;
     const title = req.body.title;
     const description = req.body.description;
     const start_date = req.body.start_date;
@@ -143,6 +141,50 @@ const routes = (db) => {
       // console.log("newRes:::", dbResponse);
       res.json(dbResponse)
 
+    });
+  });
+
+  router.get('/trips/:trip_id', (req, res) => {
+    const { id } = req.params;
+    db.query(
+      `
+      SELECT
+        *
+      FROM
+      trips;
+      WHERE id = $1
+    `, [id]
+    ).then(({ rows: dbResponse }) => {
+      // console.log("newRes:::", dbResponse);
+      res.json(dbResponse);
+
+    });
+  });
+
+  // Displays user's upcoming trips as well as their friend's
+  router.get('/trips/dashboard/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+    db.query(
+      `
+      SELECT * FROM trips
+      WHERE start_date >= CURRENT_DATE AND (creator_id = $1 OR creator_id IN
+        (
+          SELECT users.id FROM friendship 
+          JOIN users ON friendship.user_id2 = users.id
+          WHERE friendship.user_id1 = $1
+        
+          UNION
+        
+          SELECT users.id FROM friendship 
+          JOIN users ON friendship.user_id1 = users.id
+          WHERE friendship.user_id2 = $1
+        )
+      )
+      ORDER BY start_date ASC
+      LIMIT 3
+    `, [user_id]
+    ).then(({ rows: dbResponse }) => {
+      res.json(dbResponse);
     });
   });
 
