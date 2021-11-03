@@ -49,7 +49,7 @@ const TripGearList = () => {
 
   return (
     <>
-      <div className="accordion" >
+      <div className="accordion section-to-print" >
         {gearList.map((item) => (
           <>
             {console.log("0999:", item)}

@@ -27,6 +27,13 @@ export default function LocationForm(props) {
   const [completedTrips, setCompletedTrips] = useState([])
   const [mapLists, setMapLists] = useState([])
 
+  const babak = "https://previews.123rf.com/images/svetlanaborovkova/svetlanaborovkova1804/svetlanaborovkova180400674/99992809-blue-3d-flower-isolated-on-white-background-vector-top-view-illustration-.jpg"
+
+  const mapboxCap = function(lat, lon) {
+    return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/${lon},${lat},14,0/600x600?access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`;
+  }
+
+
 
   const user_id = localStorage.getItem('user_id');
 
@@ -97,7 +104,17 @@ export default function LocationForm(props) {
         color: 'orange'
       })
         .setLngLat([marker.longitude, marker.latitude])
-        .setPopup(new mapboxgl.Popup().setHTML(`<h1>${marker.title}</h1>`))
+        .setPopup(new mapboxgl.Popup({ className: "pop-up-main" }).setHTML(`
+       <div >
+            <div class="pop-up-img">
+              <img src=${marker.image}>
+            </div>
+            <div class="pop-up-title">
+              <p id="popTitle">${marker.title}</p>
+              <p id="popDesc">${marker.description}</p>
+            </div>
+        </div>
+        `))
         .addTo(map.current)
       );
     }
@@ -140,7 +157,19 @@ export default function LocationForm(props) {
     if (tempMarker.current) tempMarker.current.remove();
     tempMarker.current = new mapboxgl.Marker()
       .setLngLat([e.lngLat.lng, e.lngLat.lat])
-      .setPopup(new mapboxgl.Popup().setHTML(`<h1>New Trip</h1>`))
+      .setPopup(new mapboxgl.Popup({ className: "pop-up-main" }).setHTML(`
+      <div >
+            <div class="pop-up-img">
+              <img src="${mapboxCap(e.lngLat.lat, e.lngLat.lng)}">
+            </div>
+            <div class="pop-up-title">
+              <p id="popTitle">Your New Trip</p>
+              <p id="popDesc">longitude: ${e.lngLat.lng}</p>
+              <p id="popDesc">latitude: ${e.lngLat.lng}</p>
+            </div>
+        </div>
+
+      `))
       .addTo(map.current)
       .togglePopup();
     tempMarker.current.getElement().addEventListener('click', event => {
