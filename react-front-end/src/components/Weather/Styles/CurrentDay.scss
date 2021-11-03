@@ -3,17 +3,19 @@
   align-items: center;
   justify-content: space-between;
   height: 170px;
-  padding: 17px;
+  padding: 1.8rem;
+  padding-bottom: 0.6rem;
   font-size: 14px;
 
   &-temp{
-      font-size: 59.5px;
+      font-size: 3.5rem;
       font-weight: bold;
   }
 
   &-day{
-      font-size: 15px;
-      margin-bottom: 17px;
+      padding-top: 1rem;
+      font-size: 1rem;
+      margin-bottom: 0.8rem;
   }
 
   & img{
@@ -22,7 +24,7 @@
   }
 
   &-status{
-      font-style: italic;
+      font-size: 1.4rem;
       font-weight: 500;
       margin-top:51px;
       margin-left: -42.5px;

@@ -27,26 +27,26 @@ export default function InteractiveList() {
 
   return (
     <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '10px' }}>
-      <h6 style={{padding: '10px',borderBottom: '1px black solid'}}>FRIENDLIST</h6>
-    {friendlist.map((friend) => {
-      const labelId = `checkbox-list-secondary-label-${friend}`;
-      return (
-        <ListItem
-          key={friend.id}        
-          disablePadding
-        >
-          <ListItemButton>
-            <ListItemAvatar>
-              <Avatar
-                alt={`Avatar n°${friend + 1}`}
-                src={friend.avatar}
-              />
-            </ListItemAvatar>
-            <ListItemText id={labelId} primary={friend.user_name} />
-          </ListItemButton>
-        </ListItem>
-      );
-    })}
-  </List>
+      <h6 style={{padding: '1rem 1.65rem', fontSize: '1.4rem', borderBottom: '1px lightgrey solid', marginBottom: '0rem', color: '#668fff'}}>Friends</h6>
+      {friendlist.map((friend) => {
+        const labelId = `checkbox-list-secondary-label-${friend}`;
+        return (
+          <ListItem
+            key={friend.id}        
+            disablePadding
+          >
+            <ListItemButton>
+              <ListItemAvatar>
+                <Avatar
+                  alt={`Avatar n°${friend + 1}`}
+                  src={friend.avatar}
+                />
+              </ListItemAvatar>
+              <ListItemText id={labelId} primary={friend.user_name} />
+            </ListItemButton>
+          </ListItem>
+        );
+      })}
+    </List>
  )
  }
