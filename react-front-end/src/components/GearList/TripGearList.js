@@ -48,12 +48,11 @@ const TripGearList = () => {
         createGearObject()
       })
 
-  }, [])
-  const ref = React.createRef();
+  }, [props.tripID])
 
   return (
     <>
-      <div className="accordion" ref={ref} >
+      <div className="accordion" >
         {gearList.map((item) => (
           <>
             {console.log("0999:", item)}
@@ -61,13 +60,8 @@ const TripGearList = () => {
           </>
 
         ))}
-        <br/>
         
       </div>
-      <Pdf targetRef={ref} filename="gear.pdf">
-              {({ toPdf }) => <Button variant="contained"
-              color="primary" onClick={toPdf}>Generate Pdf</Button>}
-      </Pdf>  
     </>
   );
 };
