@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import TripButtons from './TripButtons';
+import axios from 'axios';
 
 // creator_id, title, description, activity, start_date, end_date, longitude, latitude, image
 
@@ -110,6 +111,8 @@ const TripCoordinates = styled.div`
 
 export default function TripInformation(props) {
 
+  const [checkListed, setCheckListed] = useState(false);
+
   const {
     id,
     creator_id,
@@ -122,6 +125,14 @@ export default function TripInformation(props) {
     latitude,
     image
   } = props.currentTrip;
+
+  useEffect(() => {
+    if(!id) return;
+    axios.get(`/api/calendar/userGearList/${id}`)
+      .then(res => {
+        if(res.data.length && res.data.length !== 0) setCheckListed(true);
+      })
+  }, [props.currentTrip])
 
   const mapboxCap = function(trip) {
     return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/${trip.longitude},${trip.latitude},14,0/600x600?access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`;
@@ -159,7 +170,7 @@ export default function TripInformation(props) {
           <br />
           <span style={{color: '#668fff'}}>Longitude</span>&nbsp;&nbsp;{longitude && longitude}
         </TripCoordinates>
-        <TripButtons latitude={latitude} longitude={longitude} tripID={id} ></TripButtons>
+        <TripButtons latitude={latitude} longitude={longitude} tripID={id} checkListed={checkListed}></TripButtons>
         </InformationContainer>)
       }
       {/* {currentTrip &&
