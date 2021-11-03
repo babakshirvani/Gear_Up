@@ -106,6 +106,14 @@ export default function GearList() {
             >
               Done
             </Button>
+
+            < Button
+              variant="contained"
+              color="primary"
+              component={Link} to="/dashboard"
+            >
+              Print
+            </Button>
           </div>
         </div >
       </div>
