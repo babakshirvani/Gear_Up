@@ -27,12 +27,10 @@ export default function LocationForm(props) {
   const [completedTrips, setCompletedTrips] = useState([])
   const [mapLists, setMapLists] = useState([])
 
-  const babak = "https://previews.123rf.com/images/svetlanaborovkova/svetlanaborovkova1804/svetlanaborovkova180400674/99992809-blue-3d-flower-isolated-on-white-background-vector-top-view-illustration-.jpg"
 
   const mapboxCap = function(lat, lon) {
-    return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/${lon},${lat},14,0/600x600?access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`;
+    return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/${lon},${lat},15,0/600x600?access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`;
   }
-
 
 
   const user_id = localStorage.getItem('user_id');
@@ -80,21 +78,9 @@ export default function LocationForm(props) {
   }, [])
 
 
-  // const myTrips = [
-  //   {
-  //     title: 'Grouse Mountain',
-  //     longitude: -123.077422,
-  //     latitude: 49.383992
-  //   }
-  // ];
-
   const markerGroup = useRef([]);
   const recommendation = useRef(recommendations);
-  // const myTrip = useRef(myTrips);
-  // const mapLists = {
-  //   recommendation,
-  //   myTrip
-  // }
+
   const [mapList, setMapList] = useState(null);
 
   const loadMarkers = function(list) {
