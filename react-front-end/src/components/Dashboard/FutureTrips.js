@@ -4,6 +4,7 @@ import bgImage1 from "../assets/trip1.jpg";
 import bgImage2 from "../assets/trip2.jpg";
 import bgImage3 from "../assets/trip3.jpg";
 import moment from "moment";
+import { NavLink } from "react-router-dom";
 
 import { Link, useHistory } from 'react-router-dom';
 import TripGearList from "../GearList/TripGearList";
@@ -26,7 +27,7 @@ const TripContainer = styled.div`
   border-bottom-right-radius: 5px;
 `;
 
-const NextTrip = styled.div`
+const NextTrip = styled(NavLink)`
   border-radius: 19px;
   margin: 2rem;
   margin-right: 1rem;
@@ -41,6 +42,7 @@ const NextTrip = styled.div`
   align-items: flex-end;
   text-align: right;
   &:hover {
+    text-decoration: none;
     cursor: pointer;
     filter: brightness(108%);
   }
@@ -94,7 +96,7 @@ const SideTripContainer = styled.div`
   align-items: flex-end;
 `;
 
-const LaterTrip = styled.div`
+const LaterTrip = styled(NavLink)`
   border-radius: 19px;
   background-image: url(${props => props.image});
   background-size: cover;
@@ -109,6 +111,7 @@ const LaterTrip = styled.div`
   font-size: 1.4rem !important;
   text-align: right;
   &:hover {
+    text-decoration: none;
     cursor: pointer;
     filter: brightness(115%);
   }
@@ -170,7 +173,7 @@ export const FutureTrips = function(props) {
     <>
       <TripContainer >
         {trip1 && friendList.length !== 0 &&
-          <NextTrip onClick={() => handleTripOne(trip1)} image={trip1.image || mapboxCap(trip1)}>
+          <NextTrip to={`/calendar/${trip1.id}`} image={trip1.image || mapboxCap(trip1) } >
             <TripDate>
               {trip1.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip1.creator_id, friendList)} />}
               <TripActivity className={trip1.activity}>{trip1.activity}</TripActivity>
@@ -181,7 +184,7 @@ export const FutureTrips = function(props) {
         }
         <SideTripContainer>
           {trip2 && friendList.length !== 0 &&
-            <LaterTrip onClick={() => handleTripTwo(trip2)} image={trip2.image || mapboxCap(trip2)} style={{ marginBottom: "1rem" }}>
+            <LaterTrip to={`/calendar/${trip2.id}`} image={trip2.image || mapboxCap(trip2)} style={{ marginBottom: "1rem" }}>
               <TripDate>
                 {console.log(trip2.creator_id, friendList)}
                 {console.log("avatar", avatarFinder(trip2.creator_id, friendList))}
@@ -193,7 +196,7 @@ export const FutureTrips = function(props) {
             </LaterTrip>
           }
           {trip3 && friendList.length !== 0 &&
-            <LaterTrip onClick={() => handleTripThree(trip3)} image={trip3.image || mapboxCap(trip3)} style={{ marginTop: "1rem" }}>
+            <LaterTrip to={`/calendar/${trip3.id}`} image={trip3.image || mapboxCap(trip3)} style={{ marginTop: "1rem" }}>
               <TripDate>
                 {trip3.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip3.creator_id, friendList)} />}
                 <TripActivity className={trip3.activity}>{trip3.activity}</TripActivity>

@@ -145,8 +145,7 @@ const Sidebar = () => {
           <Item onClick={logout} activeClassName="active" className="last-item" to="/logout" >
             <img src={NewTripIcon} alt="NewTripIcon" />
             <Text clicked={click}>Logout</Text>
-          </Item>
-        
+          </Item>        
           
         </SlickBar>
         
