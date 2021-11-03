@@ -5,7 +5,7 @@ import moment from "moment";
 
 const TripContainer = styled.div`
   background-color: #F3F5FA;
-  width: 20vw;
+  width: 100%;
   height: fit-to-content;
 
   margin: 2rem 0;

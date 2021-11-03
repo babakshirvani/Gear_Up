@@ -23,6 +23,7 @@ const Dashboard = () => {
   
   const [friendList, setFriendList] = useState([]);
   const [upcomingTrips, setUpcomingTrips] = useState([]);
+  const [tripStats, setTripStats] = useState({});
   
   useEffect(()=>{
     const user_id=localStorage.getItem('user_id');
@@ -40,6 +41,15 @@ const Dashboard = () => {
     })
   }, [])
 
+  useEffect(()=>{
+    const user_id=localStorage.getItem('user_id');
+    axios.get(`api/trips/dashboard/stats/${user_id}`)
+    .then((res)=>{
+      setTripStats([...res.data][0]);
+      console.log('res.data', res.data);
+    })
+  }, [])
+
   return (
     <div className="dashboard-container">
       <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
@@ -47,11 +57,11 @@ const Dashboard = () => {
         <div className="dashboard-container-middle-left">
           <WeatherApp />
           <div className="dashboard-container-bottom-left">
-            <FriendList/>
-            <PieChart/>
+            <FriendList />
+            <PieChart tripStats={tripStats} />
           </div>
         </div>
-        <MoreTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
+        <MoreTrips upcomingTrips={upcomingTrips} friendList={friendList} />
       </div>
       {/* <Grid container spacing={1}>
         <Grid item xs={12}>

@@ -41,7 +41,7 @@ export default function InteractiveList() {
     })
   },[])
 
-  console.log(friendlist);
+  // console.log(friendlist);
   return (
     <List dense sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper', borderRadius: '10px' }}>
       <h6 style={{padding: '1rem 1.65rem', fontSize: '1.4rem', borderBottom: '1px lightgrey solid', marginBottom: '0rem', color: '#668fff'}}>Friends</h6>

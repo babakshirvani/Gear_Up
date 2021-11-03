@@ -36,7 +36,7 @@ const NextTrip = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-
+  text-align: right;
   &:hover {
     cursor: pointer;
     filter: brightness(108%);
