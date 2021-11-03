@@ -117,10 +117,7 @@ export default function Trips(props) {
     for (let marker of markerGroup.current) {
       marker.remove();
     }
-    if (tempMarker.current && !tempMarker.current.getPopup().isOpen()) {
-      setLng(null);
-      setLat(null);
-    };
+    if (tempMarker.current) tempMarker.current.remove();
     markerGroup.current.splice(0, markerGroup.current.length);
   };
 
