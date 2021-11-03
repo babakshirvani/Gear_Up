@@ -3,7 +3,7 @@
   font-weight: 600; */
   position: absolute;
   top: 14vh;
-  left: 30vw;
+  left: calc(16rem + 10vw);
   z-index: 10;
   width: fit-content;
   /* border-radius: 3px;

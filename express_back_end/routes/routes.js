@@ -29,6 +29,21 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
       .catch((err) => console.log(err))
 
   })
+
+  router.get("/users/avatar/:id", (req, res) => {
+    const userID = req.params.id
+    db.query(
+      `
+        SELECT avatar
+        FROM users
+        WHERE users.id = $1;
+      `, [userID])
+      .then(({ rows: dbResponse }) => {
+        res.json(dbResponse);
+      })
+      .catch((err) => console.log(err))
+  })
+
   //GET dashboard
   router.get("/dashboard", (req, res) => {
     //select trips
@@ -204,15 +219,13 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
   });
 
   router.get('/trips/:trip_id', (req, res) => {
-    const { id } = req.params;
+    const { trip_id } = req.params;
     db.query(
       `
-      SELECT
-        *
-      FROM
-      trips;
-      WHERE id = $1
-    `, [id]
+      SELECT *
+      FROM trips
+      WHERE id = $1;
+    `, [trip_id]
     ).then(({ rows: dbResponse }) => {
       // console.log("newRes:::", dbResponse);
       res.json(dbResponse);
@@ -299,24 +312,24 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
   });
 
   // // GET user gear list: BABAK DONT REMOVE
-  // router.get('/calendar/userGearList/:trip_id', (req, res) => {
-  //   const trip_id = req.params.trip_id;
+  router.get('/calendar/userGearList/:trip_id', (req, res) => {
+    const trip_id = req.params.trip_id;
 
-  //   db.query(
-  //     `
-  //     SELECT
-  //       *
-  //     FROM
-  //     user_checklist
-  //     JOIN gear_checklist on user_checklist.type_id = gear_checklist.id
-  //     WHERE trip_id = $1;
-  //   `, [trip_id]
-  //   ).then((dbResponse) => {
-  //     console.log("newRes:::", dbResponse.rows);
-  //     res.json(dbResponse.rows)
+    db.query(
+      `
+      SELECT
+        *
+      FROM
+      user_checklist
+      JOIN gear_checklist on user_checklist.type_id = gear_checklist.id
+      WHERE trip_id = $1;
+    `, [trip_id]
+    ).then((dbResponse) => {
+      console.log("newRes:::", dbResponse.rows);
+      res.json(dbResponse.rows)
 
-  //   });
-  // });
+    });
+  });
 
 
 
