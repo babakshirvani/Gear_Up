@@ -101,7 +101,7 @@ const Navbar = () => {
             {auth && 
               <li className="nav-item ">
               <Item exact activeClassName="active" to="/dashboard" >
-              <img src={DashboardIcon} alt="DashboardIcon" />
+              <i class="fas fa-columns"></i>
                 <Text clicked={click}>Dashboard</Text>
               </Item>
             </li>  
