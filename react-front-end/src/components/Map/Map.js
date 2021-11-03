@@ -6,6 +6,7 @@ import './Map.css';
 import $ from 'jquery';
 import Toggle from './Toggle';
 
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWNlZmxhbmtlciIsImEiOiJja3RudjFrZDEwNmxxMnVwbWs5aW85eGVyIn0.j-do5McYg-VrWM4qQmAIKg';
 
 export default function Map(props) {
@@ -17,6 +18,8 @@ export default function Map(props) {
   const [lng, setLng] = useState(null);
   const [lat, setLat] = useState(null);
   const [zoom, setZoom] = useState(9);
+  
+
 
   const recommendations = [
     {
@@ -71,7 +74,7 @@ export default function Map(props) {
   }
   const removeMarkers = function() {
     for (let marker of markerGroup.current) {
-      if(marker.getPopup().isOpen() && !tempMarker.current.getPopup().isOpen()) {
+      if (marker.getPopup().isOpen() && !tempMarker.current.getPopup().isOpen()) {
         setLng(null);
         setLat(null);
       };
@@ -82,7 +85,7 @@ export default function Map(props) {
 
   const removePopups = function() {
     for (let marker of markerGroup.current) {
-      if(marker.getPopup().isOpen()) {
+      if (marker.getPopup().isOpen()) {
         marker.togglePopup();
       };
     }
@@ -123,7 +126,7 @@ export default function Map(props) {
   //     loadMarkers(mapList);
   //   })
   // }, [map])
-  
+
   useEffect(() => {
     removeMarkers();
     if (!mapList) return;
@@ -150,10 +153,10 @@ export default function Map(props) {
       flyTo: false,
       accessToken: mapboxgl.accessToken,
       marker: {
-      color: 'orange',
+        color: 'orange',
       },
       mapboxgl: mapboxgl
-      });
+    });
 
     map.current.addControl(geocoder.current);
     geocoder.current.on('result', e => {
@@ -174,8 +177,8 @@ export default function Map(props) {
         if (!tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
         setLng(tempMarker.current.getLngLat().lng.toFixed(6));
         setLat(tempMarker.current.getLngLat().lat.toFixed(6));
-       });
-       map.current.flyTo({
+      });
+      map.current.flyTo({
         minZoom: 22,
         curve: 1,
         zoom: map.current.getZoom().toFixed(4),
@@ -188,7 +191,7 @@ export default function Map(props) {
   return (
     <>
       <div ref={mapContainer} className="map-container">
-      <Toggle setMapList={setMapList} mapLists={mapLists}></Toggle>
+        <Toggle setMapList={setMapList} mapLists={mapLists}></Toggle>
         <div className="sidebar">
           {!lng && 'Please select or choose a location'}
           {lng && `Longitude: ${lng} | Latitude: ${lat} | Zoom: ${zoom}`}
