@@ -17,7 +17,8 @@ module.exports = (db) => {
     FROM
     user_checklist
     JOIN gear_checklist on user_checklist.type_id = gear_checklist.id
-    WHERE trip_id = $1;
+    WHERE trip_id = $1
+    ORDER BY checked ASC;
   `, [trip_id]
     ).then((dbResponse) => {
       // console.log("newRes:::", dbResponse.rows);
