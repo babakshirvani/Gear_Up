@@ -6,6 +6,7 @@ import './LocationForm.css';
 import { Button } from '@material-ui/core';
 import { multiStepsContext } from '../Form/StepContext';
 import Toggle from './Toggle';
+import axios from 'axios';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWNlZmxhbmtlciIsImEiOiJja3RudjFrZDEwNmxxMnVwbWs5aW85eGVyIn0.j-do5McYg-VrWM4qQmAIKg';
 
@@ -21,43 +22,82 @@ export default function LocationForm(props) {
   const [lat, setLat] = useState(null);
   const [zoom, setZoom] = useState(9);
 
-  const recommendations = [
-    {
-      name: 'Burnaby Mountain',
-      coordinates: [-122.922769, 49.275085]
-    },
-    {
-      name: 'Vancouver',
-      coordinates: [-123.063022, 49.271501]
-    },
-    {
-      name: 'Richmond',
-      coordinates: [-123.098537, 49.151771]
-    }
-  ];
-  const myTrips = [
-    {
-      name: 'Grouse Mountain',
-      coordinates: [-123.077422, 49.383992]
-    }
-  ];
+  const [recommendations, setRecommendations] = useState([])
+  const [planned, setPlanned] = useState([])
+  const [completedTrips, setCompletedTrips] = useState([])
+  const [mapLists, setMapLists] = useState([])
+
+
+  const user_id = localStorage.getItem('user_id');
+
+  useEffect(() => {
+    axios.get('/api/recommendations')
+      .then((res) => {
+        // setRecommendations(res.data)
+        setRecommendations(res.data)
+        console.log("001 data API:", res.data)
+
+
+      })
+  }, [])
+
+  useEffect(() => {
+    axios.get(`/api/trips/planned/${user_id}`
+    ).then((response) => {
+      setPlanned(response.data)
+    })
+  }, [])
+
+  useEffect(() => {
+    axios.get(`/api/trips/completed/${user_id}`).then((response) => {
+      setCompletedTrips(response.data)
+    })
+  }, [])
+
+
+  useEffect(() => {
+    const tripData = {};
+    axios.get(`/api/trips/completed/${user_id}`)
+      .then((res) => {
+        tripData.completedTrips = res.data;
+        axios.get(`/api/trips/planned/${user_id}`)
+          .then((ress) => {
+            tripData.plannedTrips = ress.data;
+            axios.get('/api/recommendations')
+              .then((resss) => {
+                tripData.recommendations = resss.data;
+                setMapLists(tripData);
+              })
+          })
+      })
+  }, [])
+
+
+  // const myTrips = [
+  //   {
+  //     title: 'Grouse Mountain',
+  //     longitude: -123.077422,
+  //     latitude: 49.383992
+  //   }
+  // ];
+
   const markerGroup = useRef([]);
   const recommendation = useRef(recommendations);
-  const myTrip = useRef(myTrips);
-  const mapLists = {
-    recommendation,
-    myTrip
-  }
+  // const myTrip = useRef(myTrips);
+  // const mapLists = {
+  //   recommendation,
+  //   myTrip
+  // }
   const [mapList, setMapList] = useState(null);
 
   const loadMarkers = function(list) {
     removeMarkers();
-    for (const marker of list.current) {
+    for (const marker of list) {
       markerGroup.current.push(new mapboxgl.Marker({
         color: 'orange'
       })
-        .setLngLat(marker.coordinates)
-        .setPopup(new mapboxgl.Popup().setHTML(`<h1>${marker.name}</h1>`))
+        .setLngLat([marker.longitude, marker.latitude])
+        .setPopup(new mapboxgl.Popup().setHTML(`<h1>${marker.title}</h1>`))
         .addTo(map.current)
       );
     }
@@ -77,7 +117,7 @@ export default function LocationForm(props) {
     for (let marker of markerGroup.current) {
       marker.remove();
     }
-    if(tempMarker.current && !tempMarker.current.getPopup().isOpen()) {
+    if (tempMarker.current && !tempMarker.current.getPopup().isOpen()) {
       setLng(null);
       setLat(null);
     };
