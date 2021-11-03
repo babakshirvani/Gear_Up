@@ -54,7 +54,7 @@ const itemData = [
     cols: 1,
   },
   {
-    img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
+    img: '../../images/7-exercising.png',
     title: 'Coffee',
     rows: 2,
     cols: 2,
