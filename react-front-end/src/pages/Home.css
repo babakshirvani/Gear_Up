@@ -41,3 +41,7 @@
     max-width: 1400px;
 }
 }
+
+.alice-carousel__dots {
+  margin-top: 0 !important;
+}
