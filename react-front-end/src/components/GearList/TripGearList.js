@@ -48,7 +48,7 @@ const TripGearList = () => {
         createGearObject()
       })
 
-  }, [props.tripID])
+  }, [])
 
   return (
     <>
@@ -60,7 +60,7 @@ const TripGearList = () => {
           </>
 
         ))}
-        
+
       </div>
     </>
   );
