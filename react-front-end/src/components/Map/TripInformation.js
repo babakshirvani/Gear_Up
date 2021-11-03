@@ -139,14 +139,14 @@ export default function TripInformation(props) {
   
 
   useEffect(() => {
-    if(!id || (id && creator_id === currentUserID)) return;
+    if(!id || (id && creator_id !== currentUserID)) return;
     axios.get(`/api/calendar/userGearList/${id}`)
       .then(res => {
         if(res.data.length && res.data.length !== 0) setCheckListed(true);
       })
   }, [props.currentTrip])
 
-  
+   
   useEffect(() => {
     if(!creator_id || currentUserID === creator_id) return;
     axios.get(`/api/users/avatar/${creator_id}`)

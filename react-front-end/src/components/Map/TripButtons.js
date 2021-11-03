@@ -24,11 +24,12 @@ export default function TripButtons(props) {
 
   // to={`/tripGearList/${props.tripID}`} 
 
+
   return (
       <div id="button-group" className="button-group">
         <input type="button" className="btn-check" name="trip-info" id="trip-direction" onClick={() => {window.open(`https://www.google.com/maps/dir/Current+Location/${props.latitude},${props.longitude}`)}} />
         <label className="btn btn-secondary" htmlFor="trip-direction" id="trip-direction">direction</label>
-        {(!props.friendAvatarURL || (!props.friendAvatarURL && props.checkListed)) &&
+        {(!props.friendAvatarURL && props.checkListed) &&
         (<>
           <input type="button" className="btn-check" name="trip-info" id="trip-checklist" />
           <label className={"btn btn-secondary"} htmlFor="trip-checklist" id="trip-checklist">
