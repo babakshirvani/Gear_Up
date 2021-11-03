@@ -88,6 +88,8 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
   });
 
 
+  //// trips ////
+
   // PUT, Edit the trip:
   router.put('/trips/edit/:trip_id', (req, res) => {
     const id = req.params.trip_id;
@@ -128,6 +130,62 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
     });
   });
 
+  // Displays user's completed trips in Trips (aka Calendar) page
+  router.get('/trips/completed/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+    db.query(
+      `
+      SELECT * FROM trips
+      WHERE end_date < CURRENT_DATE AND creator_id = $1
+    `, [user_id]
+    ).then(({ rows: dbResponse }) => {
+      res.json(dbResponse);
+    });
+  });
+
+  // Displays user's planned trips in Trips (aka Calendar) page
+  router.get('/trips/planned/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+    db.query(
+      `
+      SELECT * FROM trips
+      WHERE start_date >= CURRENT_DATE AND creator_id = $1
+    `, [user_id]
+    ).then(({ rows: dbResponse }) => {
+      res.json(dbResponse);
+    });
+  });
+
+  // Display user's friend trips in Trips (aka Calendar) page
+  router.get('/trips/friends/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+    db.query(
+      `
+        SELECT * FROM trips
+        WHERE creator_id IN
+          (
+            SELECT users.id FROM friendship 
+            JOIN users ON friendship.user_id2 = users.id
+            WHERE friendship.user_id1 = $1
+          
+            UNION
+          
+            SELECT users.id FROM friendship 
+            JOIN users ON friendship.user_id1 = users.id
+            WHERE friendship.user_id2 = $1
+          )
+      `, [user_id]
+      ).then(({ rows: dbResponse }) => {
+        res.json(dbResponse);
+      });
+    });
+
+
+
+
+
+
+
   //Get All gear list
   router.get('/allGear', (req, res) => {
     db.query(
@@ -161,6 +219,8 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
     });
   });
 
+  //// dashboard ////
+
   // Displays user's upcoming trips as well as their friend's
   router.get('/trips/dashboard/:user_id', (req, res) => {
     const user_id = req.params.user_id;
@@ -187,6 +247,37 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
       res.json(dbResponse);
     });
   });
+  
+  // Displays number of user completed trips, that of planend, and that of friends' trips
+  router.get('/trips/dashboard/stats/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+    db.query(
+      `
+      SELECT
+      SUM (CASE WHEN start_date >= CURRENT_DATE AND creator_id = $1 THEN 1 ELSE 0 END) AS planned,
+      SUM (CASE WHEN end_date < CURRENT_DATE AND creator_id = $1 THEN 1 ELSE 0 END) AS completed,
+      SUM (CASE WHEN creator_id != $1 THEN 1 ELSE 0 END) AS friends        
+      FROM trips
+      WHERE creator_id = $1 OR creator_id IN
+        (
+          SELECT users.id FROM friendship 
+          JOIN users ON friendship.user_id2 = users.id
+          WHERE friendship.user_id1 = $1
+        
+          UNION
+        
+          SELECT users.id FROM friendship 
+          JOIN users ON friendship.user_id1 = users.id
+          WHERE friendship.user_id2 = $1
+        )
+    `, [user_id]
+    ).then(({ rows: dbResponse }) => {
+      res.json(dbResponse);
+    });
+  });
+
+
+
 
   //Get gear base on Activity
   router.get('/activities/:activityName', (req, res) => {
