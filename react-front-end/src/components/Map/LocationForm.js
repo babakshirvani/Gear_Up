@@ -90,7 +90,7 @@ export default function LocationForm(props) {
         color: 'orange'
       })
         .setLngLat([marker.longitude, marker.latitude])
-        .setPopup(new mapboxgl.Popup({ className: "pop-up-main" }).setHTML(`
+        .setPopup(new mapboxgl.Popup({ className: "pop-up-main", closeButton: false }).setHTML(`
        <div >
             <div class="pop-up-img">
               <img src=${marker.image}>
@@ -143,7 +143,7 @@ export default function LocationForm(props) {
     if (tempMarker.current) tempMarker.current.remove();
     tempMarker.current = new mapboxgl.Marker()
       .setLngLat([e.lngLat.lng, e.lngLat.lat])
-      .setPopup(new mapboxgl.Popup({ className: "pop-up-main" }).setHTML(`
+      .setPopup(new mapboxgl.Popup({ className: "pop-up-main", closeButton: false }).setHTML(`
       <div >
             <div class="pop-up-img">
               <img src="${mapboxCap(e.lngLat.lat, e.lngLat.lng)}">

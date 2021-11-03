@@ -25,6 +25,10 @@ export default function Trips(props) {
   const [mapLists, setMapLists] = useState([])
   const [currentTrip, setCurrentTrip] = useState([])
 
+  const mapboxCap = function(lat, lon) {
+    return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/${lon},${lat},15,0/600x600?access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`;
+  }
+
 
   const user_id = localStorage.getItem('user_id');
 
@@ -78,7 +82,17 @@ export default function Trips(props) {
         color: 'orange'
       })
         .setLngLat([trip.longitude, trip.latitude])
-        .setPopup(new mapboxgl.Popup().setHTML(`<h1>${trip.title}</h1>`))
+        .setPopup(new mapboxgl.Popup({ className: "pop-up-main", closeButton: false }).setHTML(`
+        <div >
+             <div class="pop-up-img">
+               <img src=${trip.image}>
+             </div>
+             <div class="pop-up-title">
+               <p id="popTitle">${trip.title}</p>
+               <p id="popDesc">${trip.description}</p>
+             </div>
+         </div>
+         `))
         .addTo(map.current)
       );
     }
@@ -134,43 +148,43 @@ export default function Trips(props) {
 
     if (props.tripID) {
       axios.get(`/api/trips/${props.tripID}`)
-      .then(res => {
-        const {
-          creator_id,
-          title,
-          description,
-          activity,
-          start_date,
-          end_date,
-          longitude,
-          latitude,
-          image
-        } = res.data[0];
-        map.current = new mapboxgl.Map({
-          container: mapContainer.current,
-          style: 'mapbox://styles/mapbox/outdoors-v11',
-          center: [longitude, latitude],
-          zoom: zoom
-        });
-        setCurrentTrip({...res.data[0]});
-        removePopups();
-        setLng(longitude);
-        setLat(latitude);
-        setZoom(map.current.getZoom().toFixed(4));
-        if (tempMarker.current) tempMarker.current.remove();
-        tempMarker.current = new mapboxgl.Marker()
-          .setLngLat([longitude, latitude])
-          .setPopup(new mapboxgl.Popup().setHTML(`<h1>${title}</h1>`))
-          .addTo(map.current)
-          .togglePopup();
-        tempMarker.current.getElement().addEventListener('click', event => {
-          event.stopPropagation();
-          if (tempMarker.current && tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
+        .then(res => {
+          const {
+            creator_id,
+            title,
+            description,
+            activity,
+            start_date,
+            end_date,
+            longitude,
+            latitude,
+            image
+          } = res.data[0];
+          map.current = new mapboxgl.Map({
+            container: mapContainer.current,
+            style: 'mapbox://styles/mapbox/outdoors-v11',
+            center: [longitude, latitude],
+            zoom: zoom
+          });
+          setCurrentTrip({ ...res.data[0] });
           removePopups();
           setLng(longitude);
           setLat(latitude);
-        });
-      })
+          setZoom(map.current.getZoom().toFixed(4));
+          if (tempMarker.current) tempMarker.current.remove();
+          tempMarker.current = new mapboxgl.Marker()
+            .setLngLat([longitude, latitude])
+            .setPopup(new mapboxgl.Popup().setHTML(`<h1>${title}</h1>`))
+            .addTo(map.current)
+            .togglePopup();
+          tempMarker.current.getElement().addEventListener('click', event => {
+            event.stopPropagation();
+            if (tempMarker.current && tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
+            removePopups();
+            setLng(longitude);
+            setLat(latitude);
+          });
+        })
       return;
     }
 
@@ -252,7 +266,7 @@ export default function Trips(props) {
     <>
       <div ref={mapContainer} className="map-container">
         <Toggle setMapList={setMapList} mapLists={mapLists}></Toggle>
-        <TripInformation currentTrip={currentTrip}/>
+        <TripInformation currentTrip={currentTrip} />
         {/* <div className="step-counter">
           {props.children}
         </div> */}
