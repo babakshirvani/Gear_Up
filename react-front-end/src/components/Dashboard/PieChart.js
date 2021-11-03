@@ -35,14 +35,6 @@ export const PieChart = props => {
         borderWidth: 0,
       },
     ],
-    options: {
-      plugins: {
-        datalabels: {
-          color: 'white',
-          font: { size: 20}
-        }
-      }
-    }
   };
 
   
@@ -63,7 +55,7 @@ export const PieChart = props => {
       <h6 style={{padding: '1rem 1.65rem', fontSize: '1.4rem', borderBottom: '1px lightgrey solid', marginBottom: '0rem', color: '#668fff', verticalAlign: 'middle'}}>Trip Stats</h6>
       {tripData.datasets[0].data.length !== 0 && console.log("tripData.datasets[0].data ", tripData.datasets[0].data)}
       {tripData.datasets[0].data.length !== 0 &&
-      <Pie data={tripData} plugins={[ChartDataLabels]} options={{plugins: { datalabels: { display: function(context) {return context.dataset.data[context.dataIndex] !== 0}, color: 'white', font: { size: 20 }}}}}/>
+      <Pie data={tripData} plugins={[ChartDataLabels]} options={{layout: { padding: 20}, plugins: { datalabels: { display: function(context) {return context.dataset.data[context.dataIndex] !== 0}, color: 'white', font: { size: 20 }}}}}/>
       // <Pie data={tripData} plugins={[ChartDataLabels]} options={{plugins: { datalabels: { color: 'white', font: { size: 20 }}}}}/>
       // <Pie data={data} options={{plugins: { datalabels: { color: 'white', font: { size: 20}}}}}/>
       }
