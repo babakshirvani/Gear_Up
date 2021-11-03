@@ -3,6 +3,10 @@ import './TripGearList.css'
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import ListAccordion from './ListAccordion';
+import ReactDOM from "react-dom";
+import Pdf from "react-to-pdf";
+import { Button } from '@material-ui/core';
+
 
 const TripGearList = () => {
 
@@ -45,11 +49,11 @@ const TripGearList = () => {
       })
 
   }, [])
-
+  const ref = React.createRef();
 
   return (
     <>
-      <div className="accordion" >
+      <div className="accordion" ref={ref} >
         {gearList.map((item) => (
           <>
             {console.log("0999:", item)}
@@ -57,8 +61,13 @@ const TripGearList = () => {
           </>
 
         ))}
+        <br/>
+        
       </div>
-
+      <Pdf targetRef={ref} filename="gear.pdf">
+              {({ toPdf }) => <Button variant="contained"
+              color="primary" onClick={toPdf}>Generate Pdf</Button>}
+      </Pdf>  
     </>
   );
 };

@@ -89,7 +89,7 @@ export default function GearList() {
         <h4 style={{ color: 'white' }}>Your Gear List!</h4>
         <br />
         <div>
-          <div className="accordion" ref={ref}>
+          <div className="accordion" ref={ref} >
             {console.log("BEFORE MAP::", gear)}
             {gear.map((item, i) => (
               <>
@@ -109,7 +109,7 @@ export default function GearList() {
               Done
             </Button>
             &nbsp; &nbsp;
-            <Pdf targetRef={ref} filename="code-example.pdf">
+            <Pdf targetRef={ref} filename="gear.pdf">
               {({ toPdf }) => <Button variant="contained"
               color="primary" onClick={toPdf}>Generate Pdf</Button>}
             </Pdf>
