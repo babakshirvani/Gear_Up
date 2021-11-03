@@ -42,6 +42,7 @@ function App() {
 
   const getWeatherData = async (lat, lon) => {
     setLoading(true);
+    // const url = ``;
     const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`;
     try {
       const response = await axios.get(url);
@@ -104,7 +105,7 @@ function App() {
                     <CurrentDay currentWeather={weatherData.weather['current']} />
                   </div>
                   <div className="weather-cards">
-                    <div><UpcomingDays weatherData={weatherData.weather.daily.slice(1, 7)} /></div>
+                    <UpcomingDays weatherData={weatherData.weather.daily.slice(1, 7)} />
                   </div>
                 </>
               ) :

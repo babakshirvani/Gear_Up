@@ -21,7 +21,7 @@ module.exports = (db) => {
     ORDER BY checked ASC;
   `, [trip_id]
     ).then((dbResponse) => {
-      console.log("newRes:::", dbResponse.rows);
+      // console.log("newRes:::", dbResponse.rows);
       res.json(dbResponse.rows)
 
     });

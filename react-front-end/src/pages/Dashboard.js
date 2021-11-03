@@ -8,7 +8,10 @@ import axios from 'axios';
 import WeatherApp from '../components/Weather/WeatherApp';
 import './Styles/Dashboard.scss';
 import { FutureTrips } from '../components/Dashboard/FutureTrips';
+import { MoreTrips } from '../components/Dashboard/MoreTrips';
 import FriendList from '../components/Friendship/Friendlist'
+import PieChart from '../components/Dashboard/PieChart';
+
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -20,6 +23,7 @@ const Dashboard = () => {
 
   const [friendList, setFriendList] = useState([]);
   const [upcomingTrips, setUpcomingTrips] = useState([]);
+  const [tripStats, setTripStats] = useState({});
 
   useEffect(() => {
     const user_id = localStorage.getItem('user_id');
@@ -37,9 +41,28 @@ const Dashboard = () => {
       })
   }, [])
 
+  useEffect(()=>{
+    const user_id=localStorage.getItem('user_id');
+    axios.get(`api/trips/dashboard/stats/${user_id}`)
+    .then((res)=>{
+      setTripStats([...res.data][0]);
+      console.log('res.data', res.data);
+    })
+  }, [])
+
   return (
-    <div className="container">
-      <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList} />
+    <div className="dashboard-container">
+      <FutureTrips upcomingTrips={upcomingTrips} friendList={friendList}/>
+      <div className="dashboard-container-middle">
+        <div className="dashboard-container-middle-left">
+          <WeatherApp />
+          <div className="dashboard-container-bottom-left">
+            <FriendList />
+            <PieChart tripStats={tripStats} />
+          </div>
+        </div>
+        <MoreTrips upcomingTrips={upcomingTrips} friendList={friendList} />
+      </div>
       {/* <Grid container spacing={1}>
         <Grid item xs={12}>
           <Item><FutureTrips upcomingTrips={upcomingTrips}/></Item>
@@ -54,13 +77,10 @@ const Dashboard = () => {
           <Item>  <WeatherApp /></Item>
         </Grid>
       </Grid>
-       */}
-      <div className="weather-app-container">
-        <WeatherApp />
-      </div>
-      <div className="friend-list-container">
-        <FriendList />
-      </div>
+    */}
+
+      {/* <div className="friend-list-container">
+      </div> */}
     </div>
   )
 }

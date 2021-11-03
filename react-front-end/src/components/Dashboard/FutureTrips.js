@@ -11,18 +11,19 @@ import TripGearList from "../GearList/TripGearList";
 
 const TripContainer = styled.div`
   background-color: #F3F5FA;
-  width: 50vw;
+  width: 100%;
   height: 48vh;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-
-  position: absolute;  
+    
   box-shadow: 2px 2px 7px 0px rgb(166, 166, 166);
   display: flex;
   flex-direction: row;
 
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 `;
 
 const NextTrip = styled.div`
@@ -38,7 +39,7 @@ const NextTrip = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-
+  text-align: right;
   &:hover {
     cursor: pointer;
     filter: brightness(108%);
@@ -47,7 +48,7 @@ const NextTrip = styled.div`
 
 const TripTitle = styled.div`
   margin: 0rem 1.5rem;
-  font-size: 1.8rem;
+  font-size: 2.6rem;
   color: white;
   height: auto;
   text-shadow: 0 0 2px grey, 0 0 2px grey, 0 0 2px grey, 0 0 2px grey;
@@ -68,7 +69,8 @@ const TripActivity = styled.span`
   padding: 0.3rem 0.6rem;
   border-radius: 9px;
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  font-weight: 600;
   text-shadow: none;
   &.hiking {
     background-color: green;
@@ -104,7 +106,7 @@ const LaterTrip = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-  font-size: calc(80%) !important;
+  font-size: 1.4rem !important;
   text-align: right;
   &:hover {
     cursor: pointer;
@@ -112,14 +114,14 @@ const LaterTrip = styled.div`
   }
 
   & > ${TripTitle} {
-    font-size: calc(1.8rem * 0.8);
+    font-size: calc(2.6rem * 0.8);
   }
 
   & > ${TripDate} {
     font-size: calc(1.8rem * 0.8);
     & > ${TripActivity} {
-      font-size: calc(0.8rem * 0.9);
-      margin-right: calc(1.5rem * 0.8)
+      font-size: calc(0.8rem * 0.8);
+      margin-right: calc(0.7rem * 0.8)
     }
   }
   `;
