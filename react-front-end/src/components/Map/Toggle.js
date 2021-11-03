@@ -21,6 +21,7 @@ export default function Toggle(props) {
   }, [props.mapLists.completedTrips])
 
   return (
+
       <div id="listing-group" className="listing-group">
         {props.mapLists && console.log("005console.log(recommendations)", props.mapLists)}
         <input type="radio" className="btn-check" name="maplist" id="popular-places" onClick={() => props.setMapList(recommendations)} />
@@ -31,5 +32,6 @@ export default function Toggle(props) {
         <br />
         <input type="radio" className="btn-check" name="maplist" id="my-completedtrips" onClick={() => props.setMapList(completedTrips)} />
         <label className="btn btn-secondary" htmlFor="my-completedtrips">Completed Trips</label>
-      </div>)
+      </div>
+  )
 }
