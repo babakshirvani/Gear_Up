@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './Accordion.css'
+import './ListAccordion.css'
 import axios from 'axios';
 
 
-const Accordion = ({ category, gears, tripID }) => {
+const ListAccordion = ({ category, gears, tripID }) => {
   const [isActive, setIsActive] = useState(false);
   const [isComplete, setComplete] = useState("");
 
@@ -16,9 +16,7 @@ const Accordion = ({ category, gears, tripID }) => {
           "type_id": gear.id,
           "checked": true
         }
-      ).then(res => {
-        console.log("res TRUE", res)
-      })
+      )
     }
     else {
       gear.checked = false
@@ -28,10 +26,7 @@ const Accordion = ({ category, gears, tripID }) => {
           "type_id": gear.id,
           "checked": false
         }
-      ).then(res => {
-        console.log("res false", res)
-      })
-      // console.log("clicked!!!!!!!!! FALSE state", isComplete)
+      )
     }
 
   }
@@ -46,10 +41,6 @@ const Accordion = ({ category, gears, tripID }) => {
     }
     return result;
   }
-
-  useEffect(() => {
-    console.log("clicked!!!!!!!!!  state", isComplete)
-  }, [isComplete])
 
   return (
     <>
@@ -77,4 +68,4 @@ const Accordion = ({ category, gears, tripID }) => {
 
 };
 
-export default Accordion;
+export default ListAccordion;

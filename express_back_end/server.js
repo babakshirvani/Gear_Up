@@ -1,4 +1,4 @@
-const  Client = require('pg').Client;
+const Client = require('pg').Client;
 const { development } = require('./knexfile');
 const db = new Client(development['connection']);
 db.connect();
@@ -24,6 +24,8 @@ App.use(BodyParser.json());
 App.use(Express.static('public'));
 
 const routespath = require("./routes/routes");
+const routesCalendar = require("./routes/gearRoute");
+App.use("/", routesCalendar(db));
 App.use("/api", routespath(db));
 
 
@@ -62,7 +64,7 @@ Promise.all([
 
 
 App.close = function() {
-return db.end();
+  return db.end();
 };
 
 

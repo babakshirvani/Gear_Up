@@ -36,7 +36,7 @@ const TripInfoForm = () => {
           <TextField
             id="standard-basic"
             label="Title*"
-            value={userData['title']}
+            value={userData['title'] || ""}
             onChange={(e) => setUserData({ ...userData, "title": e.target.value })}
             margin="normal"
             variant="standard"
@@ -74,7 +74,7 @@ const TripInfoForm = () => {
         <div>
           <TextField
             label="Description"
-            value={userData['description']}
+            value={userData['description'] || ""}
             onChange={(e) => setUserData({ ...userData, "description": e.target.value })}
             fullWidth
             id="fullWidth"

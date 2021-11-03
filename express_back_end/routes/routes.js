@@ -5,17 +5,17 @@ const router = express.Router();
 
 const routes = (db) => {
 
-  router.get("/login/:username",(req, res) => {
-    db.query(`SELECT * FROM users WHERE user_name=$1`,[req.params.username])
-    .then((response) => {
-      
-      res.send(response.rows);
-    })
-    .catch((err) => console.log(err));
+  router.get("/login/:username", (req, res) => {
+    db.query(`SELECT * FROM users WHERE user_name=$1`, [req.params.username])
+      .then((response) => {
+
+        res.send(response.rows);
+      })
+      .catch((err) => console.log(err));
   })
 
 
-  router.get("/friendlist/:id",(req, res) => {
+  router.get("/friendlist/:id", (req, res) => {
     db.query(`select users.id, users.user_name, users.avatar from friendship 
 join users on friendship.user_id2=users.id where friendship.user_id1=${req.params.id}
 
@@ -23,10 +23,10 @@ union
 
 select users.id, users.user_name, users.avatar from friendship 
 join users on friendship.user_id1=users.id where friendship.user_id2=${req.params.id}`)
-    .then((response) => {
-      res.send(response.rows)
-    })
-    .catch((err)=>console.log(err))
+      .then((response) => {
+        res.send(response.rows)
+      })
+      .catch((err) => console.log(err))
 
   })
   //GET dashboard
@@ -61,12 +61,13 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
     const activity = req.body.activity;
     const longitude = req.body.longitude;
     const latitude = req.body.latitude;
+    const image = req.body.image;
 
     db.query(`
     INSERT INTO trips (creator_id, title, description,
-      start_date, end_date, activity, longitude, latitude)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
-      [creator_id, title, description, start_date, end_date, activity, longitude, latitude]
+      start_date, end_date, activity, longitude, latitude, image)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *`,
+      [creator_id, title, description, start_date, end_date, activity, longitude, latitude, image]
     ).then((data) => {
       return res.json(data.rows[0]);
     });
@@ -297,35 +298,19 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
     });
   });
 
-  // GET user gear list:
-  router.get('/trip/gearList/:id', (req, res) => {
-    const { id } = req.params;
-    db.query(
-      `
-      SELECT
-        *
-      FROM
-      user_checklist
-      WHERE id = $1;
-    `, [id,]
-    ).then((dbResponse) => {
-      console.log("newRes:::", dbResponse.rows);
-      res.json(dbResponse.rows)
+  // // GET user gear list: BABAK DONT REMOVE
+  // router.get('/calendar/userGearList/:trip_id', (req, res) => {
+  //   const trip_id = req.params.trip_id;
 
-    });
-  });
-
-
-  // router.get('/gear/typeDetail/:type_id', (req, res) => {
-  //   const { id } = req.params;
   //   db.query(
   //     `
   //     SELECT
   //       *
   //     FROM
-  //     gear_checklist
-  //     WHERE activity = $1
-  //   `, [activityName]
+  //     user_checklist
+  //     JOIN gear_checklist on user_checklist.type_id = gear_checklist.id
+  //     WHERE trip_id = $1;
+  //   `, [trip_id]
   //   ).then((dbResponse) => {
   //     console.log("newRes:::", dbResponse.rows);
   //     res.json(dbResponse.rows)
@@ -333,6 +318,23 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
   //   });
   // });
 
+
+  // PUT, Edit the trip:
+  router.put('/userGear/update/:trip_id', (req, res) => {
+    const checked = req.body.checked;
+    const trip_id = req.params.trip_id;
+    const type_id = req.body.type_id;
+    db.query(
+      `
+    UPDATE user_checklist SET checked=$1
+    WHERE trip_id=$2 AND type_id=$3 RETURNING *;`,
+      [checked, trip_id, type_id]
+    ).then(() => {
+      res.status(200).send("updated checked status");
+    }).catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+  });
 
 
 
