@@ -6,8 +6,7 @@ import axios from 'axios';
 import Accordion from './Accordion';
 import { Link } from 'react-router-dom';
 import { set } from 'date-fns';
-import ReactDOM from "react-dom";
-import Pdf from "react-to-pdf";
+
 
 
 export default function GearList() {
@@ -108,11 +107,7 @@ export default function GearList() {
             >
               Done
             </Button>
-            &nbsp; &nbsp;
-            <Pdf targetRef={ref} filename="gear.pdf">
-              {({ toPdf }) => <Button variant="contained"
-              color="primary" onClick={toPdf}>Generate Pdf</Button>}
-            </Pdf>
+            
           </div>
         </div >
       </div>

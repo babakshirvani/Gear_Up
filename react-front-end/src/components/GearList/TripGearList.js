@@ -3,8 +3,6 @@ import './TripGearList.css'
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import ListAccordion from './ListAccordion';
-import ReactDOM from "react-dom";
-import Pdf from "react-to-pdf";
 import { Button } from '@material-ui/core';
 
 
