@@ -96,6 +96,14 @@ const TripCoordinates = styled.div`
   border-bottom: 1px solid lightgrey;
 `;
 
+const FriendAvatar = styled.img`
+  height: 1.8rem;
+  border: 2px solid skyblue;
+  border-radius: 45px;
+  margin-left: 0.4rem;
+  display: inline-block;
+  src: ${props => props.avatar};
+`;
 
 // const tempTrip = {
 //   creator_id: 1,
@@ -112,6 +120,7 @@ const TripCoordinates = styled.div`
 export default function TripInformation(props) {
 
   const [checkListed, setCheckListed] = useState(false);
+  const [friendAvatarURL, setFriendAvatarURL] = useState(false);
 
   const {
     id,
@@ -126,11 +135,23 @@ export default function TripInformation(props) {
     image
   } = props.currentTrip;
 
+  const currentUserID = Number(localStorage.getItem('user_id'));
+  
+
   useEffect(() => {
-    if(!id) return;
+    if(!id || (id && creator_id === currentUserID)) return;
     axios.get(`/api/calendar/userGearList/${id}`)
       .then(res => {
         if(res.data.length && res.data.length !== 0) setCheckListed(true);
+      })
+  }, [props.currentTrip])
+
+  
+  useEffect(() => {
+    if(!creator_id || currentUserID === creator_id) return;
+    axios.get(`/api/users/avatar/${creator_id}`)
+      .then(res => {
+        setFriendAvatarURL(res.data[0].avatar);
       })
   }, [props.currentTrip])
 
@@ -157,8 +178,14 @@ export default function TripInformation(props) {
 
       {!Array.isArray(props.currentTrip) &&
         (<InformationContainer>
-        <TripImage image={image || mapboxCap(props.currentTrip)} />
-        <TripTitle>{title}</TripTitle>
+        <TripImage image={image || mapboxCap(props.currentTrip)} >
+
+        </TripImage>
+        <TripTitle>
+          {title}
+          {friendAvatarURL && <FriendAvatar src={friendAvatarURL}></FriendAvatar>}
+        </TripTitle>
+        
         <TripDate className={(!start_date && !activity ? 'empty-date-activity' : null)}>
           {/*  A reminder to improve date range display with no repeating elements, when it's the same month or year */}
           {start_date && moment(start_date).format("MMM DD, YYYY") + (start_date !== end_date && ' - ' + moment(end_date).format("MMM DD, YYYY"))}
@@ -170,7 +197,7 @@ export default function TripInformation(props) {
           <br />
           <span style={{color: '#668fff'}}>Longitude</span>&nbsp;&nbsp;{longitude && longitude}
         </TripCoordinates>
-        <TripButtons latitude={latitude} longitude={longitude} tripID={id} checkListed={checkListed}></TripButtons>
+        <TripButtons latitude={latitude} longitude={longitude} tripID={id} checkListed={checkListed} friendAvatarURL={friendAvatarURL}></TripButtons>
         </InformationContainer>)
       }
       {/* {currentTrip &&

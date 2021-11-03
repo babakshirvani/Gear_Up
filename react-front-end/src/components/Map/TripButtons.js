@@ -28,7 +28,7 @@ export default function TripButtons(props) {
       <div id="button-group" className="button-group">
         <input type="button" className="btn-check" name="trip-info" id="trip-direction" onClick={() => {window.open(`https://www.google.com/maps/dir/Current+Location/${props.latitude},${props.longitude}`)}} />
         <label className="btn btn-secondary" htmlFor="trip-direction" id="trip-direction">direction</label>
-        {props.checkListed &&
+        {(!props.friendAvatarURL || (!props.friendAvatarURL && props.checkListed)) &&
         (<>
           <input type="button" className="btn-check" name="trip-info" id="trip-checklist" />
           <label className={"btn btn-secondary"} htmlFor="trip-checklist" id="trip-checklist">
@@ -39,8 +39,11 @@ export default function TripButtons(props) {
         {/* <label className={(`btn btn-secondary ${props.tripID ? "disabled" : ""}`)} htmlFor="trip-checklist" id="trip-checklist">
           {props.checkListed && <Link to={`/tripGearList/${props.tripID}`} >checklist</Link>}
         </label> */}
-
+        {!props.friendAvatarURL &&
+        (<>
         <input type="button" className="btn-check" name="trip-info" id="trip-delete" onClick />
         <label className="btn btn-secondary" htmlFor="trip-delete" id="trip-delete">delete</label>
+        </>)
+        }
       </div>)
 }

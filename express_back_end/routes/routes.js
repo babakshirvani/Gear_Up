@@ -29,6 +29,21 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
       .catch((err) => console.log(err))
 
   })
+
+  router.get("/users/avatar/:id", (req, res) => {
+    const userID = req.params.id
+    db.query(
+      `
+        SELECT avatar
+        FROM users
+        WHERE users.id = $1;
+      `, [userID])
+      .then(({ rows: dbResponse }) => {
+        res.json(dbResponse);
+      })
+      .catch((err) => console.log(err))
+  })
+
   //GET dashboard
   router.get("/dashboard", (req, res) => {
     //select trips
