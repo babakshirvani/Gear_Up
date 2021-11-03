@@ -14,8 +14,8 @@ const CurrentDay = ({ currentWeather }) => {
             <span>°C</span>
           </p>
         </div>
-        <p className="current-weather-status">It's A {getIcon(currentWeather.weather[0].id).text} Day</p>
-        <img src={getIcon(currentWeather.weather[0].id).icon} alt={getIcon(currentWeather.weather[0].id).text} />
+        <p className="current-weather-status">It's A {currentWeather.weather[0].description} Day</p>
+        <img src={getIcon(currentWeather.weather[0].id).icon} alt={currentWeather.weather[0].description} />
       </div>
 
     </>
