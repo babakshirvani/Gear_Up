@@ -111,6 +111,7 @@ const TripCoordinates = styled.div`
 export default function TripInformation(props) {
 
   const {
+    id,
     creator_id,
     title,
     description,
@@ -158,7 +159,7 @@ export default function TripInformation(props) {
           <br />
           <span style={{color: '#668fff'}}>Longitude</span>&nbsp;&nbsp;{longitude && longitude}
         </TripCoordinates>
-        <TripButtons latitude={latitude} longitude={longitude}></TripButtons>
+        <TripButtons latitude={latitude} longitude={longitude} tripID={id} ></TripButtons>
         </InformationContainer>)
       }
       {/* {currentTrip &&

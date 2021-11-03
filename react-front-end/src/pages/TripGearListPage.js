@@ -1,8 +1,11 @@
 
 import React from 'react'
 import TripGearList from '../components/GearList/TripGearList';
+import { useParams } from 'react-router';
 
-const TripGearListPage = () => {
+const TripGearListPage = props => {
+  
+  const { id } = useParams();
   return (
     <>
       <div style={{
@@ -15,7 +18,7 @@ const TripGearListPage = () => {
         marginRight: 'auto',
         width: '40vw',
       }}>
-        <TripGearList />
+        <TripGearList tripID={id} />
       </div>
 
     </>

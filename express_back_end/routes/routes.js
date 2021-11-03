@@ -297,24 +297,24 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
   });
 
   // // GET user gear list: BABAK DONT REMOVE
-  // router.get('/calendar/userGearList/:trip_id', (req, res) => {
-  //   const trip_id = req.params.trip_id;
+  router.get('/calendar/userGearList/:trip_id', (req, res) => {
+    const trip_id = req.params.trip_id;
 
-  //   db.query(
-  //     `
-  //     SELECT
-  //       *
-  //     FROM
-  //     user_checklist
-  //     JOIN gear_checklist on user_checklist.type_id = gear_checklist.id
-  //     WHERE trip_id = $1;
-  //   `, [trip_id]
-  //   ).then((dbResponse) => {
-  //     console.log("newRes:::", dbResponse.rows);
-  //     res.json(dbResponse.rows)
+    db.query(
+      `
+      SELECT
+        *
+      FROM
+      user_checklist
+      JOIN gear_checklist on user_checklist.type_id = gear_checklist.id
+      WHERE trip_id = $1;
+    `, [trip_id]
+    ).then((dbResponse) => {
+      console.log("newRes:::", dbResponse.rows);
+      res.json(dbResponse.rows)
 
-  //   });
-  // });
+    });
+  });
 
 
 

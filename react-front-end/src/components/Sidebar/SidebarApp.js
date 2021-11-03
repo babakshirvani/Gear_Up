@@ -36,6 +36,7 @@ function SidebarApp() {
               <Route path="/calendar/:id" >{!auth && <Redirect to="/login" />}{auth && <Calendar />}</Route>
               <Route path="/calendar" >{!auth && <Redirect to="/login" />}{auth && <Calendar />}</Route>
               <Route path="/new" >{!auth && <Redirect to="/login" />}{auth && <NewTrip />}</Route>
+              <Route path="/tripGearList/:id" >{!auth && <Redirect to="/login" />}{auth && <TripGearListPage />}</Route>
               <Route path="/tripGearList" >{!auth && <Redirect to="/login" />}{auth && <TripGearListPage />}</Route>
               <Route path="/logout" component={Home} ></Route>
             </Switch>

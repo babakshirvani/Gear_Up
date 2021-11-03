@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import ListAccordion from './ListAccordion';
 
-const TripGearList = () => {
+const TripGearList = props => {
 
   const [trip, setTrip] = useState(0);
   const [gearList, setGearList] = useState([]);
@@ -12,37 +12,41 @@ const TripGearList = () => {
 
 
   useEffect(() => {
-    axios.get(history.pathname)
-      .then((res) => {
-        setTrip(res.data[0].trip_id)
 
-        function createGearObject() {
-          const categories = [];
-          for (let item of res.data) {
-            if (!categories.includes(item.category)) {
-              categories.push(item.category)
-            }
-          }
-          const gearId = [];
-          const gearList = [];
-          for (let category of categories) {
-            const userGearList = {}
-            userGearList["id"] = categories.indexOf(category);
-            userGearList["category"] = category;
-            userGearList["gears"] = [];
-            for (let gear of res.data) {
-              if (category === gear.category) {
-                gearId.push(gear.id);
-                userGearList["gears"].push({ "id": gear.id, "name": gear.type, checked: gear.checked });
+
+      let queryPath = null;
+      props.tripID ? queryPath = `/api/calendar/userGearList/${props.tripID}` : queryPath = history.pathname;
+      axios.get(queryPath)
+        .then((res) => {
+          setTrip(res.data[0].trip_id)
+  
+          function createGearObject() {
+            const categories = [];
+            for (let item of res.data) {
+              if (!categories.includes(item.category)) {
+                categories.push(item.category)
               }
             }
-            gearList.push(userGearList);
+            const gearId = [];
+            const gearList = [];
+            for (let category of categories) {
+              const userGearList = {}
+              userGearList["id"] = categories.indexOf(category);
+              userGearList["category"] = category;
+              userGearList["gears"] = [];
+              for (let gear of res.data) {
+                if (category === gear.category) {
+                  gearId.push(gear.id);
+                  userGearList["gears"].push({ "id": gear.id, "name": gear.type, checked: gear.checked });
+                }
+              }
+              gearList.push(userGearList);
+            }
+            setGearList(gearList);
+            return gearId;
           }
-          setGearList(gearList);
-          return gearId;
-        }
-        createGearObject()
-      })
+          createGearObject()
+        })
 
   }, [])
 
