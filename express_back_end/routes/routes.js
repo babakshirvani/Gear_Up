@@ -204,15 +204,13 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
   });
 
   router.get('/trips/:trip_id', (req, res) => {
-    const { id } = req.params;
+    const { trip_id } = req.params;
     db.query(
       `
-      SELECT
-        *
-      FROM
-      trips;
-      WHERE id = $1
-    `, [id]
+      SELECT *
+      FROM trips
+      WHERE id = $1;
+    `, [trip_id]
     ).then(({ rows: dbResponse }) => {
       // console.log("newRes:::", dbResponse);
       res.json(dbResponse);

@@ -1,0 +1,63 @@
+.button-group {
+  margin: 0.8rem 1.6rem;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: flex-end; */
+  /* align-items: flex-end; */
+  /* align-content: flex-end; */
+  margin-top: auto;
+  justify-self: flex-end ;
+}
+
+.button-group input[type='button'] {
+  display: none;
+}
+
+.button-group label {
+  font-size: 0.9rem;
+  box-sizing: content-box;
+  border-radius: 7px !important;
+  display: block;
+  cursor: pointer;
+  border: none;
+  color: rgba(211, 224, 251, 1);
+  box-shadow: 0px 1px 3px 1px rgb(166, 166, 166);
+  margin: 0.6rem 0;
+  width: 22%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#trip-direction {
+  background-color: rgba(18, 18, 169, 0.7 );
+}
+
+#trip-direction:hover {
+  background-color: rgb(23, 23, 165);
+}
+
+#trip-checklist {
+  background-color: rgb(0, 100, 0, 0.7);
+}
+
+#trip-checklist:hover {
+  background-color: rgb(14, 81, 14);
+}
+
+#trip-delete {
+  background-color: rgb(139, 0, 0, 0.7);
+}
+
+#trip-delete:hover {
+  background-color: rgb(153, 7, 7);
+}
+
+.button-group input[type='button'] + label:hover {
+  background-color: #F6AE28;
+}
+
+.button-group input[type='radio']:active + label {
+  background-color: #D36135;
+  outline: 3px solid white;
+  color: white;
+}

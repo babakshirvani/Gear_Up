@@ -23,6 +23,7 @@ export default function Trips(props) {
   const [planned, setPlanned] = useState([])
   const [completedTrips, setCompletedTrips] = useState([])
   const [mapLists, setMapLists] = useState([])
+  const [currentTrip, setCurrentTrip] = useState([])
 
 
   const user_id = localStorage.getItem('user_id');
@@ -72,16 +73,18 @@ export default function Trips(props) {
 
   const loadMarkers = function(list) {
     removeMarkers();
-    for (const marker of list) {
+    for (const trip of list) {
       markerGroup.current.push(new mapboxgl.Marker({
         color: 'orange'
       })
-        .setLngLat([marker.longitude, marker.latitude])
-        .setPopup(new mapboxgl.Popup().setHTML(`<h1>${marker.title}</h1>`))
+        .setLngLat([trip.longitude, trip.latitude])
+        .setPopup(new mapboxgl.Popup().setHTML(`<h1>${trip.title}</h1>`))
         .addTo(map.current)
       );
     }
-    for (const marker of markerGroup.current) {
+
+    markerGroup.current.forEach((marker, index) => {
+
       marker.getElement().addEventListener('click', e => {
         e.stopPropagation();
         if (tempMarker.current && tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
@@ -89,8 +92,25 @@ export default function Trips(props) {
         marker.togglePopup();
         setLng(marker.getLngLat().lng);
         setLat(marker.getLngLat().lat);
+        setCurrentTrip(list[index]);
       });
-    }
+    })
+
+    // for (const marker of markerGroup.current) {
+    //   console.log('wtf', list[index]);
+    //   marker.getElement().addEventListener('click', e => {
+    //     e.stopPropagation();
+    //     if (tempMarker.current && tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
+    //     removePopups();
+    //     marker.togglePopup();
+    //     setLng(marker.getLngLat().lng);
+    //     setLat(marker.getLngLat().lat);
+    //     console.log('list index', list);
+    //     console.log('list index', list[1]);
+    //     console.log('list index', typeof list, Array.isArray(list));
+    //     setCurrentTrip(list[index]);
+    //   });
+    // }
   }
 
   const removeMarkers = function() {
@@ -114,6 +134,49 @@ export default function Trips(props) {
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
+
+    if (props.tripID) {
+      axios.get(`/api/trips/${props.tripID}`)
+      .then(res => {
+        const {
+          creator_id,
+          title,
+          description,
+          activity,
+          start_date,
+          end_date,
+          longitude,
+          latitude,
+          image
+        } = res.data[0];
+        map.current = new mapboxgl.Map({
+          container: mapContainer.current,
+          style: 'mapbox://styles/mapbox/outdoors-v11',
+          center: [longitude, latitude],
+          zoom: zoom
+        });
+        setCurrentTrip({...res.data[0]});
+        removePopups();
+        setLng(longitude);
+        setLat(latitude);
+        setZoom(map.current.getZoom().toFixed(4));
+        if (tempMarker.current) tempMarker.current.remove();
+        tempMarker.current = new mapboxgl.Marker()
+          .setLngLat([longitude, latitude])
+          .setPopup(new mapboxgl.Popup().setHTML(`<h1>${title}</h1>`))
+          .addTo(map.current)
+          .togglePopup();
+        tempMarker.current.getElement().addEventListener('click', event => {
+          event.stopPropagation();
+          if (tempMarker.current && tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
+          removePopups();
+          setLng(longitude);
+          setLat(latitude);
+        });
+      })
+      return;
+    }
+
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/outdoors-v11',
@@ -135,11 +198,64 @@ export default function Trips(props) {
     });
   }, [map, zoom]);
 
+
+  // useEffect(() => {
+  //   map.current.on('load', () => {
+  //     if (props.tripID) {
+  //       axios.get(`/api/trips/${props.tripID}`)
+  //         .then(res => {
+  //           const {
+  //             creator_id,
+  //             title,
+  //             description,
+  //             activity,
+  //             start_date,
+  //             end_date,
+  //             longitude,
+  //             latitude,
+  //             image
+  //           } = res.data[0];
+  //           map.current = new mapboxgl.Map({
+  //             container: mapContainer.current,
+  //             style: 'mapbox://styles/mapbox/outdoors-v11',
+  //             center: [longitude, latitude],
+  //             zoom: zoom
+  //           });
+  //           setCurrentTrip({...res.data[0]});
+  //           removePopups();
+  //           setLng(longitude);
+  //           setLat(latitude);
+  //           setZoom(map.current.getZoom().toFixed(4));
+  //           if (tempMarker.current) tempMarker.current.remove();
+  //           tempMarker.current = new mapboxgl.Marker()
+  //             .setLngLat([longitude, latitude])
+  //             .setPopup(new mapboxgl.Popup().setHTML(`<h1>${title}</h1>`))
+  //             .addTo(map.current)
+  //             .togglePopup();
+  //           tempMarker.current.getElement().addEventListener('click', event => {
+  //             event.stopPropagation();
+  //             if (tempMarker.current && tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
+  //             removePopups();
+  //             setLng(longitude);
+  //             setLat(latitude);
+  //           });
+  //           // map.current.jumpTo({
+  //           //   // minZoom: 22,
+  //           //   // curve: 1,
+  //           //   zoom: map.current.getZoom().toFixed(4),
+  //           //   center: [longitude, latitude],
+  //           //   around: [longitude, latitude]
+  //           // })
+  //         })
+  //     }
+  //   })
+  // }, [map])
+
   return (
     <>
       <div ref={mapContainer} className="map-container">
         <Toggle setMapList={setMapList} mapLists={mapLists}></Toggle>
-        <TripInformation />
+        <TripInformation currentTrip={currentTrip}/>
         {/* <div className="step-counter">
           {props.children}
         </div> */}
@@ -173,11 +289,6 @@ export default function Trips(props) {
 
 
 
-  // useEffect(() => {
-  //   map.current.on('load', () => {
-  //     loadMarkers(mapList);
-  //   })
-  // }, [map])
 
 
 

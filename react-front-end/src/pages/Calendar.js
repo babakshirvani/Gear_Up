@@ -1,13 +1,15 @@
 
 import React from 'react'
+import { useParams } from 'react-router';
 import Trips from '../components/Map/Trips';
 
 const Calendar = () => {
+
+  const { id } = useParams();
+
   return (
     <>
-      <Trips></Trips>
-
-
+      <Trips tripID={id}></Trips>
     </>
   )
 }
