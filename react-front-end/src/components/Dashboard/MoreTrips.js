@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import moment from "moment";
+import { NavLink } from "react-router-dom";
 
 
 const TripContainer = styled.div`
@@ -17,7 +18,7 @@ const TripContainer = styled.div`
   border-radius: 5px;
 `;
 
-const NextTrip = styled.div`
+const NextTrip = styled(NavLink)`
   border-radius: 12px;
   margin: 1rem 2rem;
   background-image: url(${props => props.image});
@@ -27,6 +28,7 @@ const NextTrip = styled.div`
   width: auto;
   box-shadow: 1px 2px 8px 2px rgb(166, 166, 166);
   &:hover {
+    text-decoration: none;
     cursor: pointer;
     filter: brightness(108%);
   }
@@ -107,7 +109,7 @@ export const MoreTrips = function(props) {
     <>
       <TripContainer>
         {upcomingTrips !==0 && friendList.length !== 0 && upcomingTrips.slice(3).map(trip => {
-        return (<NextTrip image={trip.image || mapboxCap(trip)}>
+        return (<NextTrip to={`/calendar/${trip.id}`} image={trip.image || mapboxCap(trip)}>
             <TopHeadingContainer>
             {trip.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip.creator_id, friendList)} />}
             <TripActivity className={trip.activity}>{trip.activity}</TripActivity>
