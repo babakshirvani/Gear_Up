@@ -298,6 +298,15 @@ INSERT INTO trips (creator_id, title, description, activity, start_date, end_dat
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (5, 'Cypress Mountain', null, 'hiking', '2022-01-08', '2022-01-10', -123.2112447,49.3989194, '/images/Cypress_Mountain.jpg');
 INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Second Narrows and Lions Gate Cycling Loop', null, 'backpacking', '2022-01-11', '2021-01-14', -123.10529,49.278,'/images/Second_Narrows_and_Lions_Gate_Cycling_Loop.jpeg'); 
 
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (3, 'Kinnaird Park Highlands Hiking Trail', null, 'hiking', '2021-10-01', '2021-12-29', -123.2112447,49.3989194, '/images/Mount_Seymour.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (4, 'Vancouver and Stanley Park Seawall', null, 'backpacking', '2022-01-01', '2022-01-04', -123.14222,49.27571,'/images/Vancouver_and_Stanley_Park_Seawall.jpg'); 
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (1, 'Say Nuth Khaw Yum Provincial Park', null, 'camping', '2022-01-05', '2022-01-07', -120.3728448,51.3064702, '/images/Say_Nuth_Khaw_Yum_Provincial_Park.jpeg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (5, 'Cypress Mountain', null, 'hiking', '2022-01-08', '2022-01-10', -123.2112447,49.3989194, '/images/Cypress_Mountain.jpg');
+INSERT INTO trips (creator_id, title, description, activity, start_date, end_date, longitude, latitude, image) VALUES (2, 'Second Narrows and Lions Gate Cycling Loop', null, 'backpacking', '2022-01-11', '2021-01-14', -123.10529,49.278,'/images/Second_Narrows_and_Lions_Gate_Cycling_Loop.jpeg'); 
+
+
+
+
 INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Stanley Park Seawall Trail',NULL,49.29772,-123.13071,'https://photos.alltrails.com/eyJidWNrZXQiOiJhc3NldHMuYWxsdHJhaWxzLmNvbSIsImtleSI6InVwbG9hZHMvcGhvdG8vaW1hZ2UvMzExNTg5NjQvM2U1MDdiYWI1N2JhM2FiOGJjOTM1NmE5MWU4OWIyMjEuanBnIiwiZWRpdHMiOnsidG9Gb3JtYXQiOiJqcGVnIiwicmVzaXplIjp7IndpZHRoIjoyMDQ4LCJoZWlnaHQiOjIwNDgsImZpdCI6Imluc2lkZSJ9LCJyb3RhdGUiOm51bGwsImpwZWciOnsidHJlbGxpc1F1YW50aXNhdGlvbiI6dHJ1ZSwib3ZlcnNob290RGVyaW5naW5nIjp0cnVlLCJvcHRpbWlzZVNjYW5zIjp0cnVlLCJxdWFudGlzYXRpb25UYWJsZSI6M319fQ==');
 INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('False Creek South Trail',null,49.27499,-123.10231,'https://cdn-assets.alltrails.com/uploads/photo/image/24202461/extra_large_11b4e40c52ad9bf6c98bd3d40babd4ac.jpg');
 INSERT INTO recommendations (title, description, latitude, longitude, image) VALUES ('Sunset Beach to Second Beach',null,49.28102,-123.14004,'https://cdn-assets.alltrails.com/uploads/photo/image/20510028/extra_large_8210355fdf50323cc306aedf2ca59217.jpg');

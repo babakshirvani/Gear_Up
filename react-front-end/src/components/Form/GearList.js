@@ -6,6 +6,8 @@ import axios from 'axios';
 import Accordion from './Accordion';
 import { Link } from 'react-router-dom';
 import { set } from 'date-fns';
+import ReactDOM from "react-dom";
+import Pdf from "react-to-pdf";
 
 
 export default function GearList() {
@@ -70,7 +72,7 @@ export default function GearList() {
     // eslint-disable-next-line
   }, [userData.activity]);
 
-
+  const ref = React.createRef();
 
   return (
     <>
@@ -87,7 +89,7 @@ export default function GearList() {
         <h4 style={{ color: 'white' }}>Your Gear List!</h4>
         <br />
         <div>
-          <div className="accordion">
+          <div className="accordion" ref={ref}>
             {console.log("BEFORE MAP::", gear)}
             {gear.map((item, i) => (
               <>
@@ -106,14 +108,11 @@ export default function GearList() {
             >
               Done
             </Button>
-
-            < Button
-              variant="contained"
-              color="primary"
-              component={Link} to="/dashboard"
-            >
-              Print
-            </Button>
+            &nbsp; &nbsp;
+            <Pdf targetRef={ref} filename="code-example.pdf">
+              {({ toPdf }) => <Button variant="contained"
+              color="primary" onClick={toPdf}>Generate Pdf</Button>}
+            </Pdf>
           </div>
         </div >
       </div>
