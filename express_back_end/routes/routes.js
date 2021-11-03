@@ -228,6 +228,8 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
   // });
 
 
+
+
   // PUT, Edit the trip:
   router.put('/userGear/update/:trip_id', (req, res) => {
     const checked = req.body.checked;
@@ -245,6 +247,49 @@ join users on friendship.user_id1=users.id where friendship.user_id2=${req.param
     });
   });
 
+
+
+  // GET popular Trips:
+  router.get('/recommendations', (req, res) => {
+    db.query(
+      `
+      SELECT
+        *
+      FROM
+      recommendations;
+    `
+    ).then(({ rows: dbResponse }) => {
+      // console.log("recommendations:::", dbResponse);
+      res.json(dbResponse)
+
+    });
+  });
+
+  // Displays user's completed trips in Trips (aka Calendar) page
+  router.get('/trips/completed/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+    db.query(
+      `
+    SELECT * FROM trips
+    WHERE end_date < CURRENT_DATE AND creator_id = $1
+  `, [user_id]
+    ).then(({ rows: dbResponse }) => {
+      res.json(dbResponse);
+    });
+  });
+
+  // Displays user's planned trips in Trips (aka Calendar) page
+  router.get('/trips/planned/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+    db.query(
+      `
+    SELECT * FROM trips
+    WHERE start_date >= CURRENT_DATE AND creator_id = $1
+  `, [user_id]
+    ).then(({ rows: dbResponse }) => {
+      res.json(dbResponse);
+    });
+  });
 
 
   //POST save user gear     
