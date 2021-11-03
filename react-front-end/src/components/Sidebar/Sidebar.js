@@ -136,11 +136,11 @@ const Sidebar = () => {
           </Item>
           <Item activeClassName="active" to="/calendar" >
             <img src={CalendarIcon} alt="CalendarIcon" />
-            <Text >Calendar</Text>
+            <Text >Trips</Text>
           </Item>
           <Item activeClassName="active" to="/new" >
             <img src={NewTripIcon} alt="NewTripIcon" />
-            <Text >NewTrip</Text>
+            <Text >Planning</Text>
           </Item>
           <Item onClick={logout} activeClassName="active" className="last-item" to="/logout" >
             <img src={NewTripIcon} alt="NewTripIcon" />

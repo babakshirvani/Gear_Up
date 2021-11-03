@@ -48,11 +48,7 @@ const NextTrip = styled.div`
 
 const TripTitle = styled.div`
   margin: 0rem 1.5rem;
-<<<<<<< HEAD
   font-size: 2.6rem;
-=======
-  font-size: 1.8rem;
->>>>>>> master
   color: white;
   height: auto;
   text-shadow: 0 0 2px grey, 0 0 2px grey, 0 0 2px grey, 0 0 2px grey;

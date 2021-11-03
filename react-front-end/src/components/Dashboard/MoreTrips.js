@@ -23,7 +23,7 @@ const NextTrip = styled.div`
   background-image: url(${props => props.image});
   background-size: cover;
 
-  height: 4rem;
+  height: 8rem;
   width: auto;
   box-shadow: 1px 2px 8px 2px rgb(166, 166, 166);
   &:hover {
@@ -106,7 +106,7 @@ export const MoreTrips = function(props) {
   return (
     <>
       <TripContainer>
-        {upcomingTrips !==0 && friendList.length !== 0 && upcomingTrips.map(trip => {
+        {upcomingTrips !==0 && friendList.length !== 0 && upcomingTrips.slice(3).map(trip => {
         return (<NextTrip image={trip.image || mapboxCap(trip)}>
             <TopHeadingContainer>
             {trip.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip.creator_id, friendList)} />}
