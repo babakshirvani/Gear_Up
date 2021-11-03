@@ -64,7 +64,9 @@ const Accordion = ({ category, gears, tripID }) => {
             textDecoration: gear.checked && 'line-through'
           }} className="accordion-content" key={gear.id} onClick={() => handler(gear)}>
             {gear.name}
+            <input type="checkbox"  style={{float:'right'}}></input>
           </div>
+          
         ))}
 
       </div>
