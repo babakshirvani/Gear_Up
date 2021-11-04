@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 //All the svg files
-import HomeIcon from "../assets/home-solid.svg";
-import DashboardIcon from "../assets/Forum.svg";
-import CalendarIcon from "../assets/scheduled.svg";
-import NewTripIcon from "../assets/draft.svg";
+import HomeIcon from "../assets/camping-svgrepo-com.svg";
+import DashboardIcon from "../assets/dashboard-svgrepo-com.svg";
+import CalendarIcon from "../assets/pin-svgrepo-com.svg";
+import NewTripIcon from "../assets/planning.svg";
+import logOutIcon from "../assets/logOut.svg";
 import { useContext, useState } from 'react';
 import { authContext } from '../../providers/AuthProvider';
-
 
 import bgImage from "../assets/homePage.jpg";
 
@@ -73,6 +73,7 @@ const Text = styled.span`
   text-decoration: none;
   margin-left: 1.5rem;
   font-size: 1rem;
+  transition: all 0.3s ease;
 `;
 
 const Profile = styled.div`
@@ -111,17 +112,17 @@ const Name = styled.div`
 const Sidebar = () => {
   const [click, setClick] = useState(false);
   const { auth, user, logout } = useContext(authContext);
-//  console.log("user ", user);
+  //  console.log("user ", user);
 
   return (
     <Container>
       <SidebarContainer>
-      
+
         <SlickBar>
           <Profile >
             <img src={localStorage.getItem('avatar')} alt="Profile" />
             <Name>
-            {localStorage.getItem('username')}
+              {localStorage.getItem('username')}
             </Name>
           </Profile>
           <Item activeClassName="active" exact to="/" >
@@ -135,7 +136,7 @@ const Sidebar = () => {
             <Text >Dashboard</Text>
           </Item>
           <Item activeClassName="active" to="/calendar" >
-            <img src={CalendarIcon} alt="CalendarIcon" />
+            {<img src={CalendarIcon} alt="CalendarIcon" />}
             <Text >Trips</Text>
           </Item>
           <Item activeClassName="active" to="/new" >
@@ -143,15 +144,15 @@ const Sidebar = () => {
             <Text >Planning</Text>
           </Item>
           <Item onClick={logout} activeClassName="active" className="last-item" to="/logout" >
-            <img src={NewTripIcon} alt="NewTripIcon" />
+            <img src={logOutIcon} alt="NewTripIcon" />
             <Text clicked={click}>Logout</Text>
-          </Item>        
-          
+          </Item>
+
         </SlickBar>
-        
+
       </SidebarContainer>
-    
-      
+
+
     </Container>
   );
 };
