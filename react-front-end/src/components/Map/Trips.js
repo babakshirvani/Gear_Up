@@ -176,17 +176,15 @@ export default function Trips(props) {
             .setLngLat([longitude, latitude])
             .setPopup(new mapboxgl.Popup({ className: "pop-up-main", closeButton: false }).setHTML(`
             <div >
-                  <div class="pop-up-img">
-                    <img src="${mapboxCap(latitude, longitude)}">
-                  </div>
-                  <div class="pop-up-title">
-                    <p id="popTitle">Your New Trip</p>
-                    <p id="popDesc">longitude: ${longitude}</p>
-                    <p id="popDesc">latitude: ${latitude}</p>
-                  </div>
-              </div>
-      
-            `))
+                 <div class="pop-up-img">
+                   <img src=${image}>
+                 </div>
+                 <div class="pop-up-title">
+                   <p id="popTitle">${title}</p>
+                   <p id="popDesc">${description}aa</p>
+                 </div>
+             </div>
+             `))
             .addTo(map.current)
             .togglePopup();
           tempMarker.current.getElement().addEventListener('click', event => {
