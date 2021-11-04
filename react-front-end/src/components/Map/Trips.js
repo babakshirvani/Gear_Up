@@ -7,6 +7,7 @@ import TripInformation from './TripInformation';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWNlZmxhbmtlciIsImEiOiJja3RudjFrZDEwNmxxMnVwbWs5aW85eGVyIn0.j-do5McYg-VrWM4qQmAIKg';
 
+
 export default function Trips(props) {
 
   // const { setStep, userData, setUserData } = useContext(multiStepsContext)

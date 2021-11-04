@@ -73,14 +73,14 @@ const Navbar = () => {
         <ul className="navbar-nav ml-auto" >
           <Container>
               <li className="nav-item ">
-                <Item exact activeClassName="active" to="/" >
+                <Item exact  to="/" >
                   <img src={HomeIcon} alt="HomeIcon" />
                   <Text clicked={click}>Home</Text>
                 </Item>
               </li>
               {!auth && 
                 <li className="nav-item ">
-                <Item exact activeClassName="active" to="/login" >
+                <Item exact activeClassName="" to="/login" >
                   <i class="fas fa-sign-in-alt"></i>
                   <Text clicked={click}> Login</Text>
                 </Item>
