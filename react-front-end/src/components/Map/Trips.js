@@ -85,11 +85,11 @@ export default function Trips(props) {
         .setPopup(new mapboxgl.Popup({ className: "pop-up-main", closeButton: false }).setHTML(`
         <div >
              <div class="pop-up-img">
-               <img src=${trip.image}>
+               <img src=${trip.image || mapboxCap(trip.latitude, trip.longitude)}>
              </div>
              <div class="pop-up-title">
                <p id="popTitle">${trip.title}</p>
-               <p id="popDesc">${trip.description}</p>
+               <p id="popDesc">${trip.description || ""}</p>
              </div>
          </div>
          `))
@@ -174,7 +174,17 @@ export default function Trips(props) {
           if (tempMarker.current) tempMarker.current.remove();
           tempMarker.current = new mapboxgl.Marker()
             .setLngLat([longitude, latitude])
-            .setPopup(new mapboxgl.Popup().setHTML(`<h1>${title}</h1>`))
+            .setPopup(new mapboxgl.Popup({ className: "pop-up-main", closeButton: false }).setHTML(`
+            <div >
+                 <div class="pop-up-img">
+                   <img src=${image || mapboxCap(latitude, longitude)}>
+                 </div>
+                 <div class="pop-up-title">
+                   <p id="popTitle">${title}</p>
+                   <p id="popDesc">${description || ""}</p>
+                 </div>
+             </div>
+             `))
             .addTo(map.current)
             .togglePopup();
           tempMarker.current.getElement().addEventListener('click', event => {
