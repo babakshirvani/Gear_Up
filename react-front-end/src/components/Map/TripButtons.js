@@ -56,7 +56,7 @@ export default function TripButtons(props) {
           </label>
         </>)
       }
-      {!props.friendAvatarURL &&
+      {(props.currentTrip.creator_id && !props.friendAvatarURL) && 
         (<>
           <input type="button" className="btn-check" name="trip-info" id="trip-delete" onClick={() => handleDeleteTrip(props.tripID)} />
           <label className="btn btn-secondary" htmlFor="trip-delete" id="trip-delete">delete</label>

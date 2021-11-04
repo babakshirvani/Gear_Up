@@ -284,6 +284,7 @@ export default function Trips(props) {
 
   useEffect(() => {
     removeMarkers();
+    setCurrentTrip(null);
     if (!mapList) return;
     loadMarkers(mapList);
   }, [mapList])
