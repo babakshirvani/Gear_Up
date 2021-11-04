@@ -186,13 +186,13 @@ export default function Trips(props) {
              `))
             .addTo(map.current)
             .togglePopup();
-          tempMarker.current.getElement().addEventListener('click', event => {
-            event.stopPropagation();
-            if (tempMarker.current && tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
-            removePopups();
-            setLng(longitude);
-            setLat(latitude);
-          });
+          // tempMarker.current.getElement().addEventListener('click', event => {
+          //   event.stopPropagation();
+          //   if (tempMarker.current && tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
+          //   removePopups();
+          //   setLng(longitude);
+          //   setLat(latitude);
+          // });
         })
           .catch(res => {
             map.current = new mapboxgl.Map({
