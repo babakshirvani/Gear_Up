@@ -68,7 +68,7 @@ export default function Trips(props) {
               })
           })
       })
-  }, [])
+  }, [currentTrip])
 
   const markerGroup = useRef([]);
   const recommendation = useRef(recommendations);
@@ -96,7 +96,6 @@ export default function Trips(props) {
         .addTo(map.current)
       );
     }
-
     markerGroup.current.forEach((marker, index) => {
 
       marker.getElement().addEventListener('click', e => {
@@ -291,7 +290,14 @@ export default function Trips(props) {
   
   useEffect(() => {
     if (tempMarker.current && currentTrip === null) tempMarker.current.remove();
-  }, [currentTrip])
+    if (markerGroup.current && !currentTrip) {
+      console.log('marker', markerGroup);
+      markerGroup.current.forEach(marker => {
+        console.log(marker);
+        if (marker.getPopup().isOpen()) marker.remove();
+      })
+    }
+  }, [currentTrip, mapList])
   
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
