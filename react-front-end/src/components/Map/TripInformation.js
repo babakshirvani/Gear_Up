@@ -195,7 +195,7 @@ export default function TripInformation(props) {
         
         <TripDate className={(!currentTrip.start_date && !currentTrip.activity ? 'empty-date-activity' : null)}>
           {/*  A reminder to improve date range display with no repeating elements, when it's the same month or year */}
-          {currentTrip.start_date && moment(currentTrip.start_date).format("MMM DD, YYYY") + (currentTrip.start_date !== currentTrip.end_date && ' - ' + moment(currentTrip.end_date).format("MMM DD, YYYY"))}
+          {currentTrip.start_date && moment(currentTrip.start_date).format("MMM DD, YYYY") + ''}{currentTrip.start_date !== currentTrip.end_date && ' - '}{currentTrip.start_date !== currentTrip.end_date && moment(currentTrip.end_date).format("MMM DD, YYYY")}
           {currentTrip.activity && <TripActivity className={currentTrip.activity}>{currentTrip.activity}</TripActivity>}
         </TripDate>
         <TripDescription>{currentTrip.description}</TripDescription>

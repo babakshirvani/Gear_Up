@@ -201,15 +201,17 @@ export default function Trips(props) {
               center: [-123.1207, 49.2827],
               zoom: zoom
             });
+            $('#my-trips').prop('checked', true);
           })
-      return;
-    }
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/outdoors-v11',
-      center: [-123.1207, 49.2827],
-      zoom: zoom
-    });
+          return;
+        }
+        map.current = new mapboxgl.Map({
+          container: mapContainer.current,
+          style: 'mapbox://styles/mapbox/outdoors-v11',
+          center: [-123.1207, 49.2827],
+          zoom: zoom
+        });
+        $('#my-trips').prop('checked', true);
   }, [map, lng, lat, zoom]);
   
   // useEffect(() => {
