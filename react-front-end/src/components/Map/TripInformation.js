@@ -139,16 +139,17 @@ export default function TripInformation(props) {
   
 
   useEffect(() => {
-    if(!id || (id && creator_id !== currentUserID)) return;
+    if(!id || (id && creator_id !== currentUserID)) return setCheckListed(false);
     axios.get(`/api/calendar/userGearList/${id}`)
       .then(res => {
-        if(res.data.length && res.data.length !== 0) setCheckListed(true);
+        if(res.data.length && res.data.length !== 0) return setCheckListed(true);
+        setCheckListed(false);
       })
   }, [props.currentTrip])
 
    
   useEffect(() => {
-    if(!creator_id || currentUserID === creator_id) return;
+    if(!creator_id || currentUserID === creator_id) return setFriendAvatarURL(false);
     axios.get(`/api/users/avatar/${creator_id}`)
       .then(res => {
         setFriendAvatarURL(res.data[0].avatar);
