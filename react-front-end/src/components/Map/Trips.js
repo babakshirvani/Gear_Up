@@ -4,7 +4,7 @@ import './LocationForm.css';
 import Toggle from './Toggle';
 import axios from 'axios';
 import TripInformation from './TripInformation';
-
+import $ from 'jquery';
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWNlZmxhbmtlciIsImEiOiJja3RudjFrZDEwNmxxMnVwbWs5aW85eGVyIn0.j-do5McYg-VrWM4qQmAIKg';
 
 
@@ -37,7 +37,6 @@ export default function Trips(props) {
     axios.get('/api/recommendations')
       .then((res) => {
         setRecommendations(res.data)
-        console.log("001 data API:", res.data)
       })
   }, [])
 
@@ -77,6 +76,7 @@ export default function Trips(props) {
   const [mapList, setMapList] = useState(null);
 
   const loadMarkers = function(list) {
+
     removeMarkers();
     for (const trip of list) {
       markerGroup.current.push(new mapboxgl.Marker({
@@ -196,9 +196,16 @@ export default function Trips(props) {
             setLat(latitude);
           });
         })
+          .catch(res => {
+            map.current = new mapboxgl.Map({
+              container: mapContainer.current,
+              style: 'mapbox://styles/mapbox/outdoors-v11',
+              center: [-123.1207, 49.2827],
+              zoom: zoom
+            });
+          })
       return;
     }
-
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/outdoors-v11',
@@ -206,13 +213,87 @@ export default function Trips(props) {
       zoom: zoom
     });
   }, [map, lng, lat, zoom]);
+  
+  // useEffect(() => {
+  //   if (map.current) return; // initialize map only once
+
+  //   if (props.tripID) {
+  //     $.get(`/api/trips/${props.tripID}`)
+  //       .then(res => {
+  //         const {
+  //           creator_id,
+  //           title,
+  //           description,
+  //           activity,
+  //           start_date,
+  //           end_date,
+  //           longitude,
+  //           latitude,
+  //           image
+  //         } = res.data[0];
+  //         map.current = new mapboxgl.Map({
+  //           container: mapContainer.current,
+  //           style: 'mapbox://styles/mapbox/outdoors-v11',
+  //           center: [longitude, latitude],
+  //           zoom: zoom
+  //         });
+  //         setCurrentTrip({ ...res.data[0] });
+  //         removePopups();
+  //         setLng(longitude);
+  //         setLat(latitude);
+  //         setZoom(map.current.getZoom().toFixed(4));
+  //         if (tempMarker.current) tempMarker.current.remove();
+  //         tempMarker.current = new mapboxgl.Marker()
+  //           .setLngLat([longitude, latitude])
+  //           .setPopup(new mapboxgl.Popup({ className: "pop-up-main", closeButton: false }).setHTML(`
+  //           <div >
+  //                <div class="pop-up-img">
+  //                  <img src=${image || mapboxCap(latitude, longitude)}>
+  //                </div>
+  //                <div class="pop-up-title">
+  //                  <p id="popTitle">${title}</p>
+  //                  <p id="popDesc">${description || ""}</p>
+  //                </div>
+  //            </div>
+  //            `))
+  //           .addTo(map.current)
+  //           .togglePopup();
+  //         tempMarker.current.getElement().addEventListener('click', event => {
+  //           event.stopPropagation();
+  //           if (tempMarker.current && tempMarker.current.getPopup().isOpen()) tempMarker.current.togglePopup();
+  //           removePopups();
+  //           setLng(longitude);
+  //           setLat(latitude);
+  //         });
+  //       })
+  //         .catch(res => {
+  //           map.current = new mapboxgl.Map({
+  //             container: mapContainer.current,
+  //             style: 'mapbox://styles/mapbox/outdoors-v11',
+  //             center: [-123.1207, 49.2827],
+  //             zoom: zoom
+  //           });
+  //         })
+  //     return;
+  //   }
+  //   map.current = new mapboxgl.Map({
+  //     container: mapContainer.current,
+  //     style: 'mapbox://styles/mapbox/outdoors-v11',
+  //     center: [-123.1207, 49.2827],
+  //     zoom: zoom
+  //   });
+  // }, [map, lng, lat, zoom]);
 
   useEffect(() => {
     removeMarkers();
     if (!mapList) return;
     loadMarkers(mapList);
   }, [mapList])
-
+  
+  useEffect(() => {
+    if (tempMarker.current && currentTrip === null) tempMarker.current.remove();
+  }, [currentTrip])
+  
   useEffect(() => {
     if (!map.current) return; // wait for map to initialize
     map.current.on('move', () => {
@@ -221,6 +302,13 @@ export default function Trips(props) {
   }, [map, zoom]);
 
 
+  useEffect(() => {
+    if (!map.current) return;
+    map.current.on('load', () => {
+      if (mapLists.length === 0 || props.tripID) return;
+      loadMarkers(mapLists.plannedTrips);
+    })
+  }, [map, mapLists])
   // useEffect(() => {
   //   map.current.on('load', () => {
   //     if (props.tripID) {
@@ -277,7 +365,7 @@ export default function Trips(props) {
     <>
       <div ref={mapContainer} className="map-container">
         <Toggle setMapList={setMapList} mapLists={mapLists}></Toggle>
-        <TripInformation currentTrip={currentTrip} />
+        <TripInformation currentTrip={currentTrip} setCurrentTrip={setCurrentTrip} />
         {/* <div className="step-counter">
           {props.children}
         </div> */}

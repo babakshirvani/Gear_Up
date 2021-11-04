@@ -4,6 +4,7 @@ import moment from 'moment';
 import TripButtons from './TripButtons';
 import axios from 'axios';
 
+
 // creator_id, title, description, activity, start_date, end_date, longitude, latitude, image
 
 const InformationContainer = styled.div`
@@ -122,42 +123,48 @@ export default function TripInformation(props) {
   const [checkListed, setCheckListed] = useState(false);
   const [friendAvatarURL, setFriendAvatarURL] = useState(false);
 
-  const {
-    id,
-    creator_id,
-    title,
-    description,
-    activity,
-    start_date,
-    end_date,
-    longitude,
-    latitude,
-    image
-  } = props.currentTrip;
+  
+  const {currentTrip, setCurrentTrip} = props;
+  
+  // const {
+  //   id,
+  //   creator_id,
+  //   title,
+  //   description,
+  //   activity,
+  //   start_date,
+  //   end_date,
+  //   longitude,
+  //   latitude,
+  //   image
+  // } = currentTrip;
 
   const currentUserID = Number(localStorage.getItem('user_id'));
   
 
   useEffect(() => {
-    if(!id || (id && creator_id !== currentUserID)) return setCheckListed(false);
-    axios.get(`/api/calendar/userGearList/${id}`)
-      .then(res => {
-        if(res.data.length && res.data.length !== 0) return setCheckListed(true);
-        setCheckListed(false);
-      })
-  }, [props.currentTrip])
-
-   
+    if (!currentTrip) return;
+    if (!currentTrip.id || (currentTrip.id && currentTrip.creator_id !== currentUserID)) return setCheckListed(false);
+    console.log('well')
+    axios.get(`/api/calendar/userGearList/${currentTrip.id}`)
+    .then(res => {
+      if(res.data.length && res.data.length !== 0) return setCheckListed(true);
+      setCheckListed(false);
+    })
+  }, [props.currentTrip, currentTrip])
+  
+  
   useEffect(() => {
-    if(!creator_id || currentUserID === creator_id) return setFriendAvatarURL(false);
-    axios.get(`/api/users/avatar/${creator_id}`)
+    if (!currentTrip) return;
+    if(!currentTrip.creator_id || currentUserID === currentTrip.creator_id) return setFriendAvatarURL(false);
+    axios.get(`/api/users/avatar/${currentTrip.creator_id}`)
       .then(res => {
         setFriendAvatarURL(res.data[0].avatar);
       })
-  }, [props.currentTrip])
+  }, [props.currentTrip, currentTrip])
 
   const mapboxCap = function(trip) {
-    return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/${trip.longitude},${trip.latitude},14,0/600x600?access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`;
+    return `https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/${currentTrip.longitude},${currentTrip.latitude},14,0/600x600?access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`;
   }
 
   // const [currentTrip, setCurrentTrip] = useState(null);
@@ -176,70 +183,30 @@ export default function TripInformation(props) {
 
   return (
     <>
-
-      {!Array.isArray(props.currentTrip) &&
+      {currentTrip && currentTrip.length !== 0 &&
         (<InformationContainer>
-        <TripImage image={image || mapboxCap(props.currentTrip)} >
+        <TripImage image={currentTrip.image || mapboxCap(currentTrip)} >
 
         </TripImage>
         <TripTitle>
-          {title}
+          {currentTrip.title}
           {friendAvatarURL && <FriendAvatar src={friendAvatarURL}></FriendAvatar>}
         </TripTitle>
         
-        <TripDate className={(!start_date && !activity ? 'empty-date-activity' : null)}>
+        <TripDate className={(!currentTrip.start_date && !currentTrip.activity ? 'empty-date-activity' : null)}>
           {/*  A reminder to improve date range display with no repeating elements, when it's the same month or year */}
-          {start_date && moment(start_date).format("MMM DD, YYYY") + (start_date !== end_date && ' - ' + moment(end_date).format("MMM DD, YYYY"))}
-          {activity && <TripActivity className={activity}>{activity}</TripActivity>}
+          {currentTrip.start_date && moment(currentTrip.start_date).format("MMM DD, YYYY") + (currentTrip.start_date !== currentTrip.end_date && ' - ' + moment(currentTrip.end_date).format("MMM DD, YYYY"))}
+          {currentTrip.activity && <TripActivity className={currentTrip.activity}>{currentTrip.activity}</TripActivity>}
         </TripDate>
-        <TripDescription>{description}</TripDescription>
+        <TripDescription>{currentTrip.description}</TripDescription>
         <TripCoordinates>
-          <span style={{color: '#668fff'}}>Latitude</span>&nbsp;&nbsp;{latitude && latitude}
+          <span style={{color: '#668fff'}}>Latitude</span>&nbsp;&nbsp;{currentTrip.latitude && currentTrip.latitude}
           <br />
-          <span style={{color: '#668fff'}}>Longitude</span>&nbsp;&nbsp;{longitude && longitude}
+          <span style={{color: '#668fff'}}>Longitude</span>&nbsp;&nbsp;{currentTrip.longitude && currentTrip.longitude}
         </TripCoordinates>
-        <TripButtons latitude={latitude} longitude={longitude} tripID={id} checkListed={checkListed} friendAvatarURL={friendAvatarURL}></TripButtons>
+        <TripButtons setCurrentTrip={props.setCurrentTrip} currentTrip={props.currentTrip} latitude={currentTrip.latitude} longitude={currentTrip.longitude} tripID={currentTrip.id} checkListed={checkListed} friendAvatarURL={friendAvatarURL}></TripButtons>
         </InformationContainer>)
       }
-      {/* {currentTrip &&
-      (
-      )} */}
-      {/* <TripContainer >
-        {trip1 && friendList.length !== 0 &&
-          <NextTrip onClick={() => handleTripOne(trip1)} image={trip1.image || mapboxCap(trip1)}>
-            <TripDate>
-              {trip1.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip1.creator_id, friendList)} />}
-              <TripActivity className={trip1.activity}>{trip1.activity}</TripActivity>
-              {moment(trip1.start_date).format("MMM DD, YYYY")}
-            </TripDate>
-            <TripTitle>{trip1.title}</TripTitle>
-          </NextTrip>
-        }
-        <SideTripContainer>
-          {trip2 && friendList.length !== 0 &&
-            <LaterTrip onClick={() => handleTripTwo(trip2)} image={trip2.image || mapboxCap(trip2)} style={{ marginBottom: "1rem" }}>
-              <TripDate>
-                {console.log(trip2.creator_id, friendList)}
-                {console.log("avatar", avatarFinder(trip2.creator_id, friendList))}
-                {trip2.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip2.creator_id, friendList)} />}
-                <TripActivity className={trip2.activity}>{trip2.activity}</TripActivity>
-                {moment(trip2.start_date).format("MMM DD, YYYY")}
-              </TripDate>
-              <TripTitle>{trip2.title}</TripTitle>
-            </LaterTrip>
-          }
-          {trip3 && friendList.length !== 0 &&
-            <LaterTrip onClick={() => handleTripThree(trip3)} image={trip3.image || mapboxCap(trip3)} style={{ marginTop: "1rem" }}>
-              <TripDate>
-                {trip3.creator_id !== currentUserID && <FriendAvatar src={avatarFinder(trip3.creator_id, friendList)} />}
-                <TripActivity className={trip3.activity}>{trip3.activity}</TripActivity>
-                {moment(trip3.start_date).format("MMM DD, YYYY")}
-              </TripDate>
-              <TripTitle>{trip3.title}</TripTitle>
-            </LaterTrip>
-          }
-        </SideTripContainer>
-      </TripContainer> */}
     </>
   )
 }
