@@ -149,12 +149,11 @@ export default function LocationForm(props) {
               <img src="${mapboxCap(e.lngLat.lat, e.lngLat.lng)}">
             </div>
             <div class="pop-up-title">
-              <p id="popTitle">Your New Trip</p>
+              <p id="popTitle">Your next adventure!</p>
               <p id="popDesc">longitude: ${e.lngLat.lng}</p>
               <p id="popDesc">latitude: ${e.lngLat.lng}</p>
             </div>
         </div>
-
       `))
       .addTo(map.current)
       .togglePopup();
@@ -225,7 +224,18 @@ export default function LocationForm(props) {
       if (tempMarker.current) tempMarker.current.remove();
       tempMarker.current = new mapboxgl.Marker()
         .setLngLat([e.result.center[0], e.result.center[1]])
-        .setPopup(new mapboxgl.Popup().setHTML(`<h1>New Trip</h1>`))
+        .setPopup(new mapboxgl.Popup({ className: "pop-up-main", closeButton: false }).setHTML(`
+        <div >
+          <div class="pop-up-img">
+            <img src="${mapboxCap(e.result.center[1], e.result.center[0])}">
+          </div>
+          <div class="pop-up-title">
+            <p id="popTitle">Your next adventure!</p>
+            <p id="popDesc">longitude: ${e.result.center[1]}</p>
+            <p id="popDesc">latitude: ${e.result.center[0]}</p>
+          </div>
+        </div>
+        `))
         .addTo(map.current)
         .togglePopup();
       tempMarker.current.getElement().addEventListener('click', event => {
