@@ -31,9 +31,7 @@ export default function Friendship() {
         <Images/>
       </StyledEngineProvider>
           <h3 style={{textAlign:"center",padding:10}}>POPULAR PLACES</h3>
-            <PopularTrails/>
-
-        
+            <PopularTrails/>        
       </div>
       <Footer/>
     </div>
