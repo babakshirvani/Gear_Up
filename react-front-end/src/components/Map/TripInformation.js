@@ -198,7 +198,7 @@ export default function TripInformation(props) {
           <br />
           <span style={{color: '#668fff'}}>Longitude</span>&nbsp;&nbsp;{longitude && longitude}
         </TripCoordinates>
-        <TripButtons latitude={latitude} longitude={longitude} tripID={id} checkListed={checkListed} friendAvatarURL={friendAvatarURL}></TripButtons>
+        <TripButtons setCurrentTrip={props.setCurrentTrip} latitude={latitude} longitude={longitude} tripID={id} checkListed={checkListed} friendAvatarURL={friendAvatarURL}></TripButtons>
         </InformationContainer>)
       }
       {/* {currentTrip &&
