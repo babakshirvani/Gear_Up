@@ -4,10 +4,16 @@ html, body, #root, .App {
 }
 
 .mapboxgl-ctrl-top-right {
-  top: 12vh;
-  right: 29.8vw !important;
+  top: 14vh;
+  right: 10vw;
+
+  margin: 0;
 }
 
+.mapboxgl-ctrl-geocoder, .mapboxgl-ctrl {
+
+  margin: 0;
+}
 .map-container {
   height: 100vh;
 }
@@ -58,11 +64,10 @@ html, body, #root, .App {
   z-index: 1;
   position: absolute;
   top: 4vh;
-  left: 0;
-  right: 0;
+  left: calc(16rem + 10vw);
+  right: 10vw;
   margin-left: auto;
   margin-right: auto;
-  width: 40vw;
 }
 
 .step-counter {
@@ -72,10 +77,59 @@ html, body, #root, .App {
   font-family: monospace;
   z-index: 1;
   position: absolute;
-  top: 4rem;
+  /* top: 4rem;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
-  width: 40vw;
+  width: 40vw; */
 }
+
+.mapboxgl-popup-content{
+  border-radius: 15px;
+}
+
+.pop-up-main .mapboxgl-popup-content{
+  display: inline-block;
+  width: 25rem;
+  height: 10.5rem;
+}
+
+
+.pop-up-img > img {
+  z-index: 1;
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  bottom: 10px;
+  max-width: 9rem;
+  height:8.9rem;
+  border-radius: 15px;
+  box-shadow: 2px 2px 7px 0px rgb(73, 72, 72);
+  border: solid 0.5px rgb(194, 192, 192);
+}
+
+.pop-up-title > p {
+  display: inline-block;
+  z-index: 1;
+  position: relative;
+  left: 9rem;
+  margin-left: 1rem;
+  width: 14rem;
+  max-height: 5.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#popTitle{
+  top: 0.5rem;
+  font-size: 16px;
+  font-weight: 700;
+  width: 14rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#popDesc{
+  max-height: 5rem;
+}
+  

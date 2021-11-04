@@ -76,7 +76,7 @@ CREATE TABLE user_checklist (
 CREATE TABLE recommendations (
   id SERIAL PRIMARY KEY NOT NULL,
   title VARCHAR(255) NOT NULL,
-  description VARCHAR(255),
+  description TEXT,
   latitude DOUBLE PRECISION NOT NULL,
   longitude DOUBLE PRECISION NOT NULL,
   image TEXT

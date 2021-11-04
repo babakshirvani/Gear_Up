@@ -3,6 +3,8 @@ import './TripGearList.css'
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import ListAccordion from './ListAccordion';
+import { Button } from '@material-ui/core';
+
 
 const TripGearList = () => {
 
@@ -46,7 +48,6 @@ const TripGearList = () => {
 
   }, [])
 
-
   return (
     <>
       <div className="accordion" >
@@ -57,8 +58,8 @@ const TripGearList = () => {
           </>
 
         ))}
-      </div>
 
+      </div>
     </>
   );
 };

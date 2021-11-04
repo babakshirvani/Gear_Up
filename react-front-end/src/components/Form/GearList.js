@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { set } from 'date-fns';
 
 
+
 export default function GearList() {
   const { userData, setUserData } = useContext(multiStepsContext)
   const [gear, setGear] = useState([])
@@ -70,7 +71,7 @@ export default function GearList() {
     // eslint-disable-next-line
   }, [userData.activity]);
 
-
+  const ref = React.createRef();
 
   return (
     <>
@@ -87,7 +88,7 @@ export default function GearList() {
         <h4 style={{ color: 'white' }}>Your Gear List!</h4>
         <br />
         <div>
-          <div className="accordion">
+          <div className="accordion" ref={ref} >
             {console.log("BEFORE MAP::", gear)}
             {gear.map((item, i) => (
               <>
@@ -106,6 +107,7 @@ export default function GearList() {
             >
               Done
             </Button>
+            
           </div>
         </div >
       </div>
