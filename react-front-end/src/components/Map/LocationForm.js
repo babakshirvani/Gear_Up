@@ -93,7 +93,7 @@ export default function LocationForm(props) {
         .setPopup(new mapboxgl.Popup({ className: "pop-up-main", closeButton: false }).setHTML(`
        <div >
             <div class="pop-up-img">
-              <img src=${marker.image}>
+              <img src=${marker.image || mapboxCap(marker.latitude, marker.longitude)}>
             </div>
             <div class="pop-up-title">
               <p id="popTitle">${marker.title}</p>
