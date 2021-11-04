@@ -85,11 +85,11 @@ export default function Trips(props) {
         .setPopup(new mapboxgl.Popup({ className: "pop-up-main", closeButton: false }).setHTML(`
         <div >
              <div class="pop-up-img">
-               <img src=${trip.image}>
+               <img src=${trip.image || mapboxCap(trip.latitude, trip.longitude)}>
              </div>
              <div class="pop-up-title">
                <p id="popTitle">${trip.title}</p>
-               <p id="popDesc">${trip.description}aa</p>
+               <p id="popDesc">${trip.description || ""}</p>
              </div>
          </div>
          `))
@@ -177,11 +177,11 @@ export default function Trips(props) {
             .setPopup(new mapboxgl.Popup({ className: "pop-up-main", closeButton: false }).setHTML(`
             <div >
                  <div class="pop-up-img">
-                   <img src=${image}>
+                   <img src=${image || mapboxCap(latitude, longitude)}>
                  </div>
                  <div class="pop-up-title">
                    <p id="popTitle">${title}</p>
-                   <p id="popDesc">${description}aa</p>
+                   <p id="popDesc">${description || ""}</p>
                  </div>
              </div>
              `))
