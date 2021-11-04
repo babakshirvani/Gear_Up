@@ -19,7 +19,7 @@ i {
 }
 
 .navbar-mainbg {
-  background-color:white;
+  background-color: #F3F5FA;
   padding: 0px;
 }
 .QntZo:hover {
@@ -41,7 +41,7 @@ i {
   position: relative;
 }
 #navbarSupportedContent > ul > li.active > a {
-  color: #701313;
+  /* color: #701313; */
   background-color: transparent;
   transition: all 0.7s;
 }
