@@ -98,14 +98,14 @@ export default function GearList() {
           </div>
 
           <div style={{
-            padding: "2rem"
+            padding: "2rem", display: 'flex', flexDirection: 'row', justifyContent: 'center'
           }} >
             < Button
               variant="contained"
               color="primary"
               component={Link} to="/dashboard"
             >
-              Done
+              Dashboard
             </Button>
             
           </div>

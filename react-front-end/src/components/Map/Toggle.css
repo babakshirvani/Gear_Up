@@ -97,8 +97,8 @@
 }
 .listing-group input[type='radio']:checked + label {
   background-color: #D36135;
-  outline: 3px solid white;
-  color: white;
+  outline: 1px solid white;
+  color: rgb(237, 237, 237);
 }
 
 /* .listing-group input[type='radio']:checked + label:before {
