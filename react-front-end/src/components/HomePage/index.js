@@ -12,6 +12,7 @@ import { padding } from "@mui/system";
 import Grid from '@mui/material/Grid';
 import { StyledEngineProvider } from '@mui/material/styles';
 import  Images  from "./Images";
+import Footer from "./Footer";
 
 
 
@@ -26,12 +27,13 @@ export default function Friendship() {
         <img src={image6} className="sliderimg" alt=""/>
       </AliceCarousel>
       <div className="container">
-      {/* <StyledEngineProvider injectFirst>
-    <Images/>
-  </StyledEngineProvider>, */}
-      <h3 style={{textAlign:"center",padding:10}}>POPULAR PLACES</h3>
-        <PopularTrails/>
+          <StyledEngineProvider injectFirst>
+        <Images/>
+      </StyledEngineProvider>
+          <h3 style={{textAlign:"center",padding:10}}>POPULAR PLACES</h3>
+            <PopularTrails/>        
       </div>
+      <Footer/>
     </div>
   );
 }

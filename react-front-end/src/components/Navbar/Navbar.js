@@ -105,6 +105,7 @@ const Navbar = () => {
                   <Text clicked={click}>Logout</Text>
                 </Item>
               </li>
+
             }
 
             {auth &&

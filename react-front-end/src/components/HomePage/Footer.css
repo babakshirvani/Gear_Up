@@ -1,0 +1,15 @@
+.container-footer {
+  min-height: 300px;
+  background-color:lightskyblue;
+  color: black;
+  padding: 30px;
+  margin-top: 70px;
+}
+
+.container-home {
+  display: flex;
+  flex-direction: column;
+}
+.container-home .container{
+  flex: 1;
+}
