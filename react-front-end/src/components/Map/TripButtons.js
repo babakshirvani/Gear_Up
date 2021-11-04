@@ -22,24 +22,25 @@ export default function TripButtons(props) {
   //   console.log("completedTrips", completedTrips)
   // }, [props.mapLists.completedTrips])
 
-  const handleDeleteTrip = (id) => {
-    console.log("delete clicked", id)
-    axios.delete(`/api/trips/delete/${id}`)
-      .then(() => {
-        window.location.href = '/calendar'
-      })
-  }
-
-
   // const handleDeleteTrip = (id) => {
   //   console.log("delete clicked", id)
   //   axios.delete(`/api/trips/delete/${id}`)
-  //   .then((res) =>{
-  //     console.log("0098", res)
-  //     if(res.status === 200) {
-  //       props.setCurrentTrip(null)
-  //     }
-  //   })
+  //     .then(() => {
+  //       window.location.href = '/calendar'
+  //     })
+  // }
+
+
+  const handleDeleteTrip = (id) => {
+    console.log("delete clicked", id)
+    axios.delete(`/api/trips/delete/${id}`)
+    .then((res) =>{
+      console.log("0098", res)
+      if(res.status === 200) {
+        props.setCurrentTrip(null)
+      }
+    })
+  }
 
 
 
@@ -55,9 +56,6 @@ export default function TripButtons(props) {
           </label>
         </>)
       }
-      {/* <label className={(`btn btn-secondary ${props.tripID ? "disabled" : ""}`)} htmlFor="trip-checklist" id="trip-checklist">
-          {props.checkListed && <Link to={`/tripGearList/${props.tripID}`} >checklist</Link>}
-        </label> */}
       {!props.friendAvatarURL &&
         (<>
           <input type="button" className="btn-check" name="trip-info" id="trip-delete" onClick={() => handleDeleteTrip(props.tripID)} />
