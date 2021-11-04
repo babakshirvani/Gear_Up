@@ -21,7 +21,7 @@ export default function TripButtons(props) {
   //   setCompletedTrips(props.mapLists.completedTrips)
   //   console.log("completedTrips", completedTrips)
   // }, [props.mapLists.completedTrips])
-  let history = useLocation()
+
   const handleDeleteTrip = (id) => {
     console.log("delete clicked", id)
     axios.delete(`/api/trips/delete/${id}`)
@@ -29,6 +29,17 @@ export default function TripButtons(props) {
         window.location.href = '/calendar'
       })
   }
+
+
+  // const handleDeleteTrip = (id) => {
+  //   console.log("delete clicked", id)
+  //   axios.delete(`/api/trips/delete/${id}`)
+  //   .then((res) =>{
+  //     console.log("0098", res)
+  //     if(res.status === 200) {
+  //       props.setCurrentTrip(null)
+  //     }
+  //   })
 
 
 

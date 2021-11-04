@@ -276,7 +276,7 @@ export default function Trips(props) {
     <>
       <div ref={mapContainer} className="map-container">
         <Toggle setMapList={setMapList} mapLists={mapLists}></Toggle>
-        <TripInformation currentTrip={currentTrip} />
+        <TripInformation currentTrip={currentTrip} setCurrentTrip={setCurrentTrip} />
         {/* <div className="step-counter">
           {props.children}
         </div> */}
