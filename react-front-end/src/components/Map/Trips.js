@@ -205,6 +205,15 @@ export default function Trips(props) {
           })
           return;
         }
+        // map.current = new mapboxgl.Map({
+        //   container: mapContainer.current,
+        //   zoom: 13.1,
+        //   center: [-114.34411, 32.6141],
+        //   pitch: 85,
+        //   bearing: 80,
+        //   style: 'mapbox://styles/mapbox-map-design/ckhqrf2tz0dt119ny6azh975y'
+        // });
+        
         map.current = new mapboxgl.Map({
           container: mapContainer.current,
           style: 'mapbox://styles/mapbox/outdoors-v11',
@@ -212,6 +221,7 @@ export default function Trips(props) {
           zoom: zoom
         });
         $('#my-trips').prop('checked', true);
+
   }, [map, lng, lat, zoom]);
   
   // useEffect(() => {
@@ -317,6 +327,37 @@ export default function Trips(props) {
       loadMarkers(mapLists.plannedTrips);
     })
   }, [map, mapLists])
+  
+  // useEffect(() => {
+  //   if (!map.current) return;
+  //   map.current.on('load', () => {
+  //     map.current.addSource('mapbox-dem', {
+  //       'type': 'raster-dem',
+  //       'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+  //       'tileSize': 512,
+  //       'maxzoom': 14
+  //       });
+
+  //     map.current.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+
+  //     map.current.addLayer({
+  //       'id': 'sky',
+  //       'type': 'sky',
+  //       'paint': {
+  //       'sky-type': 'atmosphere',
+  //       'sky-atmosphere-sun': [0.0, 0.0],
+  //       'sky-atmosphere-sun-intensity': 15,
+  //       'layout': {
+  //         // Make the layer visible by default.
+  //         'visibility': 'visible',
+  //         'line-join': 'round',
+  //         'line-cap': 'round'
+  //         },
+  //       }
+  //     });
+  //   })
+  // }, [map])
+
   // useEffect(() => {
   //   map.current.on('load', () => {
   //     if (props.tripID) {

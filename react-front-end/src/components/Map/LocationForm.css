@@ -86,13 +86,18 @@ html, body, #root, .App {
 }
 
 .mapboxgl-popup-content{
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .pop-up-main .mapboxgl-popup-content{
   display: inline-block;
+  background-color: #F3F5FA;
+  opacity: 0.96;
+  box-shadow: 1px 2px 8px 2px rgba(166, 166, 166);
   width: 25rem;
   height: 10.5rem;
+  display: flex;
+  flex-direction: row;
 }
 
 
@@ -105,12 +110,13 @@ html, body, #root, .App {
   max-width: 9rem;
   height:8.9rem;
   border-radius: 15px;
-  box-shadow: 2px 2px 7px 0px rgb(73, 72, 72);
-  border: solid 0.5px rgb(194, 192, 192);
+  box-shadow: 1px 1px 8px 1px rgb(166, 166, 166);
+  /* border: solid 0.5px rgb(194, 192, 192); */
 }
 
 .pop-up-title > p {
   display: inline-block;
+  color: rgb(126, 126, 126);
   z-index: 1;
   position: relative;
   left: 9rem;

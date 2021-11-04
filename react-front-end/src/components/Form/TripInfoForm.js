@@ -32,7 +32,7 @@ const TripInfoForm = () => {
         width: '40vw',
       }}>
         <h4 style={{ color: 'white' }}>Create a New Trip</h4>
-        <div >
+        <div style={{ marginBottom: '2rem'}} >
           <TextField
             id="standard-basic"
             label="Title*"
@@ -45,7 +45,7 @@ const TripInfoForm = () => {
           />
         </div>
 
-        <div>
+        <div style={{ marginBottom: '3rem'}}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DateRangePicker
               disablePast
@@ -66,12 +66,13 @@ const TripInfoForm = () => {
                   <TextField {...endProps} />
                 </React.Fragment>
               )}
+  
             />
           </LocalizationProvider>
 
         </div>
 
-        <div>
+        <div style={{ marginBottom: '2rem'}}>
           <TextField
             label="Description"
             value={userData['description'] || ""}
@@ -84,11 +85,12 @@ const TripInfoForm = () => {
             multiline
             rows={4}
           />
-          <div style={{ padding: "2rem" }}>
+          <div style={{ padding: "2rem", display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
             <Button
               variant="contained"
               color="secondary"
               onClick={() => setStep(1)}
+              style={{marginRight: '2rem'}}
             >
               Back
             </Button> <span> </span>
@@ -96,6 +98,7 @@ const TripInfoForm = () => {
               variant="contained"
               color="primary"
               onClick={handleNext}
+              style={{marginleft: '2rem'}}
             >
               Next
             </Button>
