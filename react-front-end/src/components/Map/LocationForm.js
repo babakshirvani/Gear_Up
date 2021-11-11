@@ -8,7 +8,7 @@ import { multiStepsContext } from '../Form/StepContext';
 import Toggle from './Toggle';
 import axios from 'axios';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYWNlZmxhbmtlciIsImEiOiJja3RudjFrZDEwNmxxMnVwbWs5aW85eGVyIn0.j-do5McYg-VrWM4qQmAIKg';
+mapboxgl.accessToken = `${process.env.REACT_APP_MAPBOX_API_KEY}`;
 
 export default function LocationForm(props) {
 
